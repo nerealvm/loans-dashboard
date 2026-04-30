@@ -1,0 +1,102 @@
+[
+  {
+    "start": "2022-02-28",
+    "end": null,
+    "rate": 0.2
+  },
+  {
+    "start": "2022-04-11",
+    "end": null,
+    "rate": 0.17
+  },
+  {
+    "start": "2022-05-04",
+    "end": null,
+    "rate": 0.14
+  },
+  {
+    "start": "2022-05-27",
+    "end": null,
+    "rate": 0.11
+  },
+  {
+    "start": "2022-06-14",
+    "end": null,
+    "rate": 0.095
+  },
+  {
+    "start": "2022-07-25",
+    "end": null,
+    "rate": 0.08
+  },
+  {
+    "start": "2022-09-19",
+    "end": null,
+    "rate": 0.075
+  },
+  {
+    "start": "2023-07-24",
+    "end": null,
+    "rate": 0.085
+  },
+  {
+    "start": "2023-08-15",
+    "end": null,
+    "rate": 0.12
+  },
+  {
+    "start": "2023-09-18",
+    "end": null,
+    "rate": 0.13
+  },
+  {
+    "start": "2023-10-30",
+    "end": null,
+    "rate": 0.15
+  },
+  {
+    "start": "2023-12-18",
+    "end": null,
+    "rate": 0.16
+  },
+  {
+    "start": "2024-07-29",
+    "end": null,
+    "rate": 0.18
+  },
+  {
+    "start": "2024-09-16",
+    "end": null,
+    "rate": 0.19
+  },
+  {
+    "start": "2024-10-28",
+    "end": null,
+    "rate": 0.21
+  },
+  {
+    "start": "2025-06-09",
+    "end": null,
+    "rate": 0.2
+  },
+  {
+    "start": "2025-07-28",
+    "end": null,
+    "rate": 0.18
+  },
+  {
+    "start": "2025-09-15",
+    "end": null,
+    "rate": 0.17
+  },
+  {
+    "start": "2025-10-27",
+    "end": null,
+    "rate": 0.165
+  },
+  {
+    "start": "2026-02-16",
+    "end": null,
+    "rate": 0.155
+  }
+]
