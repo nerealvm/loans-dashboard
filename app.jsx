@@ -19,7 +19,7 @@ function SourcePill({ status, onRefresh }) {
     loading:  'Загрузка…',
     sheets:   'Google Sheets',
     cache:    'Google Sheets (кэш)',
-    snapshot: 'Снапшот v14',
+    snapshot: 'Снапшот v17',
     error:    'Снапшот (ошибка Sheets)',
   };
   const colors = {
