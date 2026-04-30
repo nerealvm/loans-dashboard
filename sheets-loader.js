@@ -33,6 +33,20 @@
   // ─── Config helpers ────────────────────────────────────────────────────────
   var CONFIG_KEY = 'kapital_sheets_config_v2';
 
+  // Fetches config.json from the server once per session and merges it into
+  // SL.DEFAULTS. This lets the spreadsheet ID be changed on GitHub without
+  // touching any code — just edit config.json via the GitHub web UI.
+  var _remoteLoaded = false;
+  SL.loadRemoteConfig = async function () {
+    if (_remoteLoaded) return;
+    _remoteLoaded = true;
+    try {
+      var resp = await fetch('config.json', { cache: 'no-cache' });
+      if (resp.ok) Object.assign(SL.DEFAULTS, await resp.json());
+    } catch (e) {}
+  };
+
+  // Priority: localStorage (user overrides via UI) > config.json > SL.DEFAULTS
   SL.getConfig = function () {
     try {
       var s = localStorage.getItem(CONFIG_KEY);

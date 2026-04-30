@@ -146,14 +146,9 @@ function AppRoot() {
     setDataStatus('loading');
     try {
       if (tw.sheetsEnabled && window.SL) {
-        // Sync tweaks → SL config before loading
-        SL.setConfig({
-          enabled: true,
-          spreadsheetId: tw.spreadsheetId,
-          sheetReestр: tw.sheetReestр || 'Реестр траншей',
-          sheetJournal: tw.sheetJournal || 'Журнал движений',
-          sheetCBRates: tw.sheetCBRates || 'Ставки ЦБ',
-        });
+        await SL.loadRemoteConfig();
+        // SL.getConfig() now reads: config.json defaults → localStorage overrides.
+        // Don't push tw here — settings drawer writes directly via SL.setConfig().
         const d = await SL.loadFromSheets(forceFresh);
         setData(d);
         setSelectedProj([...d.projects]);
