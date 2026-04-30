@@ -15,7 +15,7 @@
   // ─── Default config ────────────────────────────────────────────────────────
   SL.DEFAULTS = {
     enabled: true,
-    spreadsheetId: '1bvHJQHH6Enecw095xg1xkSb5N5z5a-BF',
+    spreadsheetId: '1AzTRuDRRcw6M0rnerzeuJ6IY-rk8E2WW',
     sheetReestр:   'Реестр траншей',
     sheetJournal:  'Журнал движений',
     sheetCBRates:  'Ставки ЦБ',
@@ -31,9 +31,11 @@
   };
 
   // ─── Config helpers ────────────────────────────────────────────────────────
+  var CONFIG_KEY = 'kapital_sheets_config_v2';
+
   SL.getConfig = function () {
     try {
-      var s = localStorage.getItem('kapital_sheets_config');
+      var s = localStorage.getItem(CONFIG_KEY);
       if (s) return Object.assign({}, SL.DEFAULTS, JSON.parse(s));
     } catch (e) {}
     return Object.assign({}, SL.DEFAULTS);
@@ -41,7 +43,7 @@
 
   SL.setConfig = function (partial) {
     var cfg = Object.assign(SL.getConfig(), partial);
-    localStorage.setItem('kapital_sheets_config', JSON.stringify(cfg));
+    localStorage.setItem(CONFIG_KEY, JSON.stringify(cfg));
     return cfg;
   };
 

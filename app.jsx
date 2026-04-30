@@ -7,7 +7,7 @@ const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
   "density": "comfortable",
   "showFooterTotals": true,
   "sheetsEnabled": true,
-  "spreadsheetId": "1bvHJQHH6Enecw095xg1xkSb5N5z5a-BF",
+  "spreadsheetId": "1AzTRuDRRcw6M0rnerzeuJ6IY-rk8E2WW",
   "sheetReestр": "Реестр траншей",
   "sheetJournal": "Журнал движений",
   "sheetCBRates": "Ставки ЦБ"
