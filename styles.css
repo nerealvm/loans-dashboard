@@ -86,17 +86,20 @@ input, select, textarea { font: inherit; color: inherit; }
   gap: 10px;
 }
 .brand-glyph {
-  width: 28px;
-  height: 28px;
-  border-radius: 6px;
-  background: linear-gradient(135deg, var(--accent) 0%, #2a5d3f 100%);
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: var(--accent);
+  box-shadow: 0 1px 0 rgba(255,255,255,0.15) inset, 0 2px 6px rgba(48,71,214,0.30);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: var(--font-mono);
-  font-size: 13px;
-  font-weight: 600;
-  color: #0a0c10;
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.03em;
+  flex-shrink: 0;
 }
 .brand-name {
   font-family: var(--font-display);
@@ -214,12 +217,33 @@ input, select, textarea { font: inherit; color: inherit; }
 .btn:hover { background: var(--bg-3); border-color: var(--fg-4); color: var(--fg-0); }
 .btn.primary {
   background: var(--accent);
-  color: #0a0c10;
+  color: #ffffff;
   border-color: var(--accent);
   font-weight: 600;
+  box-shadow: 0 1px 0 rgba(255,255,255,0.12) inset, 0 1px 4px rgba(48,71,214,0.25);
 }
-.btn.primary:hover { background: var(--accent-strong); }
+.btn.primary:hover { background: var(--accent-strong); color: #ffffff; box-shadow: none; }
 .btn .ic { width: 13px; height: 13px; opacity: 0.85; }
+.btn svg { width: 14px; height: 14px; flex-shrink: 0; }
+.btn.primary svg { opacity: 0.9; }
+/* Icon-only close button — used in drawer and detail panel headers */
+.btn-close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  color: var(--fg-3);
+  cursor: pointer;
+  transition: background 0.12s, color 0.12s;
+  flex-shrink: 0;
+}
+.btn-close:hover { background: var(--bg-3); color: var(--fg-0); }
+.btn-close svg { width: 16px; height: 16px; }
 
 .report-pill {
   display: inline-flex;
@@ -992,7 +1016,7 @@ tfoot td {
   --accent-bg: rgba(96, 128, 255, 0.12);
   --accent-line: rgba(96, 128, 255, 0.35);
 }
-[data-theme="dark"] .brand-glyph { color: #0a0c10; }
+[data-theme="dark"] .brand-glyph { box-shadow: 0 1px 0 rgba(255,255,255,0.1) inset, 0 2px 8px rgba(0,0,0,0.4); }
 [data-theme="dark"] .stacked > .seg { color: rgba(0,0,0,0.7); }
 [data-theme="dark"] .stacked > .seg.p { background: #8fcfa3; }
 [data-theme="dark"] .stacked > .seg.n { background: #d9a55c; }

@@ -40,7 +40,7 @@ function AddMovementDrawer({ dataset, computed, onClose, onSave, prefilledTranch
       <div className="drawer">
         <div className="drawer-head">
           <h3>Новое движение</h3>
-          <button className="btn" onClick={onClose}>{Icons.close}</button>
+          <button className="btn-close" onClick={onClose}>{Icons.close}</button>
         </div>
         <div className="drawer-body">
           <div className="field">
@@ -120,7 +120,7 @@ function TrancheDetail({ tranche, movements, onClose, onAddMovement }){
             <div className="page-eyebrow" style={{margin:0}}>Транш</div>
             <div style={{fontFamily:'var(--font-display)', fontSize:22, fontWeight:600, color:'var(--fg-0)', marginTop:4}}>{tranche.id}</div>
           </div>
-          <button className="btn" onClick={onClose}>{Icons.close}</button>
+          <button className="btn-close" onClick={onClose}>{Icons.close}</button>
         </div>
         <div style={{display:'flex', gap:8, marginTop:10}}>
           <span className={'tag ' + fmt.projectClass(tranche.project)}>{fmt.projectShort(tranche.project)}</span>

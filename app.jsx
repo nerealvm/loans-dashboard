@@ -83,7 +83,7 @@ function SheetsSettingsDrawer({ tw, setTw, onClose, onRefresh }) {
       <div className="drawer">
         <div className="drawer-head">
           <h3>Источник данных · Google Sheets</h3>
-          <button className="btn" onClick={onClose}>{Icons.close}</button>
+          <button className="btn-close" onClick={onClose}>{Icons.close}</button>
         </div>
         <div className="drawer-body">
           <div className="note">
