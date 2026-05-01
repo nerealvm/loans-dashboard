@@ -264,6 +264,9 @@ input, select, textarea { font: inherit; color: inherit; }
   display: flex;
   flex-direction: column;
   min-width: 0;
+  height: 100vh;
+  overflow-y: auto;     /* single scroll for the entire right column */
+  overflow-x: hidden;
 }
 .content {
   padding: 28px 28px 80px;
@@ -450,7 +453,9 @@ input, select, textarea { font: inherit; color: inherit; }
 .panel-actions { margin-left: auto; display: flex; gap: 6px; }
 
 /* --- Table --- */
-.t-wrap { overflow: auto; }
+/* overflow-y: clip keeps horizontal scroll without creating a vertical scroll
+   container, so position:sticky on thead/tfoot works against .main */
+.t-wrap { overflow-x: auto; overflow-y: clip; }
 .t {
   width: 100%;
   border-collapse: collapse;
@@ -468,8 +473,10 @@ input, select, textarea { font: inherit; color: inherit; }
   background: var(--bg-1);
   border-bottom: 1px solid var(--line);
   position: sticky;
-  top: 0;
+  top: 55px;  /* offset for the sticky topbar */
+  z-index: 2;
   white-space: nowrap;
+  box-shadow: 0 1px 0 var(--line);
 }
 .t tbody td {
   padding: 10px 14px;
@@ -876,14 +883,24 @@ th.sorted .sort-arrow { opacity: 1; color: var(--accent); }
   font-feature-settings: 'tnum';
 }
 
-/* Sums row */
+/* Sums row — sticky at viewport bottom, always visible */
 tfoot td {
-  background: var(--bg-2) !important;
-  border-top: 1px solid var(--line-2);
+  position: sticky;
+  bottom: 0;
+  background: var(--bg-1) !important;
+  border-top: 2px solid var(--accent-line) !important;
   border-bottom: 0 !important;
   color: var(--fg-0) !important;
-  font-weight: 600;
+  font-weight: 700;
   font-family: var(--font-mono);
+  font-size: 12.5px;
+  box-shadow: 0 -4px 12px rgba(0,0,0,0.06);
+  z-index: 2;
+}
+tfoot td:first-child {
+  color: var(--fg-3) !important;
+  font-weight: 400;
+  font-size: 11.5px;
 }
 
 /* Tweaks panel overrides */

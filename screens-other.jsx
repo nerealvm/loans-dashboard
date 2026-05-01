@@ -76,7 +76,7 @@ function ScreenRegistry({ dataset, computed, selectedProj, setSelectedProj, proj
             <input className="search-input" placeholder="ID, контрагент, тип…" value={search} onChange={e=>setSearch(e.target.value)} />
           </div>
         </div>
-        <div className="t-wrap" style={{maxHeight: '60vh'}}>
+        <div className="t-wrap">
           <table className="t">
             <thead><tr>
               <th>ID</th><th>Дата</th><th>Контрагент</th><th>Проект</th><th>Тип</th>
@@ -154,7 +154,7 @@ function ScreenJournal({ dataset, onAdd }){
             <button className="btn primary" onClick={onAdd}>{Icons.plus}<span>Движение</span></button>
           </div>
         </div>
-        <div className="t-wrap" style={{maxHeight: '64vh'}}>
+        <div className="t-wrap">
           <table className="t">
             <thead><tr>
               <th>ID</th><th>Дата</th><th>Тип</th><th>Транш</th><th>Контрагент</th><th>Проект</th>
@@ -235,7 +235,7 @@ function ScreenGroups({ dataset, computed }){
           <div className="panel-title">Транши группы «{active}»</div>
           <div className="panel-sub">{own.length} траншей</div>
         </div>
-        <div className="t-wrap" style={{maxHeight: '52vh'}}>
+        <div className="t-wrap">
           <table className="t">
             <thead><tr>
               <th>ID</th><th>Дата</th><th>Контрагент</th><th>Проект</th><th>Тип</th>
