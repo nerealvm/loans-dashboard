@@ -63,7 +63,7 @@ function ScreenRegistry({ dataset, computed, selectedProj, setSelectedProj, proj
 
       <FilterBar projects={dataset.projects} selected={selectedProj} setSelected={setSelectedProj} projAgg={projAgg} />
 
-      <div className="panel">
+      <div className="panel panel-fill">
         <div className="panel-head">
           <div className="panel-title">Транши</div>
           <div className="panel-sub">{filt.length} из {computed.length}</div>
@@ -140,7 +140,7 @@ function ScreenJournal({ dataset, onAdd }){
              sub={`возвр ${fmt.money(sumBack,{compact:true})} · % ${fmt.money(sumPct,{compact:true})}`} accent />
       </div>
 
-      <div className="panel">
+      <div className="panel panel-fill">
         <div className="panel-head">
           <div className="panel-title">Лента движений</div>
           <div className="panel-sub">{filt.length} записей</div>

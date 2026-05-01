@@ -43,7 +43,7 @@
 }
 
 * { box-sizing: border-box; }
-html, body { margin: 0; padding: 0; }
+html, body { margin: 0; padding: 0; height: 100%; overflow: hidden; }
 body {
   background: var(--bg-0);
   color: var(--fg-1);
@@ -62,7 +62,8 @@ input, select, textarea { font: inherit; color: inherit; }
 .app {
   display: grid;
   grid-template-columns: 232px 1fr;
-  min-height: 100vh;
+  height: 100vh;
+  overflow: hidden;
 }
 
 /* --- Sidebar --- */
@@ -180,12 +181,10 @@ input, select, textarea { font: inherit; color: inherit; }
   display: flex;
   align-items: center;
   gap: 16px;
-  padding: 14px 28px;
+  padding: 14px 40px;
   border-bottom: 1px solid var(--line);
   background: var(--bg-0);
-  position: sticky;
-  top: 0;
-  z-index: 10;
+  flex-shrink: 0;
 }
 .topbar-title {
   font-family: var(--font-display);
@@ -265,12 +264,28 @@ input, select, textarea { font: inherit; color: inherit; }
   flex-direction: column;
   min-width: 0;
   height: 100vh;
-  overflow-y: auto;     /* single scroll for the entire right column */
-  overflow-x: hidden;
+  overflow: hidden;
 }
 .content {
-  padding: 28px 28px 80px;
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;         /* scroll container for non-table screens */
+  display: flex;
+  flex-direction: column;
+  padding: 24px 40px 28px;
   max-width: 100%;
+}
+/* Panel that should fill remaining content height (registry, journal) */
+.panel-fill {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  margin-top: 16px;
+}
+.panel-fill .t-wrap {
+  flex: 1;
+  min-height: 0;
 }
 
 .page-eyebrow {
@@ -453,9 +468,7 @@ input, select, textarea { font: inherit; color: inherit; }
 .panel-actions { margin-left: auto; display: flex; gap: 6px; }
 
 /* --- Table --- */
-/* overflow-y: clip keeps horizontal scroll without creating a vertical scroll
-   container, so position:sticky on thead/tfoot works against .main */
-.t-wrap { overflow-x: auto; overflow-y: clip; }
+.t-wrap { overflow: auto; }
 .t {
   width: 100%;
   border-collapse: collapse;
@@ -473,7 +486,7 @@ input, select, textarea { font: inherit; color: inherit; }
   background: var(--bg-1);
   border-bottom: 1px solid var(--line);
   position: sticky;
-  top: 55px;  /* offset for the sticky topbar */
+  top: 0;
   z-index: 2;
   white-space: nowrap;
   box-shadow: 0 1px 0 var(--line);
@@ -977,7 +990,7 @@ tfoot td:first-child {
   .topbar-actions .btn span:not(.ic) { display: none; }
   .topbar-actions .btn { padding: 7px 9px; }
   .report-pill { display: none; }
-  .content { padding: 18px 16px 80px; }
+  .content { padding: 16px 20px 80px; }
   .page-title { font-size: 24px; }
   .page-sub { font-size: 13px; }
   .filter-bar { padding: 10px 12px; gap: 6px; overflow-x: auto; flex-wrap: nowrap; -webkit-overflow-scrolling: touch; }
