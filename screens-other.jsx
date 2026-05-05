@@ -72,6 +72,27 @@ function ScreenRegistry({ dataset, computed, selectedProj, setSelectedProj, proj
     }).filter(x => x.rows.length > 0);
   }, [filt, groupFilter, dataset.groups]);
 
+  const carrierGrouped = useMemoS(()=> {
+    if (groupFilter === 'all') return null;
+    const map = new Map();
+    for (const t of filt) {
+      const name = t.carrier?.split('(')[0].trim() || '—';
+      if (!map.has(name)) map.set(name, []);
+      map.get(name).push(t);
+    }
+    return Array.from(map.entries()).map(([carrier, rows]) => ({
+      carrier,
+      rows,
+      sub: {
+        issued:  rows.reduce((s,t)=>s+(t.sum||0),0),
+        returns: rows.reduce((s,t)=>s+(t.returns||0),0),
+        balance: rows.reduce((s,t)=>s+(t.balance||0),0),
+        accrued: rows.reduce((s,t)=>s+(t.accrued||0),0),
+        debtPct: rows.reduce((s,t)=>s+(t.debtPct||0),0),
+      },
+    }));
+  }, [filt, groupFilter]);
+
   return (
     <div className="content">
       <div className="page-eyebrow">Раздел · Реестр</div>
@@ -102,29 +123,53 @@ function ScreenRegistry({ dataset, computed, selectedProj, setSelectedProj, proj
               <th className="num">Начислено %</th><th className="num">Долг %</th><th>Дней</th>
             </tr></thead>
             <tbody>
-              {grouped ? grouped.map(({ g, rows, sub }) => (
-                <React.Fragment key={g}>
-                  <tr className="t-group-hdr">
-                    <td colSpan={12}>
-                      <span className="group-mark" style={{background: fmt.groupColor(g), display:'inline-grid', placeItems:'center', width:20, height:20, borderRadius:4, fontSize:10, fontWeight:700, color:'var(--bg-0)', marginRight:8, verticalAlign:'middle'}}>
-                        {fmt.groupInitials(g)}
-                      </span>
-                      {g} · {rows.length} тр.
-                    </td>
-                  </tr>
-                  {rows.map(t => <TrancheRow key={t.id} t={t} onSelect={onSelect}/>)}
-                  <tr className="t-subtotal">
-                    <td colSpan={5}>Итого {g}</td>
-                    <td className="num">{fmt.money(sub.issued)}</td>
-                    <td className="num">{fmt.money(sub.returns)}</td>
-                    <td className="num">{fmt.money(sub.balance)}</td>
-                    <td></td>
-                    <td className="num">{fmt.money(sub.accrued, {compact:true})}</td>
-                    <td className="num" style={{color: sub.debtPct > 0 ? 'var(--warn)' : 'inherit'}}>{fmt.money(sub.debtPct, {compact:true})}</td>
-                    <td></td>
-                  </tr>
-                </React.Fragment>
-              )) : filt.map(t => <TrancheRow key={t.id} t={t} onSelect={onSelect}/>)}
+              {grouped
+                ? grouped.map(({ g, rows, sub }) => (
+                  <React.Fragment key={g}>
+                    <tr className="t-group-hdr">
+                      <td colSpan={12}>
+                        <span className="group-mark" style={{background: fmt.groupColor(g), display:'inline-grid', placeItems:'center', width:20, height:20, borderRadius:4, fontSize:10, fontWeight:700, color:'var(--bg-0)', marginRight:8, verticalAlign:'middle'}}>
+                          {fmt.groupInitials(g)}
+                        </span>
+                        {g} · {rows.length} тр.
+                      </td>
+                    </tr>
+                    {rows.map(t => <TrancheRow key={t.id} t={t} onSelect={onSelect}/>)}
+                    <tr className="t-subtotal">
+                      <td colSpan={5}>Итого {g}</td>
+                      <td className="num">{fmt.money(sub.issued)}</td>
+                      <td className="num">{fmt.money(sub.returns)}</td>
+                      <td className="num">{fmt.money(sub.balance)}</td>
+                      <td></td>
+                      <td className="num">{fmt.money(sub.accrued, {compact:true})}</td>
+                      <td className="num" style={{color: sub.debtPct > 0 ? 'var(--warn)' : 'inherit'}}>{fmt.money(sub.debtPct, {compact:true})}</td>
+                      <td></td>
+                    </tr>
+                  </React.Fragment>
+                ))
+                : carrierGrouped
+                  ? carrierGrouped.map(({ carrier, rows, sub }) => (
+                    <React.Fragment key={carrier}>
+                      <tr className="t-carrier-hdr">
+                        <td colSpan={12}>{carrier} · {rows.length} тр.</td>
+                      </tr>
+                      {rows.map(t => <TrancheRow key={t.id} t={t} onSelect={onSelect}/>)}
+                      {rows.length > 1 && (
+                        <tr className="t-carrier-sub">
+                          <td colSpan={5}>Итого {carrier.split(' ')[0]}</td>
+                          <td className="num">{fmt.money(sub.issued)}</td>
+                          <td className="num">{fmt.money(sub.returns)}</td>
+                          <td className="num">{fmt.money(sub.balance)}</td>
+                          <td></td>
+                          <td className="num">{fmt.money(sub.accrued, {compact:true})}</td>
+                          <td className="num" style={{color: sub.debtPct > 0 ? 'var(--warn)' : 'inherit'}}>{fmt.money(sub.debtPct, {compact:true})}</td>
+                          <td></td>
+                        </tr>
+                      )}
+                    </React.Fragment>
+                  ))
+                  : filt.map(t => <TrancheRow key={t.id} t={t} onSelect={onSelect}/>)
+              }
             </tbody>
             <tfoot><tr>
               <td colSpan={5} className="muted">Итого по {filt.length}</td>

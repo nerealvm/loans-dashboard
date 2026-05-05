@@ -533,6 +533,29 @@ input, select, textarea { font: inherit; color: inherit; }
 }
 .t .t-subtotal td:first-child { color: var(--fg-3); font-weight: 400; font-size: 11px; }
 .t .t-subtotal:hover td { background: var(--bg-2) !important; }
+.t .t-carrier-hdr td {
+  background: var(--bg-1);
+  padding: 6px 14px 6px 22px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--fg-2);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.t .t-carrier-hdr:first-child td { border-top: none; }
+.t .t-carrier-hdr:hover td { background: var(--bg-1) !important; }
+.t .t-carrier-sub td {
+  background: var(--bg-1);
+  border-bottom: 1px solid var(--line);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--fg-1);
+  padding: 7px 14px;
+}
+.t .t-carrier-sub td:first-child { color: var(--fg-3); font-weight: 400; font-size: 11px; padding-left: 22px; }
+.t .t-carrier-sub:hover td { background: var(--bg-1) !important; }
 
 .tag {
   display: inline-flex;
