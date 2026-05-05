@@ -508,6 +508,31 @@ input, select, textarea { font: inherit; color: inherit; }
   font-size: 12px;
 }
 .t .strong { color: var(--fg-0); font-weight: 500; }
+.t .t-group-hdr td {
+  background: var(--bg-2);
+  padding: 7px 14px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--fg-2);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  border-top: 2px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.t .t-group-hdr:first-child td { border-top: none; }
+.t .t-group-hdr:hover td { background: var(--bg-2) !important; }
+.t .t-subtotal td {
+  background: var(--bg-2);
+  border-bottom: 2px solid var(--line);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--fg-1);
+  padding: 8px 14px;
+}
+.t .t-subtotal td:first-child { color: var(--fg-3); font-weight: 400; font-size: 11px; }
+.t .t-subtotal:hover td { background: var(--bg-2) !important; }
 
 .tag {
   display: inline-flex;
