@@ -580,6 +580,8 @@ input, select, textarea { font: inherit; color: inherit; }
   padding: 18px 20px;
 }
 .group-card.active { border-color: var(--accent-line); }
+.group-card.link { cursor: pointer; transition: border-color 0.12s, background 0.12s; }
+.group-card.link:hover { border-color: var(--accent-line); background: var(--bg-2); }
 .group-card .gh {
   display: flex;
   align-items: center;
@@ -631,6 +633,8 @@ input, select, textarea { font: inherit; color: inherit; }
   border-radius: var(--radius-lg);
   padding: 16px 18px;
 }
+.proj-card.link { cursor: pointer; transition: border-color 0.12s, background 0.12s; }
+.proj-card.link:hover { border-color: var(--accent-line); background: var(--bg-2); }
 .proj-card .ph {
   display: flex;
   align-items: baseline;

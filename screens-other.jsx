@@ -28,9 +28,8 @@ function TrancheRow({ t, onSelect }){
   );
 }
 
-function ScreenRegistry({ dataset, computed, selectedProj, setSelectedProj, projAgg, onSelect }){
+function ScreenRegistry({ dataset, computed, selectedProj, setSelectedProj, projAgg, onSelect, groupFilter, setGroupFilter }){
   const [search, setSearch] = useStateS('');
-  const [groupFilter, setGroupFilter] = useStateS('all');
 
   const filt = useMemoS(()=> {
     return computed.filter(t => {

@@ -132,6 +132,7 @@ function AppRoot() {
   const [data, setData] = useStateA(null);
   const [active, setActive] = useStateA('dash');
   const [selectedProj, setSelectedProj] = useStateA([]);
+  const [regGroupFilter, setRegGroupFilter] = useStateA('all');
   const [drawerOpen, setDrawerOpen] = useStateA(false);
   const [prefillTranche, setPrefillTranche] = useStateA(null);
   const [detail, setDetail] = useStateA(null);
@@ -230,6 +231,13 @@ function AppRoot() {
 
   function go(id) { setActive(id); setNavOpen(false); }
 
+  function navigate(screenId, opts) {
+    if (opts && opts.group !== undefined) setRegGroupFilter(opts.group);
+    if (opts && opts.projects !== undefined) setSelectedProj(opts.projects);
+    setActive(screenId);
+    setNavOpen(false);
+  }
+
   return (
     <div className="app" data-density={tw.density}>
       <Sidebar active={active} setActive={go} dataset={dataset} computed={computed} open={navOpen} onClose={() => setNavOpen(false)} />
@@ -243,8 +251,8 @@ function AppRoot() {
           onRefresh={() => loadData(true)}
           onSettings={() => setSettingsOpen(true)}
         />
-        {active === 'dash' && <ScreenDashboard dataset={dataset} computed={computed} projAgg={projAgg} groupAgg={groupAgg} selectedProj={selectedProj} setSelectedProj={setSelectedProj} />}
-        {active === 'reg'  && <ScreenRegistry  dataset={dataset} computed={computed} projAgg={projAgg} selectedProj={selectedProj} setSelectedProj={setSelectedProj} onSelect={setDetail} />}
+        {active === 'dash' && <ScreenDashboard dataset={dataset} computed={computed} projAgg={projAgg} groupAgg={groupAgg} selectedProj={selectedProj} setSelectedProj={setSelectedProj} onNavigate={navigate} />}
+        {active === 'reg'  && <ScreenRegistry  dataset={dataset} computed={computed} projAgg={projAgg} selectedProj={selectedProj} setSelectedProj={setSelectedProj} onSelect={setDetail} groupFilter={regGroupFilter} setGroupFilter={setRegGroupFilter} />}
         {active === 'log'  && <ScreenJournal   dataset={dataset} onAdd={() => openAdd()} />}
         {active === 'grp'  && <ScreenGroups    dataset={dataset} computed={computed} />}
         {active === 'par'  && <ScreenParity    dataset={dataset} computed={computed} />}

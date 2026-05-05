@@ -42,9 +42,11 @@ function KPI({ label, value, unit, sub, accent, bar }){
   );
 }
 
-function ProjectMini({ name, agg }){
+function ProjectMini({ name, agg, onNavigate }){
   return (
-    <div className="proj-card">
+    <div className={'proj-card' + (onNavigate ? ' link' : '')}
+         onClick={onNavigate ? () => onNavigate('reg', {projects: [name]}) : undefined}
+         title={onNavigate ? `Открыть в реестре: ${fmt.projectShort(name)}` : undefined}>
       <div className="ph">
         <div className="pname">{fmt.projectShort(name)}</div>
         <div className="pcount">{agg?.count || 0} тр.</div>
@@ -55,7 +57,7 @@ function ProjectMini({ name, agg }){
   );
 }
 
-function GroupQuick({ groups, dataset }){
+function GroupQuick({ groups, dataset, onNavigate }){
   const total = Object.values(groups).reduce((s,g)=>s+g.balance, 0);
   return (
     <div className="group-grid">
@@ -65,7 +67,9 @@ function GroupQuick({ groups, dataset }){
         const expected = dataset.shares[g];
         const delta = share - expected;
         return (
-          <div className="group-card" key={g}>
+          <div className={'group-card' + (onNavigate ? ' link' : '')} key={g}
+               onClick={onNavigate ? () => onNavigate('reg', {group: g}) : undefined}
+               title={onNavigate ? `Открыть в реестре: ${g}` : undefined}>
             <div className="gh">
               <div className="group-mark" style={{background: fmt.groupColor(g)}}>{fmt.groupInitials(g)}</div>
               <div>
@@ -89,7 +93,7 @@ function GroupQuick({ groups, dataset }){
   );
 }
 
-function ScreenDashboard({ dataset, computed, projAgg, groupAgg, selectedProj, setSelectedProj }){
+function ScreenDashboard({ dataset, computed, projAgg, groupAgg, selectedProj, setSelectedProj, onNavigate }){
   const filt = useMemoD(()=>computed.filter(t=>selectedProj.includes(t.project)), [computed, selectedProj]);
   const agg = E.aggregate(computed, selectedProj);
   const limitUsed = agg.balance / dataset.invLimit;
@@ -129,14 +133,14 @@ function ScreenDashboard({ dataset, computed, projAgg, groupAgg, selectedProj, s
         <div className="page-eyebrow" style={{marginBottom: 4}}>По проектам</div>
         <div className="proj-grid">
           {dataset.projects.map(p => (
-            <ProjectMini key={p} name={p} agg={projAgg[p]} />
+            <ProjectMini key={p} name={p} agg={projAgg[p]} onNavigate={onNavigate} />
           ))}
         </div>
       </div>
 
       <div style={{marginTop: 28}}>
         <div className="page-eyebrow" style={{marginBottom: 4}}>По группам акционеров</div>
-        <GroupQuick groups={groupAgg} dataset={dataset} />
+        <GroupQuick groups={groupAgg} dataset={dataset} onNavigate={onNavigate} />
       </div>
 
       <div className="panel">
