@@ -28,8 +28,27 @@ function TrancheRow({ t, onSelect }){
   );
 }
 
+function Chevron({ open }){
+  return (
+    <svg viewBox="0 0 10 10" width="10" height="10"
+         style={{display:'inline-block', verticalAlign:'middle', marginRight:6, flexShrink:0,
+                 transition:'transform 0.15s', transform: open ? 'rotate(0deg)' : 'rotate(-90deg)'}}>
+      <path d="M2 3.5l3 3 3-3" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  );
+}
+
 function ScreenRegistry({ dataset, computed, selectedProj, setSelectedProj, projAgg, onSelect, groupFilter, setGroupFilter }){
   const [search, setSearch] = useStateS('');
+  const [collapsedGroups, setCollapsedGroups] = useStateS(new Set());
+  const [collapsedCarriers, setCollapsedCarriers] = useStateS(new Set());
+
+  function toggleGroup(g) {
+    setCollapsedGroups(prev => { const s = new Set(prev); s.has(g) ? s.delete(g) : s.add(g); return s; });
+  }
+  function toggleCarrier(c) {
+    setCollapsedCarriers(prev => { const s = new Set(prev); s.has(c) ? s.delete(c) : s.add(c); return s; });
+  }
 
   const filt = useMemoS(()=> {
     return computed.filter(t => {
@@ -124,39 +143,23 @@ function ScreenRegistry({ dataset, computed, selectedProj, setSelectedProj, proj
             </tr></thead>
             <tbody>
               {grouped
-                ? grouped.map(({ g, rows, sub }) => (
-                  <React.Fragment key={g}>
-                    <tr className="t-group-hdr">
-                      <td colSpan={12}>
-                        <span className="group-mark" style={{background: fmt.groupColor(g), display:'inline-grid', placeItems:'center', width:20, height:20, borderRadius:4, fontSize:10, fontWeight:700, color:'var(--bg-0)', marginRight:8, verticalAlign:'middle'}}>
-                          {fmt.groupInitials(g)}
-                        </span>
-                        {g} · {rows.length} траншей
-                      </td>
-                    </tr>
-                    {rows.map(t => <TrancheRow key={t.id} t={t} onSelect={onSelect}/>)}
-                    <tr className="t-subtotal">
-                      <td colSpan={5}>Итого {g}</td>
-                      <td className="num">{fmt.money(sub.issued)}</td>
-                      <td className="num">{fmt.money(sub.returns)}</td>
-                      <td className="num">{fmt.money(sub.balance)}</td>
-                      <td></td>
-                      <td className="num">{fmt.money(sub.accrued, {compact:true})}</td>
-                      <td className="num" style={{color: sub.debtPct > 0 ? 'var(--warn)' : 'inherit'}}>{fmt.money(sub.debtPct, {compact:true})}</td>
-                      <td></td>
-                    </tr>
-                  </React.Fragment>
-                ))
-                : carrierGrouped
-                  ? carrierGrouped.map(({ carrier, rows, sub }) => (
-                    <React.Fragment key={carrier}>
-                      <tr className="t-carrier-hdr">
-                        <td colSpan={12}>{carrier} · {rows.length} траншей</td>
+                ? grouped.map(({ g, rows, sub }) => {
+                  const collapsed = collapsedGroups.has(g);
+                  return (
+                    <React.Fragment key={g}>
+                      <tr className="t-group-hdr" onClick={() => toggleGroup(g)}>
+                        <td colSpan={12}>
+                          <Chevron open={!collapsed} />
+                          <span className="group-mark" style={{background: fmt.groupColor(g), display:'inline-grid', placeItems:'center', width:20, height:20, borderRadius:4, fontSize:10, fontWeight:700, color:'var(--bg-0)', marginRight:8, verticalAlign:'middle'}}>
+                            {fmt.groupInitials(g)}
+                          </span>
+                          {g} · {rows.length} траншей
+                        </td>
                       </tr>
-                      {rows.map(t => <TrancheRow key={t.id} t={t} onSelect={onSelect}/>)}
-                      {rows.length > 1 && (
-                        <tr className="t-carrier-sub">
-                          <td colSpan={5}>Итого {carrier.split(' ')[0]}</td>
+                      {!collapsed && rows.map(t => <TrancheRow key={t.id} t={t} onSelect={onSelect}/>)}
+                      {!collapsed && (
+                        <tr className="t-subtotal" onClick={() => toggleGroup(g)}>
+                          <td colSpan={5}>Итого {g}</td>
                           <td className="num">{fmt.money(sub.issued)}</td>
                           <td className="num">{fmt.money(sub.returns)}</td>
                           <td className="num">{fmt.money(sub.balance)}</td>
@@ -167,7 +170,32 @@ function ScreenRegistry({ dataset, computed, selectedProj, setSelectedProj, proj
                         </tr>
                       )}
                     </React.Fragment>
-                  ))
+                  );
+                })
+                : carrierGrouped
+                  ? carrierGrouped.map(({ carrier, rows, sub }) => {
+                    const collapsed = collapsedCarriers.has(carrier);
+                    return (
+                      <React.Fragment key={carrier}>
+                        <tr className="t-carrier-hdr" onClick={() => toggleCarrier(carrier)}>
+                          <td colSpan={12}><Chevron open={!collapsed} />{carrier} · {rows.length} траншей</td>
+                        </tr>
+                        {!collapsed && rows.map(t => <TrancheRow key={t.id} t={t} onSelect={onSelect}/>)}
+                        {!collapsed && rows.length > 1 && (
+                          <tr className="t-carrier-sub" onClick={() => toggleCarrier(carrier)}>
+                            <td colSpan={5}>Итого {carrier.split(' ')[0]}</td>
+                            <td className="num">{fmt.money(sub.issued)}</td>
+                            <td className="num">{fmt.money(sub.returns)}</td>
+                            <td className="num">{fmt.money(sub.balance)}</td>
+                            <td></td>
+                            <td className="num">{fmt.money(sub.accrued, {compact:true})}</td>
+                            <td className="num" style={{color: sub.debtPct > 0 ? 'var(--warn)' : 'inherit'}}>{fmt.money(sub.debtPct, {compact:true})}</td>
+                            <td></td>
+                          </tr>
+                        )}
+                      </React.Fragment>
+                    );
+                  })
                   : filt.map(t => <TrancheRow key={t.id} t={t} onSelect={onSelect}/>)
               }
             </tbody>

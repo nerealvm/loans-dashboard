@@ -521,6 +521,7 @@ input, select, textarea { font: inherit; color: inherit; }
   border-bottom: 1px solid var(--line);
 }
 .t .t-group-hdr:first-child td { border-top: none; }
+.t .t-group-hdr { cursor: pointer; }
 .t .t-group-hdr:hover td { background: var(--bg-2) !important; }
 .t .t-subtotal td {
   background: var(--bg-2);
@@ -532,6 +533,7 @@ input, select, textarea { font: inherit; color: inherit; }
   padding: 8px 14px;
 }
 .t .t-subtotal td:first-child { color: var(--fg-3); font-weight: 400; font-size: 11px; }
+.t .t-subtotal { cursor: pointer; }
 .t .t-subtotal:hover td { background: var(--bg-2) !important; }
 .t .t-carrier-hdr td {
   background: var(--bg-1);
@@ -544,6 +546,7 @@ input, select, textarea { font: inherit; color: inherit; }
   border-bottom: 1px solid var(--line);
 }
 .t .t-carrier-hdr:first-child td { border-top: none; }
+.t .t-carrier-hdr { cursor: pointer; }
 .t .t-carrier-hdr:hover td { background: var(--bg-1) !important; }
 .t .t-carrier-sub td {
   background: var(--bg-1);
@@ -555,6 +558,7 @@ input, select, textarea { font: inherit; color: inherit; }
   padding: 7px 14px;
 }
 .t .t-carrier-sub td:first-child { color: var(--fg-3); font-weight: 400; font-size: 11px; padding-left: 22px; }
+.t .t-carrier-sub { cursor: pointer; }
 .t .t-carrier-sub:hover td { background: var(--bg-1) !important; }
 
 .tag {
