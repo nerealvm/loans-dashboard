@@ -375,48 +375,16 @@
     return result.sort(function (a, b) { return a.start.localeCompare(b.start); });
   };
 
-  // ─── Group-sheet fallback ──────────────────────────────────────────────────
-  // gviz skips rows hidden via Google Sheets row-groups (collapsed sections).
-  // The individual group sheets (N&K, Пресняков, Чил-Акопов) are never
-  // collapsed, so we fetch them in parallel and merge any tranches that were
-  // invisible in the consolidated "Реестр траншей".
-  SL.mergeGroupSheets = async function (spreadsheetId, tranches) {
-    // Count how many tranches we got per group from the consolidated sheet
-    var counts = {};
-    SL.STATIC.groups.forEach(function (g) { counts[g] = 0; });
-    tranches.forEach(function (t) {
-      if (t.group && Object.prototype.hasOwnProperty.call(counts, t.group)) counts[t.group]++;
-    });
-
-    // Only fetch individual sheets for groups that look incomplete (< 2 tranches)
-    var toFetch = SL.STATIC.groups.filter(function (g) { return counts[g] < 2; });
-    if (toFetch.length === 0) return tranches;
-
-    var results = await Promise.all(toFetch.map(function (g) {
-      return SL.fetchSheet(spreadsheetId, g)
-        .then(function (table) { return SL.parseTranches(table).tranches; })
-        .catch(function () { return []; });
-    }));
-
-    var known = new Set(tranches.map(function (t) { return t.id; }));
-    var extra = [];
-    results.forEach(function (rows) {
-      rows.forEach(function (t) {
-        if (!known.has(t.id)) { extra.push(t); known.add(t.id); }
-      });
-    });
-
-    if (extra.length === 0) return tranches;
-    // Merge and sort by date so the registry order is preserved
-    return tranches.concat(extra).sort(function (a, b) {
-      return (a.date || '').localeCompare(b.date || '');
-    });
-  };
-
   // ─── Main load ─────────────────────────────────────────────────────────────
+  // gviz skips rows hidden by Google Sheets row-groups AND active filters.
+  // To avoid this, individual group sheets (N&K, Пресняков, Чил-Акопов) are
+  // always fetched as the primary tranche source — they contain the same
+  // formula-calculated columns and are unlikely to have collapsed sections.
+  // The consolidated "Реестр траншей" is still fetched for reportDate and to
+  // catch any tranches that don't belong to a known group sheet.
   SL.loadFromSheets = async function (forceFresh) {
     var cfg = SL.getConfig();
-    var cacheKey = 'v4|' + cfg.spreadsheetId + '|' + cfg.sheetReestр + '|' + cfg.sheetJournal + '|' + cfg.sheetCBRates;
+    var cacheKey = 'v5|' + cfg.spreadsheetId + '|' + cfg.sheetReestр + '|' + cfg.sheetJournal + '|' + cfg.sheetCBRates;
 
     if (!forceFresh) {
       var cached = SL.getCached(cacheKey);
@@ -429,23 +397,46 @@
       catch (e) { errors.push(e.message); return null; }
     }
 
-    var [tReestр, tJournal, tCB] = await Promise.all([
-      safe(cfg.sheetReestр),
-      safe(cfg.sheetJournal),
-      safe(cfg.sheetCBRates),
-    ]);
+    // Fetch everything in parallel: consolidated + all group sheets + journal + CB rates
+    var groupNames = SL.STATIC.groups;
+    var allFetches = [safe(cfg.sheetReestр), safe(cfg.sheetJournal), safe(cfg.sheetCBRates)]
+      .concat(groupNames.map(function (g) { return safe(g); }));
+    var allTables = await Promise.all(allFetches);
 
-    if (!tReestр) {
+    var tReestр  = allTables[0];
+    var tJournal = allTables[1];
+    var tCB      = allTables[2];
+    var tGroups  = allTables.slice(3); // parallel to groupNames
+
+    if (!tReestр && tGroups.every(function (t) { return !t; })) {
       throw new Error(
-        'Не удалось загрузить лист «' + cfg.sheetReestр + '».\n' +
+        'Не удалось загрузить данные.\n' +
         (errors[0] || '') +
         '\n\nПроверьте: таблица должна быть открыта «Всем с ссылкой — Просмотр».'
       );
     }
 
-    var trancheResult = SL.parseTranches(tReestр);
-    var tranches   = await SL.mergeGroupSheets(cfg.spreadsheetId, trancheResult.tranches);
-    var reportDate = trancheResult.reportDate || new Date().toISOString().slice(0, 10);
+    // Build tranche list: individual group sheets first (not affected by
+    // row-groups or filters on the consolidated sheet), then supplement with
+    // any tranches from the consolidated sheet that weren't in any group sheet.
+    var seen = new Set();
+    var tranches = [];
+
+    tGroups.forEach(function (t) {
+      if (!t) return;
+      SL.parseTranches(t).tranches.forEach(function (tr) {
+        if (!seen.has(tr.id)) { seen.add(tr.id); tranches.push(tr); }
+      });
+    });
+
+    var consolidatedResult = tReestр ? SL.parseTranches(tReestр) : { tranches: [], reportDate: null };
+    consolidatedResult.tranches.forEach(function (tr) {
+      if (!seen.has(tr.id)) { seen.add(tr.id); tranches.push(tr); }
+    });
+
+    tranches.sort(function (a, b) { return (a.date || '').localeCompare(b.date || ''); });
+
+    var reportDate = consolidatedResult.reportDate || new Date().toISOString().slice(0, 10);
     var movements  = tJournal ? SL.parseMovements(tJournal) : [];
     var cbrates    = tCB      ? SL.parseCBRates(tCB) : [];
 
