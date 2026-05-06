@@ -375,10 +375,48 @@
     return result.sort(function (a, b) { return a.start.localeCompare(b.start); });
   };
 
+  // ─── Group-sheet fallback ──────────────────────────────────────────────────
+  // gviz skips rows hidden via Google Sheets row-groups (collapsed sections).
+  // The individual group sheets (N&K, Пресняков, Чил-Акопов) are never
+  // collapsed, so we fetch them in parallel and merge any tranches that were
+  // invisible in the consolidated "Реестр траншей".
+  SL.mergeGroupSheets = async function (spreadsheetId, tranches) {
+    // Count how many tranches we got per group from the consolidated sheet
+    var counts = {};
+    SL.STATIC.groups.forEach(function (g) { counts[g] = 0; });
+    tranches.forEach(function (t) {
+      if (t.group && Object.prototype.hasOwnProperty.call(counts, t.group)) counts[t.group]++;
+    });
+
+    // Only fetch individual sheets for groups that look incomplete (< 2 tranches)
+    var toFetch = SL.STATIC.groups.filter(function (g) { return counts[g] < 2; });
+    if (toFetch.length === 0) return tranches;
+
+    var results = await Promise.all(toFetch.map(function (g) {
+      return SL.fetchSheet(spreadsheetId, g)
+        .then(function (table) { return SL.parseTranches(table).tranches; })
+        .catch(function () { return []; });
+    }));
+
+    var known = new Set(tranches.map(function (t) { return t.id; }));
+    var extra = [];
+    results.forEach(function (rows) {
+      rows.forEach(function (t) {
+        if (!known.has(t.id)) { extra.push(t); known.add(t.id); }
+      });
+    });
+
+    if (extra.length === 0) return tranches;
+    // Merge and sort by date so the registry order is preserved
+    return tranches.concat(extra).sort(function (a, b) {
+      return (a.date || '').localeCompare(b.date || '');
+    });
+  };
+
   // ─── Main load ─────────────────────────────────────────────────────────────
   SL.loadFromSheets = async function (forceFresh) {
     var cfg = SL.getConfig();
-    var cacheKey = 'v3|' + cfg.spreadsheetId + '|' + cfg.sheetReestр + '|' + cfg.sheetJournal + '|' + cfg.sheetCBRates;
+    var cacheKey = 'v4|' + cfg.spreadsheetId + '|' + cfg.sheetReestр + '|' + cfg.sheetJournal + '|' + cfg.sheetCBRates;
 
     if (!forceFresh) {
       var cached = SL.getCached(cacheKey);
@@ -406,7 +444,7 @@
     }
 
     var trancheResult = SL.parseTranches(tReestр);
-    var tranches   = trancheResult.tranches;
+    var tranches   = await SL.mergeGroupSheets(cfg.spreadsheetId, trancheResult.tranches);
     var reportDate = trancheResult.reportDate || new Date().toISOString().slice(0, 10);
     var movements  = tJournal ? SL.parseMovements(tJournal) : [];
     var cbrates    = tCB      ? SL.parseCBRates(tCB) : [];
