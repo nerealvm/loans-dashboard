@@ -131,7 +131,7 @@ function ScreenRegistry({ dataset, computed, selectedProj, setSelectedProj, proj
                         <span className="group-mark" style={{background: fmt.groupColor(g), display:'inline-grid', placeItems:'center', width:20, height:20, borderRadius:4, fontSize:10, fontWeight:700, color:'var(--bg-0)', marginRight:8, verticalAlign:'middle'}}>
                           {fmt.groupInitials(g)}
                         </span>
-                        {g} · {rows.length} тр.
+                        {g} · {rows.length} траншей
                       </td>
                     </tr>
                     {rows.map(t => <TrancheRow key={t.id} t={t} onSelect={onSelect}/>)}
@@ -151,7 +151,7 @@ function ScreenRegistry({ dataset, computed, selectedProj, setSelectedProj, proj
                   ? carrierGrouped.map(({ carrier, rows, sub }) => (
                     <React.Fragment key={carrier}>
                       <tr className="t-carrier-hdr">
-                        <td colSpan={12}>{carrier} · {rows.length} тр.</td>
+                        <td colSpan={12}>{carrier} · {rows.length} траншей</td>
                       </tr>
                       {rows.map(t => <TrancheRow key={t.id} t={t} onSelect={onSelect}/>)}
                       {rows.length > 1 && (

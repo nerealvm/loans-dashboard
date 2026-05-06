@@ -233,7 +233,10 @@ function AppRoot() {
 
   function navigate(screenId, opts) {
     if (opts && opts.group !== undefined) setRegGroupFilter(opts.group);
-    if (opts && opts.projects !== undefined) setSelectedProj(opts.projects);
+    if (opts && opts.projects !== undefined) {
+      setSelectedProj(opts.projects);
+      setRegGroupFilter('all');
+    }
     setActive(screenId);
     setNavOpen(false);
   }
