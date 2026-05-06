@@ -138,6 +138,16 @@ function AppRoot() {
   const [detail, setDetail] = useStateA(null);
   const [extraMoves, setExtraMoves] = useStateA([]);
   const [navOpen, setNavOpen] = useStateA(false);
+  const [sidebarPinned, setSidebarPinned] = useStateA(() => {
+    try { return localStorage.getItem('sb-pinned') === '1'; } catch { return false; }
+  });
+  function togglePin() {
+    setSidebarPinned(v => {
+      const next = !v;
+      try { localStorage.setItem('sb-pinned', next ? '1' : '0'); } catch {}
+      return next;
+    });
+  }
   const [dataStatus, setDataStatus] = useStateA('loading');
   const [settingsOpen, setSettingsOpen] = useStateA(false);
   const tweaks = useTweaks ? useTweaks(TWEAK_DEFAULTS) : [TWEAK_DEFAULTS, () => {}];
@@ -242,8 +252,8 @@ function AppRoot() {
   }
 
   return (
-    <div className="app" data-density={tw.density}>
-      <Sidebar active={active} setActive={go} dataset={dataset} computed={computed} open={navOpen} onClose={() => setNavOpen(false)} />
+    <div className="app" data-density={tw.density} data-sb={sidebarPinned ? 'pinned' : 'collapsed'}>
+      <Sidebar active={active} setActive={go} dataset={dataset} computed={computed} open={navOpen} onClose={() => setNavOpen(false)} pinned={sidebarPinned} onTogglePin={togglePin} />
       <div className={'sidebar-scrim' + (navOpen ? ' open' : '')} onClick={() => setNavOpen(false)}></div>
       <div className="main">
         <TopBar

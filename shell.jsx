@@ -34,7 +34,25 @@ function SourcePill({ status, onRefresh }) {
 }
 window.SourcePill = SourcePill;
 
-function Sidebar({ active, setActive, dataset, computed, open, onClose }){
+const IcPin = () => (
+  <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <line x1="8" y1="10" x2="8" y2="14"/>
+    <path d="M5 2h6l1 8H4z"/>
+    <line x1="3" y1="10" x2="13" y2="10"/>
+  </svg>
+);
+const IcPinFill = () => (
+  <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round">
+    <line x1="8" y1="10" x2="8" y2="14" strokeWidth="1.5" fill="none"/>
+    <path d="M5 2h6l1 8H4z" strokeWidth="0.5"/>
+    <line x1="3" y1="10" x2="13" y2="10" strokeWidth="1.5" fill="none"/>
+  </svg>
+);
+
+function Sidebar({ active, setActive, dataset, computed, open, onClose, pinned, onTogglePin }){
+  const [hovered, setHovered] = React.useState(false);
+  const expanded = pinned || hovered;
+
   const items = [
     { id: 'dash', label: 'Телевизор', icon: Icons.dashboard, meta: '' },
     { id: 'reg',  label: 'Реестр траншей', icon: Icons.list, meta: dataset.tranches.length },
@@ -48,11 +66,14 @@ function Sidebar({ active, setActive, dataset, computed, open, onClose }){
   const totalDebtPct = computed.reduce((s,t) => s + (t.debtPct||0), 0);
 
   return (
-    <aside className={'sidebar' + (open ? ' open' : '')}>
+    <aside
+      className={'sidebar' + (open ? ' open' : '') + (expanded ? ' expanded' : ' collapsed')}
+      onMouseEnter={() => { if (!pinned && window.innerWidth > 1000) setHovered(true); }}
+      onMouseLeave={() => setHovered(false)}>
       <div className="brand">
         <div className="brand-mark">
           <div className="brand-glyph">К</div>
-          <div>
+          <div className="brand-text">
             <div className="brand-name">Корма · Капитал</div>
             <div className="brand-sub">Investor Loans Console</div>
           </div>
@@ -61,20 +82,29 @@ function Sidebar({ active, setActive, dataset, computed, open, onClose }){
       <nav className="nav">
         <div className="nav-section">Основное</div>
         {items.slice(0,3).map(it => (
-          <div key={it.id} className={'nav-item' + (active===it.id?' active':'')} onClick={()=>setActive(it.id)}>
+          <div key={it.id} className={'nav-item' + (active===it.id?' active':'')}
+               onClick={()=>setActive(it.id)} title={it.label}>
             <span className="nav-icon">{it.icon}</span>
-            <span>{it.label}</span>
+            <span className="nav-label">{it.label}</span>
             {it.meta !== '' && <span className="nav-meta">{it.meta}</span>}
           </div>
         ))}
         <div className="nav-section">Аналитика</div>
         {items.slice(3).map(it => (
-          <div key={it.id} className={'nav-item' + (active===it.id?' active':'')} onClick={()=>setActive(it.id)}>
+          <div key={it.id} className={'nav-item' + (active===it.id?' active':'')}
+               onClick={()=>setActive(it.id)} title={it.label}>
             <span className="nav-icon">{it.icon}</span>
-            <span>{it.label}</span>
+            <span className="nav-label">{it.label}</span>
             {it.meta !== '' && <span className="nav-meta">{it.meta}</span>}
           </div>
         ))}
+        <div className="nav-spacer"/>
+        <div className={'nav-item sb-pin-item' + (pinned ? ' active' : '')}
+             onClick={onTogglePin}
+             title={pinned ? 'Открепить меню' : 'Закрепить меню'}>
+          <span className="nav-icon">{pinned ? <IcPinFill/> : <IcPin/>}</span>
+          <span className="nav-label">{pinned ? 'Открепить меню' : 'Закрепить меню'}</span>
+        </div>
       </nav>
       <div className="sidebar-footer">
         <div className="row"><span>Тело в работе</span><span className="v">{fmt.money(totalBalance, {compact:true})}</span></div>
