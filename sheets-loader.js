@@ -15,7 +15,7 @@
   // ─── Default config ────────────────────────────────────────────────────────
   SL.DEFAULTS = {
     enabled: true,
-    spreadsheetId: '1AzTRuDRRcw6M0rnerzeuJ6IY-rk8E2WW',
+    spreadsheetId: '1qnL1DLlIXaY577HHa4V7SqrNEfRbhKjCuWrae_sWRmk',
     sheetReestр:   'Реестр траншей',
     sheetJournal:  'Журнал движений',
     sheetCBRates:  'Ставки ЦБ',
