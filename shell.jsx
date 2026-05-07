@@ -49,7 +49,7 @@ const IcPinFill = () => (
   </svg>
 );
 
-function Sidebar({ active, setActive, dataset, computed, open, onClose, pinned, onTogglePin }){
+function Sidebar({ active, setActive, dataset, computed, open, onClose, pinned, onTogglePin, onHoverChange }){
   const [hovered, setHovered] = React.useState(false);
   const expanded = pinned || hovered;
 
@@ -68,8 +68,8 @@ function Sidebar({ active, setActive, dataset, computed, open, onClose, pinned, 
   return (
     <aside
       className={'sidebar' + (open ? ' open' : '') + (expanded ? ' expanded' : ' collapsed')}
-      onMouseEnter={() => { if (!pinned && window.innerWidth > 1000) setHovered(true); }}
-      onMouseLeave={() => setHovered(false)}>
+      onMouseEnter={() => { if (!pinned && window.innerWidth > 1000) { setHovered(true); onHoverChange && onHoverChange(true); } }}
+      onMouseLeave={() => { setHovered(false); onHoverChange && onHoverChange(false); }}>
       <div className="brand">
         <div className="brand-mark">
           <div className="brand-glyph">К</div>

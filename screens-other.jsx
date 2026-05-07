@@ -149,11 +149,21 @@ function ScreenRegistry({ dataset, computed, selectedProj, setSelectedProj, proj
                     <React.Fragment key={g}>
                       <tr className="t-group-hdr" onClick={() => toggleGroup(g)}>
                         <td colSpan={12}>
-                          <Chevron open={!collapsed} />
-                          <span className="group-mark" style={{background: fmt.groupColor(g), display:'inline-grid', placeItems:'center', width:20, height:20, borderRadius:4, fontSize:10, fontWeight:700, color:'var(--bg-0)', marginRight:8, verticalAlign:'middle'}}>
-                            {fmt.groupInitials(g)}
-                          </span>
-                          {g} · {rows.length} траншей
+                          <div style={{display:'flex', alignItems:'center', justifyContent:'space-between'}}>
+                            <span>
+                              <Chevron open={!collapsed} />
+                              <span className="group-mark" style={{background: fmt.groupColor(g), display:'inline-grid', placeItems:'center', width:20, height:20, borderRadius:4, fontSize:10, fontWeight:700, color:'var(--bg-0)', marginRight:8, verticalAlign:'middle'}}>
+                                {fmt.groupInitials(g)}
+                              </span>
+                              {g} · {rows.length} траншей
+                            </span>
+                            {collapsed && (
+                              <span style={{fontFamily:'var(--font-mono)', fontSize:12, color:'var(--fg-2)', display:'flex', gap:20}}>
+                                <span>остаток {fmt.money(sub.balance, {compact:true})}</span>
+                                {sub.debtPct > 0 && <span style={{color:'var(--warn)'}}>долг {fmt.money(sub.debtPct, {compact:true})}</span>}
+                              </span>
+                            )}
+                          </div>
                         </td>
                       </tr>
                       {!collapsed && rows.map(t => <TrancheRow key={t.id} t={t} onSelect={onSelect}/>)}
@@ -178,7 +188,17 @@ function ScreenRegistry({ dataset, computed, selectedProj, setSelectedProj, proj
                     return (
                       <React.Fragment key={carrier}>
                         <tr className="t-carrier-hdr" onClick={() => toggleCarrier(carrier)}>
-                          <td colSpan={12}><Chevron open={!collapsed} />{carrier} · {rows.length} траншей</td>
+                          <td colSpan={12}>
+                            <div style={{display:'flex', alignItems:'center', justifyContent:'space-between'}}>
+                              <span><Chevron open={!collapsed}/>{carrier} · {rows.length} траншей</span>
+                              {collapsed && rows.length > 1 && (
+                                <span style={{fontFamily:'var(--font-mono)', fontSize:12, color:'var(--fg-2)', display:'flex', gap:20}}>
+                                  <span>остаток {fmt.money(sub.balance, {compact:true})}</span>
+                                  {sub.debtPct > 0 && <span style={{color:'var(--warn)'}}>долг {fmt.money(sub.debtPct, {compact:true})}</span>}
+                                </span>
+                              )}
+                            </div>
+                          </td>
                         </tr>
                         {!collapsed && rows.map(t => <TrancheRow key={t.id} t={t} onSelect={onSelect}/>)}
                         {!collapsed && rows.length > 1 && (

@@ -138,6 +138,7 @@ function AppRoot() {
   const [detail, setDetail] = useStateA(null);
   const [extraMoves, setExtraMoves] = useStateA([]);
   const [navOpen, setNavOpen] = useStateA(false);
+  const [sidebarHover, setSidebarHover] = useStateA(false);
   const [sidebarPinned, setSidebarPinned] = useStateA(() => {
     try { return localStorage.getItem('sb-pinned') === '1'; } catch { return false; }
   });
@@ -252,8 +253,8 @@ function AppRoot() {
   }
 
   return (
-    <div className="app" data-density={tw.density} data-sb={sidebarPinned ? 'pinned' : 'collapsed'}>
-      <Sidebar active={active} setActive={go} dataset={dataset} computed={computed} open={navOpen} onClose={() => setNavOpen(false)} pinned={sidebarPinned} onTogglePin={togglePin} />
+    <div className="app" data-density={tw.density} data-sb={sidebarPinned ? 'pinned' : sidebarHover ? 'expanded' : 'collapsed'}>
+      <Sidebar active={active} setActive={go} dataset={dataset} computed={computed} open={navOpen} onClose={() => setNavOpen(false)} pinned={sidebarPinned} onTogglePin={togglePin} onHoverChange={setSidebarHover} />
       <div className={'sidebar-scrim' + (navOpen ? ' open' : '')} onClick={() => setNavOpen(false)}></div>
       <div className="main">
         <TopBar
