@@ -17,7 +17,7 @@ function FilterBar({ projects, selected, setSelected, projAgg }){
             }}>
             <span className="chip-dot"></span>
             <span>{fmt.projectShort(p)}</span>
-            <span className="chip-count">{ag ? ag.count : 0}</span>
+            <span className="chip-count">{ag ? fmt.money(ag.balance, {compact:true}) : '0'}</span>
           </button>
         );
       })}
