@@ -52,7 +52,7 @@ function ProjectMini({ name, agg, onNavigate }){
         <div className="pcount">{agg?.count || 0} тр.</div>
       </div>
       <div className="pval">{fmt.money(agg?.balance || 0, {compact:true})}</div>
-      <div className="psub">тело в работе · долг {fmt.money(agg?.debtPct || 0, {compact:true})}</div>
+      <div className="psub">тело в работе</div>
     </div>
   );
 }
@@ -79,11 +79,8 @@ function GroupQuick({ groups, dataset, onNavigate }){
             </div>
             <dl>
               <dt>Тело в работе</dt><dd>{fmt.money(a.balance, {compact:true})}</dd>
-              <dt>Накоплено %</dt><dd>{fmt.money(a.accrued, {compact:true})}</dd>
-              <dt>Выплачено %</dt><dd>{fmt.money(a.paidPct, {compact:true})}</dd>
-              <dt>Долг по %</dt><dd>{fmt.money(a.debtPct, {compact:true})}</dd>
-              <dt>Факт. доля</dt><dd style={{color: Math.abs(delta) < 0.02 ? 'var(--accent-strong)' : 'var(--warn)'}}>
-                {fmt.pct(share, 1)} <span style={{opacity:0.6, marginLeft:4}}>{delta>=0?'+':''}{fmt.pct(delta,1)}</span>
+              <dt>Факт. доля</dt><dd style={{color: Math.abs(delta) < 0.02 ? 'var(--accent-strong)' : (delta > 0 ? 'var(--pos)' : 'var(--neg)')}}>
+                {fmt.pct(share, 1)} <span style={{opacity:0.7, marginLeft:4}}>{delta>=0?'+':''}{fmt.pct(delta,1)}</span>
               </dd>
             </dl>
           </div>
@@ -124,9 +121,6 @@ function ScreenDashboard({ dataset, computed, projAgg, groupAgg, selectedProj, s
         <KPI label="Тело в работе"
              value={fmt.money(agg.balance, {compact:true})}
              accent />
-        <KPI label="Долг компании по %"
-             value={fmt.money(agg.debtPct, {compact:true})}
-             sub={`накоплено ${fmt.money(agg.accrued, {compact:true})} · выплачено ${fmt.money(agg.paidPct, {compact:true})}`} />
       </div>
 
       <div style={{marginTop: 28}}>

@@ -398,17 +398,16 @@ function ScreenGroups({ dataset, computed }){
 
 /* =================== ПАРИТЕТ =================== */
 
-function ScreenParity({ dataset, computed }){
-  const groupAgg = E.aggregateByGroup(computed, dataset.projects);
-  const totalBal = Object.values(groupAgg).reduce((s,g)=>s+g.balance,0);
-  const totalIssued = Object.values(groupAgg).reduce((s,g)=>s+g.issued,0);
+const AA_PROJECT = 'Ассортимент Агро';
+const SHARES_AA  = { 'Пресняков': 0.335, 'N&K': 0.33, 'Чил-Акопов': 0.335 };
+
+function ParityTable({ dataset, computedSubset, shares }){
+  const groupAgg   = E.aggregateByGroup(computedSubset, dataset.projects);
+  const totalBal   = Object.values(groupAgg).reduce((s,g)=>s+g.balance,0);
+  const isAA       = shares === SHARES_AA;
 
   return (
-    <div className="content">
-      <div className="page-eyebrow">Раздел · Паритет</div>
-      <h1 className="page-title">Паритет долей</h1>
-      <div className="page-sub">Сравнение плановой структуры капитала (40% / 35,7% / 24,3%) с фактическими долями в выданных и активных займах.</div>
-
+    <>
       <div className="panel">
         <div className="panel-head">
           <div className="panel-title">Тело в работе на {fmt.date(dataset.reportDate)}</div>
@@ -417,14 +416,13 @@ function ScreenParity({ dataset, computed }){
         <div style={{padding:'18px 22px'}}>
           <div className="stacked">
             {dataset.groups.map((g, idx) => {
-              const cls = ['p','n','c'][idx];
               const w = totalBal ? (groupAgg[g]?.balance||0) / totalBal * 100 : 0;
-              return <div key={g} className={'seg ' + cls} style={{flex: w}}>{w > 6 ? fmt.pct(w/100, 1) : ''}</div>;
+              return <div key={g} className={'seg ' + ['p','n','c'][idx]} style={{flex: w}}>{w > 6 ? fmt.pct(w/100, 1) : ''}</div>;
             })}
           </div>
           <div className="legend">
             {dataset.groups.map((g, idx) => (
-              <span key={g}><span className="swatch" style={{background: ['#8fcfa3','#d9a55c','#9bb6e0'][idx]}}></span>{g}</span>
+              <span key={g}><span className="swatch" style={{background: ['#8fcfa3','#d9a55c','#9bb6e0'][idx]}}></span>{g}{isAA && g==='N&K' ? ' (Горшков + Кузьмин)' : ''}</span>
             ))}
           </div>
         </div>
@@ -432,44 +430,43 @@ function ScreenParity({ dataset, computed }){
 
       <div className="panel">
         <div className="panel-head">
-          <div className="panel-title">План vs Факт</div>
+          <div className="panel-title">
+            {isAA ? 'Паритет · Ассортимент Агро' : 'Паритет · Основной БЕЗ проекта АА'}
+          </div>
         </div>
         <div className="t-wrap">
           <table className="t">
             <thead><tr>
               <th>Группа</th>
-              <th className="num">Внесено</th>
               <th className="num">Плановая доля</th>
-              <th className="num">Выдано (тело)</th>
-              <th className="num">Доля в выданном</th>
               <th className="num">Тело в работе</th>
               <th className="num">Доля факт.</th>
-              <th className="num">Δ</th>
+              <th className="num">Δ доля</th>
+              <th className="num">Δ сумма</th>
             </tr></thead>
             <tbody>
               {dataset.groups.map(g => {
-                const a = groupAgg[g] || {};
-                const expected = dataset.shares[g];
-                const issuedShare = totalIssued ? a.issued/totalIssued : 0;
+                const a        = groupAgg[g] || {};
+                const expected = shares[g] || 0;
                 const balShare = totalBal ? a.balance/totalBal : 0;
-                const delta = balShare - expected;
+                const delta    = balShare - expected;
+                const deltaAbs = delta * totalBal;
+                const neutral  = Math.abs(delta) < 0.005;
+                const color    = neutral ? 'var(--fg-3)' : delta > 0 ? 'var(--pos)' : 'var(--neg)';
                 return (
                   <tr key={g}>
                     <td>
-                      <span className="tag" style={{background: 'transparent', color: fmt.groupColor(g), borderColor: fmt.groupColor(g)+'55'}}>
+                      <span className="tag" style={{background:'transparent', color:fmt.groupColor(g), borderColor:fmt.groupColor(g)+'55'}}>
                         {fmt.groupInitials(g)}
                       </span>{' '}
                       <span className="strong">{g}</span>
+                      {isAA && g==='N&K' && <span className="muted" style={{fontSize:11,marginLeft:6}}>Горшков + Кузьмин</span>}
                     </td>
-                    <td className="num">{dataset.contributions[g] != null ? fmt.money(dataset.contributions[g]) : '—'}</td>
                     <td className="num">{fmt.pct(expected, 1)}</td>
-                    <td className="num">{fmt.money(a.issued||0)}</td>
-                    <td className="num">{fmt.pct(issuedShare, 1)}</td>
                     <td className="num strong">{fmt.money(a.balance||0)}</td>
                     <td className="num">{fmt.pct(balShare, 1)}</td>
-                    <td className="num" style={{color: Math.abs(delta) < 0.02 ? 'var(--accent-strong)' : (delta > 0 ? 'var(--warn)' : 'var(--neg)')}}>
-                      {delta>=0?'+':''}{fmt.pct(delta, 2)}
-                    </td>
+                    <td className="num" style={{color}}>{delta>=0?'+':''}{fmt.pct(delta, 2)}</td>
+                    <td className="num" style={{color}}>{delta>=0?'+':''}{fmt.money(deltaAbs, {compact:true})}</td>
                   </tr>
                 );
               })}
@@ -477,11 +474,42 @@ function ScreenParity({ dataset, computed }){
           </table>
         </div>
       </div>
+    </>
+  );
+}
 
-      <div className="note" style={{marginTop:18}}>
-        <span className="nlabel">прим.</span>
-        Доля Чил-Акопова в капитале (24,3%) определена через остаток при долях Преснякова и N&K. Сумма в капитале не указана и может быть введена в Excel-снапшоте.
+function ScreenParity({ dataset, computed }){
+  const [tab, setTab] = useStateS('main');
+  const computedMain = useMemoS(()=>computed.filter(t=>t.project!==AA_PROJECT), [computed]);
+  const computedAA   = useMemoS(()=>computed.filter(t=>t.project===AA_PROJECT),  [computed]);
+
+  return (
+    <div className="content">
+      <div className="page-eyebrow">Раздел · Паритет</div>
+      <h1 className="page-title">Паритет долей</h1>
+      <div className="page-sub">Сравнение плановой структуры капитала с фактическими долями в активных займах.</div>
+
+      <div className="seg-toggle" style={{marginBottom:20, width:'fit-content'}}>
+        <button className={tab==='main'?'on':''} onClick={()=>setTab('main')}>Основной · без АА</button>
+        <button className={tab==='aa'?'on':''} onClick={()=>setTab('aa')}>Ассортимент Агро</button>
       </div>
+
+      {tab === 'main'
+        ? <ParityTable dataset={dataset} computedSubset={computedMain} shares={dataset.shares} />
+        : <ParityTable dataset={dataset} computedSubset={computedAA}   shares={SHARES_AA} />
+      }
+
+      {tab === 'main' ? (
+        <div className="note" style={{marginTop:18}}>
+          <span className="nlabel">прим.</span>
+          Паритет считается по трём группам БЕЗ проекта «Ассортимент Агро» (АА). Плановые доли: Пресняков 40%, N&K 35,7%, Чил-Акопов 24,3%. Доля Чил-Акопова определена через остаток.
+        </div>
+      ) : (
+        <div className="note" style={{marginTop:18}}>
+          <span className="nlabel">прим.</span>
+          Паритет только по проекту АА. N&K = Горшков Константин Олегович (16,5%) + Кузьмин Никита Владимирович (16,5%). Плановые доли: Пресняков 33,5%, N&K 33%, Чил-Акопов 33,5%.
+        </div>
+      )}
     </div>
   );
 }
