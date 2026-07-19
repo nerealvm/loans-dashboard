@@ -144,10 +144,10 @@ function TrancheDetail({ tranche, movements, onClose, onAddMovement }){
         <div><div className="k">Возвращено</div><div className="v">{fmt.money(tranche.returns)}</div></div>
         <div><div className="k">Остаток</div><div className="v" style={{color:'var(--accent-strong)'}}>{fmt.money(tranche.balance)}</div></div>
         <div><div className="k">Срок (план)</div><div className="v">{tranche.term ? tranche.term + ' дн' : '—'}</div></div>
-        <div><div className="k">Сложные %</div><div className="v">{fmt.money(tranche.accrued)}</div></div>
+        <div><div className="k">Начислено % ({tranche.accrualMode})</div><div className="v">{fmt.money(tranche.accrued)}</div></div>
         <div><div className="k">Выплачено %</div><div className="v">{fmt.money(tranche.paidPct)}</div></div>
-        <div><div className="k">Долг по % (сложн.)</div><div className="v" style={{color: tranche.debtPct>0?'var(--warn)':'var(--fg-0)'}}>{fmt.money(tranche.debtPct)}</div></div>
-        <div><div className="k">Принадлежность</div><div className="v">{tranche.kind || '—'}</div></div>
+        <div><div className="k">Долг по %</div><div className="v" style={{color: tranche.debtPct>0?'var(--warn)':'var(--fg-0)'}}>{fmt.money(tranche.debtPct)}</div></div>
+        <div><div className="k">Принадлежность</div><div className="v">{tranche.kind || '—'} · % на {fmt.date(tranche.accrualDate)}</div></div>
       </div>
 
       <div style={{padding: '0 22px 22px'}}>

@@ -138,7 +138,8 @@ function ScreenDashboard({ dataset, computed, selectedProj, setSelectedProj, onN
       <h1 className="page-title">Сводка по займам</h1>
       <div className="page-sub">
         Что должны акционеры компании, что компания должна акционерам, в разрезе проектов и групп.
-        Тело — на отчётную дату {fmt.date(dataset.reportDate)}, сложные проценты — на {fmt.date(dataset.compoundDate || dataset.reportDate)}.
+        Тело и простые проценты — на отчётную дату {fmt.date(dataset.reportDate)},
+        сложные по инвестиционным — на {fmt.date(dataset.compoundDate || dataset.reportDate)}.
       </div>
 
       <FilterBar
@@ -154,9 +155,9 @@ function ScreenDashboard({ dataset, computed, selectedProj, setSelectedProj, onN
              value={fmt.money(agg.balance, {compact:true})}
              sub={`${agg.count} траншей · выдано ${fmt.money(agg.issued, {compact:true})}, возвращено ${fmt.money(agg.returned, {compact:true})}`}
              accent />
-        <KPI label="Всего % (сложные)"
+        <KPI label="Всего %"
              value={fmt.money(agg.debtPct, {compact:true})}
-             sub={`начислено ${fmt.money(agg.accrued, {compact:true})} · выплачено ${fmt.money(agg.paidPct, {compact:true})}`} />
+             sub={`сложные по инвест ${fmt.money(agg.investDebtPct, {compact:true})} · простые по оборотным ${fmt.money(agg.workDebtPct, {compact:true})}`} />
         <KPI label="Всего тело + %"
              value={fmt.money(agg.balance + agg.debtPct, {compact:true})} />
       </div>
@@ -170,7 +171,7 @@ function ScreenDashboard({ dataset, computed, selectedProj, setSelectedProj, onN
                bar={agg.balance ? agg.investBalance / agg.balance : 0} />
           <KPI label="Тело оборотных и прочих"
                value={fmt.money(agg.workBalance, {compact:true})}
-               sub={`сложные % ${fmt.money(agg.workDebtPct, {compact:true})} · итого ${fmt.money(agg.workBalance + agg.workDebtPct, {compact:true})}`}
+               sub={`простые % ${fmt.money(agg.workDebtPct, {compact:true})} · итого ${fmt.money(agg.workBalance + agg.workDebtPct, {compact:true})}`}
                bar={agg.balance ? agg.workBalance / agg.balance : 0} />
           <KPI label="Инвестиционный лимит"
                value={fmt.money(dataset.invLimit, {compact:true})}
@@ -181,8 +182,8 @@ function ScreenDashboard({ dataset, computed, selectedProj, setSelectedProj, onN
         </div>
         <div className="note" style={{marginTop:12}}>
           <span className="nlabel">как считаем</span>
-          Инвестиционные — по ставке корп договора {fmt.pct(dataset.corpRate, 0)} с капитализацией «{dataset.capPeriod}».
-          Оборотными считается всё остальное, включая старые займы: фикс — по ставке договора, плав — по ключу ЦБ + надбавка.
+          Инвестиционные — сложные проценты по ставке корп договора {fmt.pct(dataset.corpRate, 0)} с капитализацией «{dataset.capPeriod}».
+          Оборотные и старые займы — простые проценты факт/365: фикс по ставке договора, плав по ключу ЦБ + надбавка.
         </div>
       </div>
 

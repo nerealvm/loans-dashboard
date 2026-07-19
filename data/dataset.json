@@ -54,8 +54,10 @@
    "sheetReturns": 22000,
    "sheetBalance": 0,
    "sheetDays": 2016,
+   "sheetSimple": 5992.438356164384,
    "sheetCompound": 39443.064637447715,
    "sheetPaidPct": 0,
+   "sheetDebtSimple": 5992.438356164384,
    "sheetDebtCompound": 39443.064637447715
   },
   {
@@ -80,8 +82,10 @@
    "sheetReturns": 4140,
    "sheetBalance": 0,
    "sheetDays": 1986,
+   "sheetSimple": 1107.9320547945204,
    "sheetCompound": 7223.033399023168,
    "sheetPaidPct": 0,
+   "sheetDebtSimple": 1107.9320547945204,
    "sheetDebtCompound": 7223.033399023168
   },
   {
@@ -106,8 +110,10 @@
    "sheetReturns": 1296,
    "sheetBalance": 0,
    "sheetDays": 1856,
+   "sheetSimple": 319.348602739726,
    "sheetCompound": 1999.32259234831,
    "sheetPaidPct": 0,
+   "sheetDebtSimple": 319.348602739726,
    "sheetDebtCompound": 1999.32259234831
   },
   {
@@ -132,8 +138,10 @@
    "sheetReturns": 400000,
    "sheetBalance": 0,
    "sheetDays": 1485,
+   "sheetSimple": 78997.26027397261,
    "sheetCompound": 409770.65992827935,
    "sheetPaidPct": 0,
+   "sheetDebtSimple": 78997.26027397261,
    "sheetDebtCompound": 409770.65992827935
   },
   {
@@ -158,8 +166,10 @@
    "sheetReturns": 0,
    "sheetBalance": 7000000,
    "sheetDays": 1461,
+   "sheetSimple": 1821246.5753424657,
    "sheetCompound": 8637029.629824175,
    "sheetPaidPct": 0,
+   "sheetDebtSimple": 1821246.5753424657,
    "sheetDebtCompound": 8637029.629824175
   },
   {
@@ -184,8 +194,10 @@
    "sheetReturns": 0,
    "sheetBalance": 8000000,
    "sheetDays": 1457,
+   "sheetSimple": 2075726.0273972603,
    "sheetCompound": 9832086.946066944,
    "sheetPaidPct": 0,
+   "sheetDebtSimple": 2075726.0273972603,
    "sheetDebtCompound": 9832086.946066944
   },
   {
@@ -210,8 +222,10 @@
    "sheetReturns": 0,
    "sheetBalance": 87000000,
    "sheetDays": 1457,
+   "sheetSimple": 20837095.89041096,
    "sheetCompound": 106923945.53847802,
    "sheetPaidPct": 0,
+   "sheetDebtSimple": 20837095.89041096,
    "sheetDebtCompound": 106923945.53847802
   },
   {
@@ -236,8 +250,10 @@
    "sheetReturns": 0,
    "sheetBalance": 16000000,
    "sheetDays": 1422,
+   "sheetSimple": 4051726.02739726,
    "sheetCompound": 18992250.888590425,
    "sheetPaidPct": 0,
+   "sheetDebtSimple": 4051726.02739726,
    "sheetDebtCompound": 18992250.888590425
   },
   {
@@ -262,8 +278,10 @@
    "sheetReturns": 0,
    "sheetBalance": 7000000,
    "sheetDays": 1373,
+   "sheetSimple": 1711547.9452054794,
    "sheetCompound": 7906838.008943992,
    "sheetPaidPct": 0,
+   "sheetDebtSimple": 1711547.9452054794,
    "sheetDebtCompound": 7906838.008943992
   },
   {
@@ -288,8 +306,10 @@
    "sheetReturns": 0,
    "sheetBalance": 9000000,
    "sheetDays": 1370,
+   "sheetSimple": 2195753.4246575343,
    "sheetCompound": 10134714.059010208,
    "sheetPaidPct": 0,
+   "sheetDebtSimple": 2195753.4246575343,
    "sheetDebtCompound": 10134714.059010208
   },
   {
@@ -314,8 +334,10 @@
    "sheetReturns": 0,
    "sheetBalance": 11000000,
    "sheetDays": 1342,
+   "sheetSimple": 2628849.315068493,
    "sheetCompound": 12033711.401571596,
    "sheetPaidPct": 0,
+   "sheetDebtSimple": 2628849.315068493,
    "sheetDebtCompound": 12033711.401571596
   },
   {
@@ -340,8 +362,10 @@
    "sheetReturns": 0,
    "sheetBalance": 15000000,
    "sheetDays": 1332,
+   "sheetSimple": 3558082.191780822,
    "sheetCompound": 16239380.461081456,
    "sheetPaidPct": 0,
+   "sheetDebtSimple": 3558082.191780822,
    "sheetDebtCompound": 16239380.461081456
   },
   {
@@ -366,8 +390,10 @@
    "sheetReturns": 0,
    "sheetBalance": 68061094,
    "sheetDays": 1309,
+   "sheetSimple": 15865693.652027398,
    "sheetCompound": 71924030.81689799,
    "sheetPaidPct": 0,
+   "sheetDebtSimple": 15865693.652027398,
    "sheetDebtCompound": 71924030.81689799
   },
   {
@@ -392,8 +418,10 @@
    "sheetReturns": 0,
    "sheetBalance": 7000000,
    "sheetDays": 1304,
+   "sheetSimple": 1625534.2465753425,
    "sheetCompound": 7358231.855362523,
    "sheetPaidPct": 0,
+   "sheetDebtSimple": 1625534.2465753425,
    "sheetDebtCompound": 7358231.855362523
   },
   {
@@ -418,8 +446,10 @@
    "sheetReturns": 0,
    "sheetBalance": 13000000,
    "sheetDays": 1297,
+   "sheetSimple": 3002643.835616438,
    "sheetCompound": 13564045.562096758,
    "sheetPaidPct": 0,
+   "sheetDebtSimple": 3002643.835616438,
    "sheetDebtCompound": 13564045.562096758
   },
   {
@@ -444,8 +474,10 @@
    "sheetReturns": 0,
    "sheetBalance": 6000000,
    "sheetDays": 1260,
+   "sheetSimple": 1346301.3698630137,
    "sheetCompound": 6016273.615963439,
    "sheetPaidPct": 0,
+   "sheetDebtSimple": 1346301.3698630137,
    "sheetDebtCompound": 6016273.615963439
   },
   {
@@ -470,8 +502,10 @@
    "sheetReturns": 0,
    "sheetBalance": 9000000,
    "sheetDays": 1239,
+   "sheetSimple": 1985794.5205479453,
    "sheetCompound": 8819884.89362977,
    "sheetPaidPct": 0,
+   "sheetDebtSimple": 1985794.5205479453,
    "sheetDebtCompound": 8819884.89362977
   },
   {
@@ -496,8 +530,10 @@
    "sheetReturns": 0,
    "sheetBalance": 6000000,
    "sheetDays": 1225,
+   "sheetSimple": 1308904.1095890412,
    "sheetCompound": 5789883.662733118,
    "sheetPaidPct": 0,
+   "sheetDebtSimple": 1308904.1095890412,
    "sheetDebtCompound": 5789883.662733118
   },
   {
@@ -522,8 +558,10 @@
    "sheetReturns": 0,
    "sheetBalance": 11000000,
    "sheetDays": 1219,
+   "sheetSimple": 2387904.109589041,
    "sheetCompound": 10544424.862156063,
    "sheetPaidPct": 0,
+   "sheetDebtSimple": 2387904.109589041,
    "sheetDebtCompound": 10544424.862156063
   },
   {
@@ -548,8 +586,10 @@
    "sheetReturns": 0,
    "sheetBalance": 1000000,
    "sheetDays": 1181,
+   "sheetSimple": 210315.0684931507,
    "sheetCompound": 918553.462594874,
    "sheetPaidPct": 0,
+   "sheetDebtSimple": 210315.0684931507,
    "sheetDebtCompound": 918553.462594874
   },
   {
@@ -574,8 +614,10 @@
    "sheetReturns": 0,
    "sheetBalance": 1900000,
    "sheetDays": 1178,
+   "sheetSimple": 398583.5616438356,
    "sheetCompound": 1739313.6131288067,
    "sheetPaidPct": 0,
+   "sheetDebtSimple": 398583.5616438356,
    "sheetDebtCompound": 1739313.6131288067
   },
   {
@@ -600,8 +642,10 @@
    "sheetReturns": 0,
    "sheetBalance": 1100000,
    "sheetDays": 1176,
+   "sheetSimple": 230367.12328767125,
    "sheetCompound": 1004682.3043970318,
    "sheetPaidPct": 0,
+   "sheetDebtSimple": 230367.12328767125,
    "sheetDebtCompound": 1004682.3043970318
   },
   {
@@ -626,8 +670,10 @@
    "sheetReturns": 0,
    "sheetBalance": 2000000,
    "sheetDays": 1169,
+   "sheetSimple": 416356.16438356164,
    "sheetCompound": 1812165.9883637999,
    "sheetPaidPct": 0,
+   "sheetDebtSimple": 416356.16438356164,
    "sheetDebtCompound": 1812165.9883637999
   },
   {
@@ -652,8 +698,10 @@
    "sheetReturns": 0,
    "sheetBalance": 7000000,
    "sheetDays": 1153,
+   "sheetSimple": 1437301.3698630137,
    "sheetCompound": 6227071.90552211,
    "sheetPaidPct": 0,
+   "sheetDebtSimple": 1437301.3698630137,
    "sheetDebtCompound": 6227071.90552211
   },
   {
@@ -678,8 +726,10 @@
    "sheetReturns": 0,
    "sheetBalance": 8000000,
    "sheetDays": 1134,
+   "sheetSimple": 1615561.6438356165,
    "sheetCompound": 6961374.862878779,
    "sheetPaidPct": 0,
+   "sheetDebtSimple": 1615561.6438356165,
    "sheetDebtCompound": 6961374.862878779
   },
   {
@@ -704,8 +754,10 @@
    "sheetReturns": 0,
    "sheetBalance": 7990000,
    "sheetDays": 1132,
+   "sheetSimple": 1610696.4383561644,
    "sheetCompound": 6936441.399706888,
    "sheetPaidPct": 0,
+   "sheetDebtSimple": 1610696.4383561644,
    "sheetDebtCompound": 6936441.399706888
   },
   {
@@ -730,8 +782,10 @@
    "sheetReturns": 0,
    "sheetBalance": 10000000,
    "sheetDays": 1085,
+   "sheetSimple": 1932191.7808219178,
    "sheetCompound": 8210300.510092218,
    "sheetPaidPct": 0,
+   "sheetDebtSimple": 1932191.7808219178,
    "sheetDebtCompound": 8210300.510092218
   },
   {
@@ -756,8 +810,10 @@
    "sheetReturns": 0,
    "sheetBalance": 4000000,
    "sheetDays": 1051,
+   "sheetSimple": 748657.5342465753,
    "sheetCompound": 3150770.2246191557,
    "sheetPaidPct": 0,
+   "sheetDebtSimple": 748657.5342465753,
    "sheetDebtCompound": 3150770.2246191557
   },
   {
@@ -782,8 +838,10 @@
    "sheetReturns": 0,
    "sheetBalance": 4000000,
    "sheetDays": 1028,
+   "sheetSimple": 732273.9726027397,
    "sheetCompound": 3061949.914356816,
    "sheetPaidPct": 0,
+   "sheetDebtSimple": 732273.9726027397,
    "sheetDebtCompound": 3061949.914356816
   },
   {
@@ -808,8 +866,10 @@
    "sheetReturns": 0,
    "sheetBalance": 3000000,
    "sheetDays": 1021,
+   "sheetSimple": 545465.7534246575,
    "sheetCompound": 2276352.9454082395,
    "sheetPaidPct": 0,
+   "sheetDebtSimple": 545465.7534246575,
    "sheetDebtCompound": 2276352.9454082395
   },
   {
@@ -834,8 +894,10 @@
    "sheetReturns": 0,
    "sheetBalance": 4000000,
    "sheetDays": 1013,
+   "sheetSimple": 721589.0410958905,
    "sheetCompound": 3004618.8601850234,
    "sheetPaidPct": 0,
+   "sheetDebtSimple": 721589.0410958905,
    "sheetDebtCompound": 3004618.8601850234
   },
   {
@@ -860,8 +922,10 @@
    "sheetReturns": 0,
    "sheetBalance": 2670000,
    "sheetDays": 1001,
+   "sheetSimple": 475954.9315068493,
    "sheetCompound": 1975192.1137002876,
    "sheetPaidPct": 0,
+   "sheetDebtSimple": 475954.9315068493,
    "sheetDebtCompound": 1975192.1137002876
   },
   {
@@ -886,8 +950,10 @@
    "sheetReturns": 0,
    "sheetBalance": 6667000,
    "sheetDays": 1000,
+   "sheetSimple": 1187273.9726027397,
    "sheetCompound": 4925760.550070571,
    "sheetPaidPct": 0,
+   "sheetDebtSimple": 1187273.9726027397,
    "sheetDebtCompound": 4925760.550070571
   },
   {
@@ -912,8 +978,10 @@
    "sheetReturns": 0,
    "sheetBalance": 10000000,
    "sheetDays": 937,
+   "sheetSimple": 1668630.1369863013,
    "sheetCompound": 6803041.11039578,
    "sheetPaidPct": 0,
+   "sheetDebtSimple": 1668630.1369863013,
    "sheetDebtCompound": 6803041.11039578
   },
   {
@@ -938,9 +1006,11 @@
    "sheetReturns": 0,
    "sheetBalance": 2000000,
    "sheetDays": 903,
-   "sheetCompound": 1734029.3258297837,
+   "sheetSimple": 1236986.301369863,
+   "sheetCompound": 1261643.8356164384,
    "sheetPaidPct": 736780.82,
-   "sheetDebtCompound": 997248.5058297837
+   "sheetDebtSimple": 500205.48136986315,
+   "sheetDebtCompound": 524863.0156164385
   },
   {
    "id": "NK-010",
@@ -964,9 +1034,11 @@
    "sheetReturns": 0,
    "sheetBalance": 3500000,
    "sheetDays": 895,
-   "sheetCompound": 2999209.354697857,
+   "sheetSimple": 2145547.9452054794,
+   "sheetCompound": 2188698.6301369863,
    "sheetPaidPct": 342305.82,
-   "sheetDebtCompound": 2656903.534697857
+   "sheetDebtSimple": 1803242.1252054793,
+   "sheetDebtCompound": 1846392.8101369862
   },
   {
    "id": "PR-022",
@@ -990,9 +1062,11 @@
    "sheetReturns": 0,
    "sheetBalance": 8000000,
    "sheetDays": 883,
-   "sheetCompound": 6734981.673704036,
+   "sheetSimple": 4838356.164383561,
+   "sheetCompound": 4936986.301369863,
    "sheetPaidPct": 0,
-   "sheetDebtCompound": 6734981.673704036
+   "sheetDebtSimple": 4838356.164383561,
+   "sheetDebtCompound": 4936986.301369863
   },
   {
    "id": "PR-023",
@@ -1016,9 +1090,11 @@
    "sheetReturns": 0,
    "sheetBalance": 2000000,
    "sheetDays": 863,
-   "sheetCompound": 1634138.653894761,
+   "sheetSimple": 1182191.7808219178,
+   "sheetCompound": 1206849.3150684931,
    "sheetPaidPct": 0,
-   "sheetDebtCompound": 1634138.653894761
+   "sheetDebtSimple": 1182191.7808219178,
+   "sheetDebtCompound": 1206849.3150684931
   },
   {
    "id": "NK-011",
@@ -1042,9 +1118,11 @@
    "sheetReturns": 0,
    "sheetBalance": 1300000,
    "sheetDays": 852,
-   "sheetCompound": 1044641.1668668527,
+   "sheetSimple": 758630.1369863014,
+   "sheetCompound": 774657.5342465753,
    "sheetPaidPct": 0,
-   "sheetDebtCompound": 1044641.1668668527
+   "sheetDebtSimple": 758630.1369863014,
+   "sheetDebtCompound": 774657.5342465753
   },
   {
    "id": "NK-012",
@@ -1068,9 +1146,11 @@
    "sheetReturns": 0,
    "sheetBalance": 2700000,
    "sheetDays": 849,
-   "sheetCompound": 2159746.106490802,
+   "sheetSimple": 1570068.493150685,
+   "sheetCompound": 1603356.1643835616,
    "sheetPaidPct": 0,
-   "sheetDebtCompound": 2159746.106490802
+   "sheetDebtSimple": 1570068.493150685,
+   "sheetDebtCompound": 1603356.1643835616
   },
   {
    "id": "PR-024",
@@ -1094,9 +1174,11 @@
    "sheetReturns": 0,
    "sheetBalance": 2000000,
    "sheetDays": 840,
-   "sheetCompound": 1577916.1619446275,
+   "sheetSimple": 1150684.9315068494,
+   "sheetCompound": 1175342.4657534247,
    "sheetPaidPct": 0,
-   "sheetDebtCompound": 1577916.1619446275
+   "sheetDebtSimple": 1150684.9315068494,
+   "sheetDebtCompound": 1175342.4657534247
   },
   {
    "id": "NK-013",
@@ -1120,9 +1202,11 @@
    "sheetReturns": 0,
    "sheetBalance": 2900000,
    "sheetDays": 833,
-   "sheetCompound": 2263418.442940489,
+   "sheetSimple": 1654589.0410958903,
+   "sheetCompound": 1690342.4657534247,
    "sheetPaidPct": 0,
-   "sheetDebtCompound": 2263418.442940489
+   "sheetDebtSimple": 1654589.0410958903,
+   "sheetDebtCompound": 1690342.4657534247
   },
   {
    "id": "PR-025",
@@ -1146,9 +1230,11 @@
    "sheetReturns": 0,
    "sheetBalance": 3000000,
    "sheetDays": 824,
-   "sheetCompound": 2308978.0090874266,
+   "sheetSimple": 1693150.6849315069,
+   "sheetCompound": 1730136.98630137,
    "sheetPaidPct": 0,
-   "sheetDebtCompound": 2308978.0090874266
+   "sheetDebtSimple": 1693150.6849315069,
+   "sheetDebtCompound": 1730136.98630137
   },
   {
    "id": "PR-026",
@@ -1172,9 +1258,11 @@
    "sheetReturns": 0,
    "sheetBalance": 5000000,
    "sheetDays": 777,
-   "sheetCompound": 3570824.5335350996,
+   "sheetSimple": 2660958.904109589,
+   "sheetCompound": 2722602.7397260275,
    "sheetPaidPct": 0,
-   "sheetDebtCompound": 3570824.5335350996
+   "sheetDebtSimple": 2660958.904109589,
+   "sheetDebtCompound": 2722602.7397260275
   },
   {
    "id": "PR-027",
@@ -1198,9 +1286,11 @@
    "sheetReturns": 0,
    "sheetBalance": 1000000,
    "sheetDays": 775,
-   "sheetCompound": 711842.4359606239,
+   "sheetSimple": 530821.9178082192,
+   "sheetCompound": 543150.6849315069,
    "sheetPaidPct": 0,
-   "sheetDebtCompound": 711842.4359606239
+   "sheetDebtSimple": 530821.9178082192,
+   "sheetDebtCompound": 543150.6849315069
   },
   {
    "id": "NK-026",
@@ -1224,9 +1314,11 @@
    "sheetReturns": 0,
    "sheetBalance": 490000,
    "sheetDays": 764,
-   "sheetCompound": 342571.2397005818,
+   "sheetSimple": 256410.95890410958,
+   "sheetCompound": 262452.05479452055,
    "sheetPaidPct": 0,
-   "sheetDebtCompound": 342571.2397005818
+   "sheetDebtSimple": 256410.95890410958,
+   "sheetDebtCompound": 262452.05479452055
   },
   {
    "id": "PR-042",
@@ -1250,9 +1342,11 @@
    "sheetReturns": 0,
    "sheetBalance": 500000,
    "sheetDays": 762,
-   "sheetCompound": 348411.4426912417,
+   "sheetSimple": 260958.90410958903,
+   "sheetCompound": 267123.2876712329,
    "sheetPaidPct": 0,
-   "sheetDebtCompound": 348411.4426912417
+   "sheetDebtSimple": 260958.90410958903,
+   "sheetDebtCompound": 267123.2876712329
   },
   {
    "id": "PR-043",
@@ -1276,9 +1370,11 @@
    "sheetReturns": 0,
    "sheetBalance": 500000,
    "sheetDays": 756,
-   "sheetCompound": 344967.65095810045,
+   "sheetSimple": 258904.1095890411,
+   "sheetCompound": 265068.4931506849,
    "sheetPaidPct": 0,
-   "sheetDebtCompound": 344967.65095810045
+   "sheetDebtSimple": 258904.1095890411,
+   "sheetDebtCompound": 265068.4931506849
   },
   {
    "id": "PR-028",
@@ -1302,9 +1398,11 @@
    "sheetReturns": 0,
    "sheetBalance": 4000000,
    "sheetDays": 751,
-   "sheetCompound": 2736868.040876013,
+   "sheetSimple": 2057534.2465753425,
+   "sheetCompound": 2106849.315068493,
    "sheetPaidPct": 0,
-   "sheetDebtCompound": 2736868.040876013
+   "sheetDebtSimple": 2057534.2465753425,
+   "sheetDebtCompound": 2106849.315068493
   },
   {
    "id": "NK-014",
@@ -1328,9 +1426,11 @@
    "sheetReturns": 1000000,
    "sheetBalance": 0,
    "sheetDays": 748,
-   "sheetCompound": 157353.0868510988,
+   "sheetSimple": 99315.0684931507,
+   "sheetCompound": 99315.06849315064,
    "sheetPaidPct": 0,
-   "sheetDebtCompound": 157353.0868510988
+   "sheetDebtSimple": 99315.0684931507,
+   "sheetDebtCompound": 99315.06849315064
   },
   {
    "id": "PR-029",
@@ -1354,9 +1454,11 @@
    "sheetReturns": 0,
    "sheetBalance": 5100000,
    "sheetDays": 741,
-   "sheetCompound": 3431475.8853280502,
+   "sheetSimple": 2588424.657534247,
+   "sheetCompound": 2651301.3698630137,
    "sheetPaidPct": 0,
-   "sheetDebtCompound": 3431475.8853280502
+   "sheetDebtSimple": 2588424.657534247,
+   "sheetDebtCompound": 2651301.3698630137
   },
   {
    "id": "PR-030",
@@ -1380,9 +1482,11 @@
    "sheetReturns": 0,
    "sheetBalance": 600000,
    "sheetDays": 736,
-   "sheetCompound": 400306.7811182949,
+   "sheetSimple": 302465.7534246575,
+   "sheetCompound": 309863.01369863015,
    "sheetPaidPct": 0,
-   "sheetDebtCompound": 400306.7811182949
+   "sheetDebtSimple": 302465.7534246575,
+   "sheetDebtCompound": 309863.01369863015
   },
   {
    "id": "PR-032",
@@ -1406,9 +1510,11 @@
    "sheetReturns": 0,
    "sheetBalance": 5000000,
    "sheetDays": 729,
-   "sheetCompound": 3296427.576296922,
+   "sheetSimple": 2496575.342465753,
+   "sheetCompound": 2558219.178082192,
    "sheetPaidPct": 0,
-   "sheetDebtCompound": 3296427.576296922
+   "sheetDebtSimple": 2496575.342465753,
+   "sheetDebtCompound": 2558219.178082192
   },
   {
    "id": "NK-014.1",
@@ -1432,9 +1538,11 @@
    "sheetReturns": 1000000,
    "sheetBalance": 0,
    "sheetDays": 728,
-   "sheetCompound": 187485.45899646985,
+   "sheetSimple": 121232.87671232881,
+   "sheetCompound": 121232.87671232875,
    "sheetPaidPct": 0,
-   "sheetDebtCompound": 187485.45899646985
+   "sheetDebtSimple": 121232.87671232881,
+   "sheetDebtCompound": 121232.87671232875
   },
   {
    "id": "PR-031",
@@ -1458,9 +1566,11 @@
    "sheetReturns": 0,
    "sheetBalance": 4155000,
    "sheetDays": 726,
-   "sheetCompound": 2725324.6780314664,
+   "sheetSimple": 2066116.4383561644,
+   "sheetCompound": 2117342.4657534244,
    "sheetPaidPct": 0,
-   "sheetDebtCompound": 2725324.6780314664
+   "sheetDebtSimple": 2066116.4383561644,
+   "sheetDebtCompound": 2117342.4657534244
   },
   {
    "id": "PR-031.1",
@@ -1484,9 +1594,11 @@
    "sheetReturns": 0,
    "sheetBalance": 1126000,
    "sheetDays": 719,
-   "sheetCompound": 729732.8458680287,
+   "sheetSimple": 554516.4383561644,
+   "sheetCompound": 568398.6301369863,
    "sheetPaidPct": 0,
-   "sheetDebtCompound": 729732.8458680287
+   "sheetDebtSimple": 554516.4383561644,
+   "sheetDebtCompound": 568398.6301369863
   },
   {
    "id": "NK-014.2",
@@ -1510,9 +1622,11 @@
    "sheetReturns": 1100000,
    "sheetBalance": 0,
    "sheetDays": 716,
-   "sheetCompound": 191456.62495288707,
+   "sheetSimple": 124315.06849315076,
+   "sheetCompound": 124315.0684931507,
    "sheetPaidPct": 0,
-   "sheetDebtCompound": 191456.62495288707
+   "sheetDebtSimple": 124315.06849315076,
+   "sheetDebtCompound": 124315.0684931507
   },
   {
    "id": "NK-014.3",
@@ -1536,9 +1650,11 @@
    "sheetReturns": 2900000,
    "sheetBalance": 4000000,
    "sheetDays": 709,
-   "sheetCompound": 3029933.0856499183,
+   "sheetSimple": 2256301.3698630137,
+   "sheetCompound": 2305616.438356165,
    "sheetPaidPct": 0,
-   "sheetDebtCompound": 3029933.0856499183
+   "sheetDebtSimple": 2256301.3698630137,
+   "sheetDebtCompound": 2305616.438356165
   },
   {
    "id": "PR-033",
@@ -1562,9 +1678,11 @@
    "sheetReturns": 5000000,
    "sheetBalance": 0,
    "sheetDays": 702,
-   "sheetCompound": 2610789.2341974503,
+   "sheetSimple": 1952054.7945205476,
+   "sheetCompound": 1952054.794520548,
    "sheetPaidPct": 0,
-   "sheetDebtCompound": 2610789.2341974503
+   "sheetDebtSimple": 1952054.7945205476,
+   "sheetDebtCompound": 1952054.794520548
   },
   {
    "id": "NK-015",
@@ -1588,9 +1706,11 @@
    "sheetReturns": 4878887.68,
    "sheetBalance": 1497112.3200000003,
    "sheetDays": 701,
-   "sheetCompound": 1708312.8631380736,
+   "sheetSimple": 1220074.581041096,
+   "sheetCompound": 1238532.1301917809,
    "sheetPaidPct": 0,
-   "sheetDebtCompound": 1708312.8631380736
+   "sheetDebtSimple": 1220074.581041096,
+   "sheetDebtCompound": 1238532.1301917809
   },
   {
    "id": "NK-016",
@@ -1614,9 +1734,11 @@
    "sheetReturns": 5000000,
    "sheetBalance": 0,
    "sheetDays": 698,
-   "sheetCompound": 770521.5052315616,
+   "sheetSimple": 503424.65753424633,
+   "sheetCompound": 503424.6575342468,
    "sheetPaidPct": 0,
-   "sheetDebtCompound": 770521.5052315616
+   "sheetDebtSimple": 503424.65753424633,
+   "sheetDebtCompound": 503424.6575342468
   },
   {
    "id": "NK-016.1",
@@ -1640,9 +1762,11 @@
    "sheetReturns": 0,
    "sheetBalance": 5000000,
    "sheetDays": 677,
-   "sheetCompound": 3009068.8206364424,
+   "sheetSimple": 2318493.1506849313,
+   "sheetCompound": 2380136.98630137,
    "sheetPaidPct": 0,
-   "sheetDebtCompound": 3009068.8206364424
+   "sheetDebtSimple": 2318493.1506849313,
+   "sheetDebtCompound": 2380136.98630137
   },
   {
    "id": "PR-034",
@@ -1666,9 +1790,11 @@
    "sheetReturns": 0,
    "sheetBalance": 5000000,
    "sheetDays": 656,
-   "sheetCompound": 2895861.175615123,
+   "sheetSimple": 2246575.342465753,
+   "sheetCompound": 2308219.178082192,
    "sheetPaidPct": 318493.15,
-   "sheetDebtCompound": 2577368.025615123
+   "sheetDebtSimple": 1928082.1924657533,
+   "sheetDebtCompound": 1989726.028082192
   },
   {
    "id": "PR-035",
@@ -1692,9 +1818,11 @@
    "sheetReturns": 0,
    "sheetBalance": 5000000,
    "sheetDays": 649,
-   "sheetCompound": 2858482.013618028,
+   "sheetSimple": 2222602.7397260275,
+   "sheetCompound": 2284246.5753424657,
    "sheetPaidPct": 0,
-   "sheetDebtCompound": 2858482.013618028
+   "sheetDebtSimple": 2222602.7397260275,
+   "sheetDebtCompound": 2284246.5753424657
   },
   {
    "id": "CA-005",
@@ -1718,9 +1846,11 @@
    "sheetReturns": 0,
    "sheetBalance": 5000000,
    "sheetDays": 645,
-   "sheetCompound": 2837201.9948924766,
+   "sheetSimple": 2208904.109589041,
+   "sheetCompound": 2270547.9452054794,
    "sheetPaidPct": 0,
-   "sheetDebtCompound": 2837201.9948924766
+   "sheetDebtSimple": 2208904.109589041,
+   "sheetDebtCompound": 2270547.9452054794
   },
   {
    "id": "PR-036",
@@ -1744,9 +1874,11 @@
    "sheetReturns": 0,
    "sheetBalance": 5000000,
    "sheetDays": 638,
-   "sheetCompound": 2800100.5266098576,
+   "sheetSimple": 2184931.506849315,
+   "sheetCompound": 2246575.342465753,
    "sheetPaidPct": 0,
-   "sheetDebtCompound": 2800100.5266098576
+   "sheetDebtSimple": 2184931.506849315,
+   "sheetDebtCompound": 2246575.342465753
   },
   {
    "id": "CA-006",
@@ -1770,9 +1902,11 @@
    "sheetReturns": 100000,
    "sheetBalance": 0,
    "sheetDays": 616,
-   "sheetCompound": 17285.335441785275,
+   "sheetSimple": 12054.794520547948,
+   "sheetCompound": 12054.794520547945,
    "sheetPaidPct": 0,
-   "sheetDebtCompound": 17285.335441785275
+   "sheetDebtSimple": 12054.794520547948,
+   "sheetDebtCompound": 12054.794520547945
   },
   {
    "id": "CA-007",
@@ -1796,9 +1930,11 @@
    "sheetReturns": 900000,
    "sheetBalance": 0,
    "sheetDays": 616,
-   "sheetCompound": 425586.2648545246,
+   "sheetSimple": 338690.66301369865,
+   "sheetCompound": 338690.6630136986,
    "sheetPaidPct": 0,
-   "sheetDebtCompound": 425586.2648545246
+   "sheetDebtSimple": 338690.66301369865,
+   "sheetDebtCompound": 338690.6630136986
   },
   {
    "id": "CA-008",
@@ -1822,9 +1958,11 @@
    "sheetReturns": 1000000,
    "sheetBalance": 0,
    "sheetDays": 615,
-   "sheetCompound": 103582.0342754692,
+   "sheetSimple": 70547.94520547945,
+   "sheetCompound": 70547.94520547945,
    "sheetPaidPct": 0,
-   "sheetDebtCompound": 103582.0342754692
+   "sheetDebtSimple": 70547.94520547945,
+   "sheetDebtCompound": 70547.94520547945
   },
   {
    "id": "CA-009",
@@ -1848,9 +1986,11 @@
    "sheetReturns": 1000000,
    "sheetBalance": 0,
    "sheetDays": 614,
-   "sheetCompound": 512222.15223248233,
+   "sheetSimple": 410273.9726027397,
+   "sheetCompound": 410273.9726027397,
    "sheetPaidPct": 0,
-   "sheetDebtCompound": 512222.15223248233
+   "sheetDebtSimple": 410273.9726027397,
+   "sheetDebtCompound": 410273.9726027397
   },
   {
    "id": "CA-010",
@@ -1874,9 +2014,11 @@
    "sheetReturns": 1000000,
    "sheetBalance": 0,
    "sheetDays": 601,
-   "sheetCompound": 157304.42885780515,
+   "sheetSimple": 110273.97260273976,
+   "sheetCompound": 110273.9726027397,
    "sheetPaidPct": 0,
-   "sheetDebtCompound": 157304.42885780515
+   "sheetDebtSimple": 110273.97260273976,
+   "sheetDebtCompound": 110273.9726027397
   },
   {
    "id": "CA-011",
@@ -1900,9 +2042,11 @@
    "sheetReturns": 2000000,
    "sheetBalance": 0,
    "sheetDays": 600,
-   "sheetCompound": 312546.8892840728,
+   "sheetSimple": 219178.0821917809,
+   "sheetCompound": 219178.0821917808,
    "sheetPaidPct": 0,
-   "sheetDebtCompound": 312546.8892840728
+   "sheetDebtSimple": 219178.0821917809,
+   "sheetDebtCompound": 219178.0821917808
   },
   {
    "id": "CA-012",
@@ -1926,9 +2070,11 @@
    "sheetReturns": 600000,
    "sheetBalance": 0,
    "sheetDays": 595,
-   "sheetCompound": 90677.3964133721,
+   "sheetSimple": 63698.63013698629,
+   "sheetCompound": 63698.63013698629,
    "sheetPaidPct": 0,
-   "sheetDebtCompound": 90677.3964133721
+   "sheetDebtSimple": 63698.63013698629,
+   "sheetDebtCompound": 63698.63013698629
   },
   {
    "id": "CA-013",
@@ -1952,9 +2098,11 @@
    "sheetReturns": 2000000,
    "sheetBalance": 0,
    "sheetDays": 589,
-   "sheetCompound": 289957.25185916654,
+   "sheetSimple": 204109.58904109593,
+   "sheetCompound": 204109.5890410958,
    "sheetPaidPct": 0,
-   "sheetDebtCompound": 289957.25185916654
+   "sheetDebtSimple": 204109.58904109593,
+   "sheetDebtCompound": 204109.5890410958
   },
   {
    "id": "CA-014",
@@ -1978,9 +2126,11 @@
    "sheetReturns": 1000000,
    "sheetBalance": 0,
    "sheetDays": 583,
-   "sheetCompound": 138853.22283113585,
+   "sheetSimple": 97945.2054794521,
+   "sheetCompound": 97945.20547945204,
    "sheetPaidPct": 0,
-   "sheetDebtCompound": 138853.22283113585
+   "sheetDebtSimple": 97945.2054794521,
+   "sheetDebtCompound": 97945.20547945204
   },
   {
    "id": "CA-015",
@@ -2004,9 +2154,11 @@
    "sheetReturns": 2000000,
    "sheetBalance": 0,
    "sheetDays": 574,
-   "sheetCompound": 259423.4119773925,
+   "sheetSimple": 183561.64383561653,
+   "sheetCompound": 183561.6438356164,
    "sheetPaidPct": 0,
-   "sheetDebtCompound": 259423.4119773925
+   "sheetDebtSimple": 183561.64383561653,
+   "sheetDebtCompound": 183561.6438356164
   },
   {
    "id": "CA-016",
@@ -2030,9 +2182,11 @@
    "sheetReturns": 1000000,
    "sheetBalance": 0,
    "sheetDays": 573,
-   "sheetCompound": 175564.66235693014,
+   "sheetSimple": 126567.83956164384,
+   "sheetCompound": 126567.8395616439,
    "sheetPaidPct": 0,
-   "sheetDebtCompound": 175564.66235693014
+   "sheetDebtSimple": 126567.83956164384,
+   "sheetDebtCompound": 126567.8395616439
   },
   {
    "id": "CA-017",
@@ -2056,9 +2210,11 @@
    "sheetReturns": 500000,
    "sheetBalance": 0,
    "sheetDays": 572,
-   "sheetCompound": 92801.53493959876,
+   "sheetSimple": 67123.28767123287,
+   "sheetCompound": 67123.28767123286,
    "sheetPaidPct": 0,
-   "sheetDebtCompound": 92801.53493959876
+   "sheetDebtSimple": 67123.28767123287,
+   "sheetDebtCompound": 67123.28767123286
   },
   {
    "id": "CA-018",
@@ -2082,9 +2238,11 @@
    "sheetReturns": 1000000,
    "sheetBalance": 0,
    "sheetDays": 572,
-   "sheetCompound": 185603.06987919752,
+   "sheetSimple": 134246.57534246575,
+   "sheetCompound": 134246.57534246572,
    "sheetPaidPct": 0,
-   "sheetDebtCompound": 185603.06987919752
+   "sheetDebtSimple": 134246.57534246575,
+   "sheetDebtCompound": 134246.57534246572
   },
   {
    "id": "CA-019",
@@ -2108,9 +2266,11 @@
    "sheetReturns": 2000000,
    "sheetBalance": 0,
    "sheetDays": 568,
-   "sheetCompound": 387210.4466195316,
+   "sheetSimple": 281751.00361643825,
+   "sheetCompound": 281751.00361643825,
    "sheetPaidPct": 0,
-   "sheetDebtCompound": 387210.4466195316
+   "sheetDebtSimple": 281751.00361643825,
+   "sheetDebtCompound": 281751.00361643825
   },
   {
    "id": "CA-020",
@@ -2134,9 +2294,11 @@
    "sheetReturns": 1500000,
    "sheetBalance": 0,
    "sheetDays": 566,
-   "sheetCompound": 374813.6606349448,
+   "sheetSimple": 285524.7403835616,
+   "sheetCompound": 285524.74038356164,
    "sheetPaidPct": 0,
-   "sheetDebtCompound": 374813.6606349448
+   "sheetDebtSimple": 285524.7403835616,
+   "sheetDebtCompound": 285524.74038356164
   },
   {
    "id": "CA-021",
@@ -2160,9 +2322,11 @@
    "sheetReturns": 200000,
    "sheetBalance": 0,
    "sheetDays": 565,
-   "sheetCompound": 92415.38531189009,
+   "sheetSimple": 75342.46575342465,
+   "sheetCompound": 75342.46575342465,
    "sheetPaidPct": 0,
-   "sheetDebtCompound": 92415.38531189009
+   "sheetDebtSimple": 75342.46575342465,
+   "sheetDebtCompound": 75342.46575342465
   },
   {
    "id": "CA-022",
@@ -2186,9 +2350,11 @@
    "sheetReturns": 1000000,
    "sheetBalance": 0,
    "sheetDays": 565,
-   "sheetCompound": 462076.92655945045,
+   "sheetSimple": 376712.3287671233,
+   "sheetCompound": 376712.3287671233,
    "sheetPaidPct": 0,
-   "sheetDebtCompound": 462076.92655945045
+   "sheetDebtSimple": 376712.3287671233,
+   "sheetDebtCompound": 376712.3287671233
   },
   {
    "id": "CA-023",
@@ -2212,9 +2378,11 @@
    "sheetReturns": 500000,
    "sheetBalance": 0,
    "sheetDays": 562,
-   "sheetCompound": 229530.29317503437,
+   "sheetSimple": 187328.76712328766,
+   "sheetCompound": 187328.76712328766,
    "sheetPaidPct": 0,
-   "sheetDebtCompound": 229530.29317503437
+   "sheetDebtSimple": 187328.76712328766,
+   "sheetDebtCompound": 187328.76712328766
   },
   {
    "id": "CA-024",
@@ -2238,9 +2406,11 @@
    "sheetReturns": 2000000,
    "sheetBalance": 0,
    "sheetDays": 562,
-   "sheetCompound": 918121.1727001375,
+   "sheetSimple": 749315.0684931506,
+   "sheetCompound": 749315.0684931506,
    "sheetPaidPct": 0,
-   "sheetDebtCompound": 918121.1727001375
+   "sheetDebtSimple": 749315.0684931506,
+   "sheetDebtCompound": 749315.0684931506
   },
   {
    "id": "CA-025",
@@ -2264,9 +2434,11 @@
    "sheetReturns": 2500000,
    "sheetBalance": 0,
    "sheetDays": 560,
-   "sheetCompound": 1142632.7452915641,
+   "sheetSimple": 933219.1780821917,
+   "sheetCompound": 933219.1780821919,
    "sheetPaidPct": 0,
-   "sheetDebtCompound": 1142632.7452915641
+   "sheetDebtSimple": 933219.1780821917,
+   "sheetDebtCompound": 933219.1780821919
   },
   {
    "id": "CA-026",
@@ -2290,9 +2462,11 @@
    "sheetReturns": 0,
    "sheetBalance": 7400000,
    "sheetDays": 553,
-   "sheetCompound": 3497764.621898093,
+   "sheetSimple": 2802876.712328767,
+   "sheetCompound": 2894109.5890410957,
    "sheetPaidPct": 560547.95,
-   "sheetDebtCompound": 2937216.671898093
+   "sheetDebtSimple": 2242328.762328767,
+   "sheetDebtCompound": 2333561.639041096
   },
   {
    "id": "PR-037",
@@ -2316,9 +2490,11 @@
    "sheetReturns": 0,
    "sheetBalance": 7298943.84,
    "sheetDays": 551,
-   "sheetCompound": 3435434.8961881776,
+   "sheetSimple": 2754601.408109589,
+   "sheetCompound": 2844588.386958904,
    "sheetPaidPct": 0,
-   "sheetDebtCompound": 3435434.8961881776
+   "sheetDebtSimple": 2754601.408109589,
+   "sheetDebtCompound": 2844588.386958904
   },
   {
    "id": "PR-038",
@@ -2342,35 +2518,11 @@
    "sheetReturns": 0,
    "sheetBalance": 2500000,
    "sheetDays": 551,
-   "sheetCompound": 1176689.0427903943,
+   "sheetSimple": 943493.1506849315,
+   "sheetCompound": 974315.0684931506,
    "sheetPaidPct": 0,
-   "sheetDebtCompound": 1176689.0427903943
-  },
-  {
-   "id": "CA-027",
-   "group": "Чил-Акопов",
-   "carrier": "ЧИЛ-АКОПОВ АЛЕКСАНДР ГЕОРГИЕВИЧ",
-   "project": "Ассортимент Агро",
-   "sum": 7579943.84,
-   "contractNo": "2712/24",
-   "contractDate": "2024-12-27",
-   "date": "2024-12-27",
-   "rate": 0.25,
-   "contractRate": 0.25,
-   "rateType": "фикс",
-   "addRate": 0,
-   "corpRate": 0.25,
-   "kind": "старое говно",
-   "isInvest": false,
-   "term": null,
-   "reconStatus": "сверено",
-   "comment": null,
-   "sheetReturns": 0,
-   "sheetBalance": 7579943.84,
-   "sheetDays": 551,
-   "sheetCompound": 3567694.744597818,
-   "sheetPaidPct": 0,
-   "sheetDebtCompound": 3567694.744597818
+   "sheetDebtSimple": 943493.1506849315,
+   "sheetDebtCompound": 974315.0684931506
   },
   {
    "id": "CA-028",
@@ -2394,9 +2546,39 @@
    "sheetReturns": 150000,
    "sheetBalance": 0,
    "sheetDays": 551,
-   "sheetCompound": 27708.636584198648,
+   "sheetSimple": 20342.465753424658,
+   "sheetCompound": 20342.465753424658,
    "sheetPaidPct": 0,
-   "sheetDebtCompound": 27708.636584198648
+   "sheetDebtSimple": 20342.465753424658,
+   "sheetDebtCompound": 20342.465753424658
+  },
+  {
+   "id": "CA-027",
+   "group": "Чил-Акопов",
+   "carrier": "ЧИЛ-АКОПОВ АЛЕКСАНДР ГЕОРГИЕВИЧ",
+   "project": "Ассортимент Агро",
+   "sum": 7579943.84,
+   "contractNo": "2712/24",
+   "contractDate": "2024-12-27",
+   "date": "2024-12-27",
+   "rate": 0.25,
+   "contractRate": 0.25,
+   "rateType": "фикс",
+   "addRate": 0,
+   "corpRate": 0.25,
+   "kind": "старое говно",
+   "isInvest": false,
+   "term": null,
+   "reconStatus": "сверено",
+   "comment": null,
+   "sheetReturns": 0,
+   "sheetBalance": 7579943.84,
+   "sheetDays": 551,
+   "sheetSimple": 2860650.0382465753,
+   "sheetCompound": 2954101.400657534,
+   "sheetPaidPct": 0,
+   "sheetDebtSimple": 2860650.0382465753,
+   "sheetDebtCompound": 2954101.400657534
   },
   {
    "id": "CA-029",
@@ -2420,9 +2602,11 @@
    "sheetReturns": 0,
    "sheetBalance": 650000,
    "sheetDays": 550,
-   "sheetCompound": 305291.344950159,
+   "sheetSimple": 244863.01369863015,
+   "sheetCompound": 252876.7123287671,
    "sheetPaidPct": 0,
-   "sheetDebtCompound": 305291.344950159
+   "sheetDebtSimple": 244863.01369863015,
+   "sheetDebtCompound": 252876.7123287671
   },
   {
    "id": "CA-030",
@@ -2446,9 +2630,11 @@
    "sheetReturns": 1400000,
    "sheetBalance": 0,
    "sheetDays": 550,
-   "sheetCompound": 228928.69489808538,
+   "sheetSimple": 166849.3150684932,
+   "sheetCompound": 166849.31506849313,
    "sheetPaidPct": 0,
-   "sheetDebtCompound": 228928.69489808538
+   "sheetDebtSimple": 166849.3150684932,
+   "sheetDebtCompound": 166849.31506849313
   },
   {
    "id": "PR-039",
@@ -2472,9 +2658,11 @@
    "sheetReturns": 0,
    "sheetBalance": 1995000,
    "sheetDays": 537,
-   "sheetCompound": 911284.4027663884,
+   "sheetSimple": 733777.3972602739,
+   "sheetCompound": 758373.2876712328,
    "sheetPaidPct": 0,
-   "sheetDebtCompound": 911284.4027663884
+   "sheetDebtSimple": 733777.3972602739,
+   "sheetDebtCompound": 758373.2876712328
   },
   {
    "id": "CA-031",
@@ -2498,9 +2686,11 @@
    "sheetReturns": 2000000,
    "sheetBalance": 0,
    "sheetDays": 537,
-   "sheetCompound": 301251.3318248496,
+   "sheetSimple": 220547.94520547945,
+   "sheetCompound": 220547.9452054794,
    "sheetPaidPct": 0,
-   "sheetDebtCompound": 301251.3318248496
+   "sheetDebtSimple": 220547.94520547945,
+   "sheetDebtCompound": 220547.9452054794
   },
   {
    "id": "CA-032",
@@ -2524,9 +2714,11 @@
    "sheetReturns": 0,
    "sheetBalance": 1550000,
    "sheetDays": 534,
-   "sheetCompound": 703428.0291229308,
+   "sheetSimple": 566917.8082191781,
+   "sheetCompound": 586027.3972602739,
    "sheetPaidPct": 0,
-   "sheetDebtCompound": 703428.0291229308
+   "sheetDebtSimple": 566917.8082191781,
+   "sheetDebtCompound": 586027.3972602739
   },
   {
    "id": "CA-033",
@@ -2550,9 +2742,11 @@
    "sheetReturns": 2000000,
    "sheetBalance": 1000000,
    "sheetDays": 533,
-   "sheetCompound": 1228212.0014264064,
+   "sheetSimple": 1000479.4520547944,
+   "sheetCompound": 1012808.2191780822,
    "sheetPaidPct": 0,
-   "sheetDebtCompound": 1228212.0014264064
+   "sheetDebtSimple": 1000479.4520547944,
+   "sheetDebtCompound": 1012808.2191780822
   },
   {
    "id": "PR-040",
@@ -2576,9 +2770,11 @@
    "sheetReturns": 0,
    "sheetBalance": 6500000,
    "sheetDays": 530,
-   "sheetCompound": 2924270.160064041,
+   "sheetSimple": 2359589.0410958906,
+   "sheetCompound": 2439726.02739726,
    "sheetPaidPct": 0,
-   "sheetDebtCompound": 2924270.160064041
+   "sheetDebtSimple": 2359589.0410958906,
+   "sheetDebtCompound": 2439726.02739726
   },
   {
    "id": "CA-034",
@@ -2602,9 +2798,11 @@
    "sheetReturns": 0,
    "sheetBalance": 3000000,
    "sheetDays": 530,
-   "sheetCompound": 1349663.1507987883,
+   "sheetSimple": 1089041.095890411,
+   "sheetCompound": 1126027.397260274,
    "sheetPaidPct": 0,
-   "sheetDebtCompound": 1349663.1507987883
+   "sheetDebtSimple": 1089041.095890411,
+   "sheetDebtCompound": 1126027.397260274
   },
   {
    "id": "CA-035",
@@ -2628,9 +2826,11 @@
    "sheetReturns": 0,
    "sheetBalance": 600000,
    "sheetDays": 519,
-   "sheetCompound": 263469.8094193598,
+   "sheetSimple": 213287.67123287672,
+   "sheetCompound": 220684.9315068493,
    "sheetPaidPct": 0,
-   "sheetDebtCompound": 263469.8094193598
+   "sheetDebtSimple": 213287.67123287672,
+   "sheetDebtCompound": 220684.9315068493
   },
   {
    "id": "NK-017",
@@ -2654,9 +2854,11 @@
    "sheetReturns": 0,
    "sheetBalance": 5721500,
    "sheetDays": 517,
-   "sheetCompound": 2501248.3205480063,
+   "sheetSimple": 2026038.01369863,
+   "sheetCompound": 2096577.0547945206,
    "sheetPaidPct": 121483.9,
-   "sheetDebtCompound": 2379764.4205480064
+   "sheetDebtSimple": 1904554.1136986301,
+   "sheetDebtCompound": 1975093.1547945207
   },
   {
    "id": "NK-018",
@@ -2680,9 +2882,11 @@
    "sheetReturns": 0,
    "sheetBalance": 5721500,
    "sheetDays": 516,
-   "sheetCompound": 2495676.0546416705,
+   "sheetSimple": 2022119.1780821919,
+   "sheetCompound": 2092658.2191780822,
    "sheetPaidPct": 0,
-   "sheetDebtCompound": 2495676.0546416705
+   "sheetDebtSimple": 2022119.1780821919,
+   "sheetDebtCompound": 2092658.2191780822
   },
   {
    "id": "CA-036",
@@ -2706,9 +2910,11 @@
    "sheetReturns": 0,
    "sheetBalance": 4550000,
    "sheetDays": 516,
-   "sheetCompound": 1984676.4045476888,
+   "sheetSimple": 1608082.191780822,
+   "sheetCompound": 1664178.082191781,
    "sheetPaidPct": 406609.59,
-   "sheetDebtCompound": 1578066.8145476887
+   "sheetDebtSimple": 1201472.6017808218,
+   "sheetDebtCompound": 1257568.4921917808
   },
   {
    "id": "PR-041",
@@ -2732,9 +2938,11 @@
    "sheetReturns": 4100000,
    "sheetBalance": 0,
    "sheetDays": 491,
-   "sheetCompound": 7843.936231363565,
+   "sheetSimple": 5616.438356164377,
+   "sheetCompound": 5616.438356164377,
    "sheetPaidPct": 5616.44,
-   "sheetDebtCompound": 2227.496231363565
+   "sheetDebtSimple": 0,
+   "sheetDebtCompound": -0.0016438356224171002
   },
   {
    "id": "NK-019",
@@ -2758,9 +2966,11 @@
    "sheetReturns": 0,
    "sheetBalance": 1836000,
    "sheetDays": 490,
-   "sheetCompound": 754781.6721141629,
+   "sheetSimple": 616191.7808219178,
+   "sheetCompound": 638827.3972602739,
    "sheetPaidPct": 38983.56,
-   "sheetDebtCompound": 715798.1121141629
+   "sheetDebtSimple": 577208.2208219178,
+   "sheetDebtCompound": 599843.837260274
   },
   {
    "id": "NK-020",
@@ -2784,9 +2994,11 @@
    "sheetReturns": 0,
    "sheetBalance": 1836000,
    "sheetDays": 490,
-   "sheetCompound": 754781.6721141629,
+   "sheetSimple": 616191.7808219178,
+   "sheetCompound": 638827.3972602739,
    "sheetPaidPct": 38983.56,
-   "sheetDebtCompound": 715798.1121141629
+   "sheetDebtSimple": 577208.2208219178,
+   "sheetDebtCompound": 599843.837260274
   },
   {
    "id": "CA-037",
@@ -2810,9 +3022,11 @@
    "sheetReturns": 0,
    "sheetBalance": 9000000,
    "sheetDays": 440,
-   "sheetCompound": 3276663.7048293524,
+   "sheetSimple": 2712328.7671232875,
+   "sheetCompound": 2823287.671232877,
    "sheetPaidPct": 0,
-   "sheetDebtCompound": 3276663.7048293524
+   "sheetDebtSimple": 2712328.7671232875,
+   "sheetDebtCompound": 2823287.671232877
   },
   {
    "id": "CA-038",
@@ -2836,8 +3050,10 @@
    "sheetReturns": 1100,
    "sheetBalance": 0,
    "sheetDays": 392,
+   "sheetSimple": 6.509589041095879,
    "sheetCompound": 26.629330333162812,
    "sheetPaidPct": 0,
+   "sheetDebtSimple": 6.509589041095879,
    "sheetDebtCompound": 26.629330333162812
   },
   {
@@ -2862,8 +3078,10 @@
    "sheetReturns": 9000,
    "sheetBalance": 0,
    "sheetDays": 392,
+   "sheetSimple": 54.739726027397296,
    "sheetCompound": 223.86782435193595,
    "sheetPaidPct": 0,
+   "sheetDebtSimple": 54.739726027397296,
    "sheetDebtCompound": 223.86782435193595
   },
   {
@@ -2888,9 +3106,11 @@
    "sheetReturns": 0,
    "sheetBalance": 5000000,
    "sheetDays": 376,
-   "sheetCompound": 1530792.479376193,
+   "sheetSimple": 1287671.2328767122,
+   "sheetCompound": 1349315.0684931506,
    "sheetPaidPct": 0,
-   "sheetDebtCompound": 1530792.479376193
+   "sheetDebtSimple": 1287671.2328767122,
+   "sheetDebtCompound": 1349315.0684931506
   },
   {
    "id": "PR-046",
@@ -2914,9 +3134,11 @@
    "sheetReturns": 0,
    "sheetBalance": 4500000,
    "sheetDays": 370,
-   "sheetCompound": 1666062.2311296174,
+   "sheetSimple": 1368493.1506849315,
+   "sheetCompound": 1435068.493150685,
    "sheetPaidPct": 114657.53,
-   "sheetDebtCompound": 1551404.7011296174
+   "sheetDebtSimple": 1253835.6206849315,
+   "sheetDebtCompound": 1320410.963150685
   },
   {
    "id": "PR-045",
@@ -2940,9 +3162,11 @@
    "sheetReturns": 3909000,
    "sheetBalance": 0,
    "sheetDays": 370,
-   "sheetCompound": 377389.78707536426,
+   "sheetSimple": 289158.90410958894,
+   "sheetCompound": 289158.90410958894,
    "sheetPaidPct": 0,
-   "sheetDebtCompound": 377389.78707536426
+   "sheetDebtSimple": 289158.90410958894,
+   "sheetDebtCompound": 289158.90410958894
   },
   {
    "id": "PR-044",
@@ -2966,9 +3190,11 @@
    "sheetReturns": 3000000,
    "sheetBalance": 0,
    "sheetDays": 370,
-   "sheetCompound": 308198.17485177156,
+   "sheetSimple": 236712.32876712328,
+   "sheetCompound": 236712.32876712328,
    "sheetPaidPct": 38613.7,
-   "sheetDebtCompound": 269584.47485177155
+   "sheetDebtSimple": 198098.62876712327,
+   "sheetDebtCompound": 198098.62876712327
   },
   {
    "id": "CA-041",
@@ -2992,9 +3218,11 @@
    "sheetReturns": 3909000,
    "sheetBalance": 0,
    "sheetDays": 370,
-   "sheetCompound": 814929.0802724189,
+   "sheetSimple": 657612.3189041095,
+   "sheetCompound": 657612.3189041095,
    "sheetPaidPct": 0,
-   "sheetDebtCompound": 814929.0802724189
+   "sheetDebtSimple": 657612.3189041095,
+   "sheetDebtCompound": 657612.3189041095
   },
   {
    "id": "CA-042",
@@ -3018,9 +3246,11 @@
    "sheetReturns": 4500000,
    "sheetBalance": 0,
    "sheetDays": 370,
-   "sheetCompound": 439098.2891472394,
+   "sheetSimple": 336575.34246575343,
+   "sheetCompound": 336575.34246575343,
    "sheetPaidPct": 0,
-   "sheetDebtCompound": 439098.2891472394
+   "sheetDebtSimple": 336575.34246575343,
+   "sheetDebtCompound": 336575.34246575343
   },
   {
    "id": "CA-043",
@@ -3044,9 +3274,11 @@
    "sheetReturns": 0,
    "sheetBalance": 2800000,
    "sheetDays": 359,
-   "sheetCompound": 815338.8877502276,
+   "sheetSimple": 688493.1506849315,
+   "sheetCompound": 723013.698630137,
    "sheetPaidPct": 0,
-   "sheetDebtCompound": 815338.8877502276
+   "sheetDebtSimple": 688493.1506849315,
+   "sheetDebtCompound": 723013.698630137
   },
   {
    "id": "CA-044",
@@ -3070,8 +3302,10 @@
    "sheetReturns": 4140,
    "sheetBalance": 0,
    "sheetDays": 359,
+   "sheetSimple": 3.4027397260273915,
    "sheetCompound": 13.787910889697855,
    "sheetPaidPct": 0,
+   "sheetDebtSimple": 3.4027397260273915,
    "sheetDebtCompound": 13.787910889697855
   },
   {
@@ -3096,9 +3330,11 @@
    "sheetReturns": 3000000,
    "sheetBalance": 0,
    "sheetDays": 356,
-   "sheetCompound": 171160.10211792833,
+   "sheetSimple": 130684.93150684936,
+   "sheetCompound": 130684.93150684936,
    "sheetPaidPct": 130684.93,
-   "sheetDebtCompound": 40475.172117928334
+   "sheetDebtSimple": 0.0015068493667058647,
+   "sheetDebtCompound": 0.0015068493667058647
   },
   {
    "id": "PR-048",
@@ -3122,9 +3358,11 @@
    "sheetReturns": 0,
    "sheetBalance": 6000000,
    "sheetDays": 351,
-   "sheetCompound": 2095578.658291771,
+   "sheetSimple": 1730958.904109589,
+   "sheetCompound": 1819726.0273972603,
    "sheetPaidPct": 0,
-   "sheetDebtCompound": 2095578.658291771
+   "sheetDebtSimple": 1730958.904109589,
+   "sheetDebtCompound": 1819726.0273972603
   },
   {
    "id": "PR-069",
@@ -3148,9 +3386,11 @@
    "sheetReturns": 6000000,
    "sheetBalance": 0,
    "sheetDays": 351,
-   "sheetCompound": 309392.98637282965,
+   "sheetSimple": 236712.3287671234,
+   "sheetCompound": 236712.3287671234,
    "sheetPaidPct": 236712.33,
-   "sheetDebtCompound": 72680.65637282966
+   "sheetDebtSimple": 0,
+   "sheetDebtCompound": -0.0012328765878919512
   },
   {
    "id": "CA-046",
@@ -3174,9 +3414,11 @@
    "sheetReturns": 400000,
    "sheetBalance": 0,
    "sheetDays": 335,
-   "sheetCompound": 65328.65849224639,
+   "sheetSimple": 55616.438356164384,
+   "sheetCompound": 55616.43835616438,
    "sheetPaidPct": 83492,
-   "sheetDebtCompound": -18163.341507753612
+   "sheetDebtSimple": 0,
+   "sheetDebtCompound": -27875.561643835623
   },
   {
    "id": "CA-047",
@@ -3200,9 +3442,11 @@
    "sheetReturns": 1836796,
    "sheetBalance": 163204,
    "sheetDays": 328,
-   "sheetCompound": 332083.85632065067,
+   "sheetSimple": 283248.58082191786,
+   "sheetCompound": 285260.68493150687,
    "sheetPaidPct": 0,
-   "sheetDebtCompound": 332083.85632065067
+   "sheetDebtSimple": 283248.58082191786,
+   "sheetDebtCompound": 285260.68493150687
   },
   {
    "id": "CA-048",
@@ -3226,9 +3470,11 @@
    "sheetReturns": 0,
    "sheetBalance": 10000,
    "sheetDays": 313,
-   "sheetCompound": 2515.5031861320085,
+   "sheetSimple": 2143.8356164383563,
+   "sheetCompound": 2267.123287671233,
    "sheetPaidPct": 0,
-   "sheetDebtCompound": 2515.5031861320085
+   "sheetDebtSimple": 2143.8356164383563,
+   "sheetDebtCompound": 2267.123287671233
   },
   {
    "id": "CA-050",
@@ -3252,9 +3498,11 @@
    "sheetReturns": 0,
    "sheetBalance": 2990000,
    "sheetDays": 310,
-   "sheetCompound": 912228.098924615,
+   "sheetSimple": 761835.6164383561,
+   "sheetCompound": 806071.2328767123,
    "sheetPaidPct": 0,
-   "sheetDebtCompound": 912228.098924615
+   "sheetDebtSimple": 761835.6164383561,
+   "sheetDebtCompound": 806071.2328767123
   },
   {
    "id": "PR-049",
@@ -3278,9 +3526,11 @@
    "sheetReturns": 0,
    "sheetBalance": 5000000,
    "sheetDays": 309,
-   "sheetCompound": 1520169.747738932,
+   "sheetSimple": 1269863.01369863,
+   "sheetCompound": 1343835.6164383562,
    "sheetPaidPct": 0,
-   "sheetDebtCompound": 1520169.747738932
+   "sheetDebtSimple": 1269863.01369863,
+   "sheetDebtCompound": 1343835.6164383562
   },
   {
    "id": "CA-051",
@@ -3304,9 +3554,11 @@
    "sheetReturns": 0,
    "sheetBalance": 2000000,
    "sheetDays": 307,
-   "sheetCompound": 603836.8136492834,
+   "sheetSimple": 504657.5342465753,
+   "sheetCompound": 534246.5753424658,
    "sheetPaidPct": 0,
-   "sheetDebtCompound": 603836.8136492834
+   "sheetDebtSimple": 504657.5342465753,
+   "sheetDebtCompound": 534246.5753424658
   },
   {
    "id": "PR-047",
@@ -3330,9 +3582,11 @@
    "sheetReturns": 3000000,
    "sheetBalance": 0,
    "sheetDays": 303,
-   "sheetCompound": 72016.13780196477,
+   "sheetSimple": 56712.32876712328,
+   "sheetCompound": 56712.32876712328,
    "sheetPaidPct": 0,
-   "sheetDebtCompound": 72016.13780196477
+   "sheetDebtSimple": 56712.32876712328,
+   "sheetDebtCompound": 56712.32876712328
   },
   {
    "id": "CA-052",
@@ -3356,9 +3610,11 @@
    "sheetReturns": 0,
    "sheetBalance": 500000,
    "sheetDays": 300,
-   "sheetCompound": 120284.6647036464,
+   "sheetSimple": 102739.72602739726,
+   "sheetCompound": 108904.1095890411,
    "sheetPaidPct": 0,
-   "sheetDebtCompound": 120284.6647036464
+   "sheetDebtSimple": 102739.72602739726,
+   "sheetDebtCompound": 108904.1095890411
   },
   {
    "id": "PR-050",
@@ -3382,9 +3638,11 @@
    "sheetReturns": 1640848.8,
    "sheetBalance": 859151.2,
    "sheetDays": 299,
-   "sheetCompound": 416851.2819368306,
+   "sheetSimple": 347722.4679452055,
+   "sheetCompound": 360433.1980273972,
    "sheetPaidPct": 0,
-   "sheetDebtCompound": 416851.2819368306
+   "sheetDebtSimple": 347722.4679452055,
+   "sheetDebtCompound": 360433.1980273972
   },
   {
    "id": "CA-053",
@@ -3408,9 +3666,11 @@
    "sheetReturns": 0,
    "sheetBalance": 2000000,
    "sheetDays": 299,
-   "sheetCompound": 479457.27884058707,
+   "sheetSimple": 409589.0410958904,
+   "sheetCompound": 434246.5753424658,
    "sheetPaidPct": 0,
-   "sheetDebtCompound": 479457.27884058707
+   "sheetDebtSimple": 409589.0410958904,
+   "sheetDebtCompound": 434246.5753424658
   },
   {
    "id": "CA-054",
@@ -3434,9 +3694,11 @@
    "sheetReturns": 0,
    "sheetBalance": 1269000,
    "sheetDays": 294,
-   "sheetCompound": 298892.30001499574,
+   "sheetSimple": 255538.35616438356,
+   "sheetCompound": 271183.5616438356,
    "sheetPaidPct": 0,
-   "sheetDebtCompound": 298892.30001499574
+   "sheetDebtSimple": 255538.35616438356,
+   "sheetDebtCompound": 271183.5616438356
   },
   {
    "id": "PR-051",
@@ -3460,9 +3722,11 @@
    "sheetReturns": 9000000,
    "sheetBalance": 0,
    "sheetDays": 289,
-   "sheetCompound": 1661987.6259692188,
+   "sheetSimple": 1507931.5068493153,
+   "sheetCompound": 1507931.5068493155,
    "sheetPaidPct": 6434383.55,
-   "sheetDebtCompound": -4772395.924030781
+   "sheetDebtSimple": 0,
+   "sheetDebtCompound": -4926452.043150684
   },
   {
    "id": "NK-023",
@@ -3486,9 +3750,11 @@
    "sheetReturns": 0,
    "sheetBalance": 4083081.97,
    "sheetDays": 289,
-   "sheetCompound": 944633.3028523828,
+   "sheetSimple": 808226.499541096,
+   "sheetCompound": 858565.8662945206,
    "sheetPaidPct": 86695.58,
-   "sheetDebtCompound": 857937.7228523828
+   "sheetDebtSimple": 721530.9195410961,
+   "sheetDebtCompound": 771870.2862945206
   },
   {
    "id": "CA-055",
@@ -3512,9 +3778,11 @@
    "sheetReturns": 0,
    "sheetBalance": 5000000,
    "sheetDays": 289,
-   "sheetCompound": 1037549.2938235676,
+   "sheetSimple": 899280.8219178084,
+   "sheetCompound": 951678.082191781,
    "sheetPaidPct": 720890.3999999999,
-   "sheetDebtCompound": 316658.89382356766
+   "sheetDebtSimple": 178390.42191780847,
+   "sheetDebtCompound": 230787.68219178112
   },
   {
    "id": "CA-056",
@@ -3538,9 +3806,11 @@
    "sheetReturns": 5000000,
    "sheetBalance": 0,
    "sheetDays": 288,
-   "sheetCompound": 379122.13939613977,
+   "sheetSimple": 327671.2328767126,
+   "sheetCompound": 327671.23287671246,
    "sheetPaidPct": 572116.16,
-   "sheetDebtCompound": -192994.02060386026
+   "sheetDebtSimple": 0,
+   "sheetDebtCompound": -244444.92712328758
   },
   {
    "id": "PR-052",
@@ -3564,9 +3834,11 @@
    "sheetReturns": 4500000,
    "sheetBalance": 0,
    "sheetDays": 285,
-   "sheetCompound": 816861.6376285795,
+   "sheetSimple": 742130.1369863014,
+   "sheetCompound": 742130.1369863015,
    "sheetPaidPct": 0,
-   "sheetDebtCompound": 816861.6376285795
+   "sheetDebtSimple": 742130.1369863014,
+   "sheetDebtCompound": 742130.1369863015
   },
   {
    "id": "PR-054",
@@ -3590,9 +3862,11 @@
    "sheetReturns": 0,
    "sheetBalance": 1000000,
    "sheetDays": 282,
-   "sheetCompound": 225523.76040882137,
+   "sheetSimple": 193150.68493150684,
+   "sheetCompound": 205479.45205479453,
    "sheetPaidPct": 0,
-   "sheetDebtCompound": 225523.76040882137
+   "sheetDebtSimple": 193150.68493150684,
+   "sheetDebtCompound": 205479.45205479453
   },
   {
    "id": "PR-053",
@@ -3616,9 +3890,11 @@
    "sheetReturns": 0,
    "sheetBalance": 1000000,
    "sheetDays": 282,
-   "sheetCompound": 225523.76040882137,
+   "sheetSimple": 193150.68493150684,
+   "sheetCompound": 205479.45205479453,
    "sheetPaidPct": 0,
-   "sheetDebtCompound": 225523.76040882137
+   "sheetDebtSimple": 193150.68493150684,
+   "sheetDebtCompound": 205479.45205479453
   },
   {
    "id": "NK-024",
@@ -3642,9 +3918,11 @@
    "sheetReturns": 0,
    "sheetBalance": 4083081.97,
    "sheetDays": 281,
-   "sheetCompound": 917441.0242962299,
+   "sheetSimple": 785853.4476506851,
+   "sheetCompound": 836192.8144041096,
    "sheetPaidPct": 86695.58,
-   "sheetDebtCompound": 830745.44429623
+   "sheetDebtSimple": 699157.8676506851,
+   "sheetDebtCompound": 749497.2344041097
   },
   {
    "id": "NK-025",
@@ -3668,8 +3946,10 @@
    "sheetReturns": 0,
    "sheetBalance": 11000000,
    "sheetDays": 281,
+   "sheetSimple": 592794.5205479453,
    "sheetCompound": 1940741.3045828198,
    "sheetPaidPct": 0,
+   "sheetDebtSimple": 592794.5205479453,
    "sheetDebtCompound": 1940741.3045828198
   },
   {
@@ -3694,9 +3974,11 @@
    "sheetReturns": 1400000,
    "sheetBalance": 6100000,
    "sheetDays": 275,
-   "sheetCompound": 1442171.5132001962,
+   "sheetSimple": 1262648.6301369865,
+   "sheetCompound": 1326573.287671233,
    "sheetPaidPct": 0,
-   "sheetDebtCompound": 1442171.5132001962
+   "sheetDebtSimple": 1262648.6301369865,
+   "sheetDebtCompound": 1326573.287671233
   },
   {
    "id": "CA-057",
@@ -3720,9 +4002,11 @@
    "sheetReturns": 3500000,
    "sheetBalance": 0,
    "sheetDays": 274,
-   "sheetCompound": 8166.311653389246,
+   "sheetSimple": 6904.109589041211,
+   "sheetCompound": 6904.109589041094,
    "sheetPaidPct": 0,
-   "sheetDebtCompound": 8166.311653389246
+   "sheetDebtSimple": 6904.109589041211,
+   "sheetDebtCompound": 6904.109589041094
   },
   {
    "id": "PR-056",
@@ -3746,9 +4030,11 @@
    "sheetReturns": 0,
    "sheetBalance": 9000000,
    "sheetDays": 251,
-   "sheetCompound": 1602026.1362252415,
+   "sheetSimple": 1393828.7671232878,
+   "sheetCompound": 1488143.8356164386,
    "sheetPaidPct": 0,
-   "sheetDebtCompound": 1602026.1362252415
+   "sheetDebtSimple": 1393828.7671232878,
+   "sheetDebtCompound": 1488143.8356164386
   },
   {
    "id": "CA-058",
@@ -3772,9 +4058,11 @@
    "sheetReturns": 5000000,
    "sheetBalance": 0,
    "sheetDays": 251,
-   "sheetCompound": 235516.8044140155,
+   "sheetSimple": 206027.39726027416,
+   "sheetCompound": 206027.39726027404,
    "sheetPaidPct": 0,
-   "sheetDebtCompound": 235516.8044140155
+   "sheetDebtSimple": 206027.39726027416,
+   "sheetDebtCompound": 206027.39726027404
   },
   {
    "id": "PR-057",
@@ -3798,9 +4086,11 @@
    "sheetReturns": 0,
    "sheetBalance": 5000000,
    "sheetDays": 236,
-   "sheetCompound": 833636.3940018665,
+   "sheetSimple": 725787.6712328767,
+   "sheetCompound": 778184.9315068494,
    "sheetPaidPct": 0,
-   "sheetDebtCompound": 833636.3940018665
+   "sheetDebtSimple": 725787.6712328767,
+   "sheetDebtCompound": 778184.9315068494
   },
   {
    "id": "PR-058",
@@ -3824,9 +4114,11 @@
    "sheetReturns": 0,
    "sheetBalance": 5000000,
    "sheetDays": 222,
-   "sheetCompound": 781793.7335382807,
+   "sheetSimple": 680719.1780821917,
+   "sheetCompound": 733116.4383561644,
    "sheetPaidPct": 0,
-   "sheetDebtCompound": 781793.7335382807
+   "sheetDebtSimple": 680719.1780821917,
+   "sheetDebtCompound": 733116.4383561644
   },
   {
    "id": "PR-063",
@@ -3850,8 +4142,10 @@
    "sheetReturns": 0,
    "sheetBalance": 1500000,
    "sheetDays": 218,
+   "sheetSimple": 0,
    "sheetCompound": 0,
    "sheetPaidPct": 0,
+   "sheetDebtSimple": 0,
    "sheetDebtCompound": 0
   },
   {
@@ -3876,9 +4170,11 @@
    "sheetReturns": 0,
    "sheetBalance": 10000000,
    "sheetDays": 217,
-   "sheetCompound": 1526780.7293323865,
+   "sheetSimple": 1329246.575342466,
+   "sheetCompound": 1434041.0958904112,
    "sheetPaidPct": 1146027.37,
-   "sheetDebtCompound": 380753.3593323864
+   "sheetDebtSimple": 183219.20534246578,
+   "sheetDebtCompound": 288013.72589041106
   },
   {
    "id": "PR-064",
@@ -3902,8 +4198,10 @@
    "sheetReturns": 0,
    "sheetBalance": 300000,
    "sheetDays": 203,
+   "sheetSimple": 0,
    "sheetCompound": 0,
    "sheetPaidPct": 0,
+   "sheetDebtSimple": 0,
    "sheetDebtCompound": 0
   },
   {
@@ -3928,8 +4226,10 @@
    "sheetReturns": 0,
    "sheetBalance": 750000,
    "sheetDays": 188,
+   "sheetSimple": 0,
    "sheetCompound": 0,
    "sheetPaidPct": 0,
+   "sheetDebtSimple": 0,
    "sheetDebtCompound": 0
   },
   {
@@ -3954,9 +4254,11 @@
    "sheetReturns": 0,
    "sheetBalance": 10000000,
    "sheetDays": 187,
-   "sheetCompound": 1308995.4314222373,
+   "sheetSimple": 1136643.8356164384,
+   "sheetCompound": 1241438.3561643837,
    "sheetPaidPct": 1049976.22,
-   "sheetDebtCompound": 259019.21142223733
+   "sheetDebtSimple": 86667.61561643844,
+   "sheetDebtCompound": 191462.13616438373
   },
   {
    "id": "PR-066",
@@ -3980,8 +4282,10 @@
    "sheetReturns": 0,
    "sheetBalance": 400000,
    "sheetDays": 170,
+   "sheetSimple": 0,
    "sheetCompound": 0,
    "sheetPaidPct": 0,
+   "sheetDebtSimple": 0,
    "sheetDebtCompound": 0
   },
   {
@@ -4006,8 +4310,10 @@
    "sheetReturns": 0,
    "sheetBalance": 460000,
    "sheetDays": 156,
+   "sheetSimple": 0,
    "sheetCompound": 0,
    "sheetPaidPct": 0,
+   "sheetDebtSimple": 0,
    "sheetDebtCompound": 0
   },
   {
@@ -4032,9 +4338,11 @@
    "sheetReturns": 0,
    "sheetBalance": 6000000,
    "sheetDays": 124,
-   "sheetCompound": 524718.073478454,
+   "sheetSimple": 444698.6301369864,
+   "sheetCompound": 507575.3424657535,
    "sheetPaidPct": 0,
-   "sheetDebtCompound": 524718.073478454
+   "sheetDebtSimple": 444698.6301369864,
+   "sheetDebtCompound": 507575.3424657535
   },
   {
    "id": "PR-061",
@@ -4058,9 +4366,11 @@
    "sheetReturns": 0,
    "sheetBalance": 3500000,
    "sheetDays": 121,
-   "sheetCompound": 299118.4499315482,
+   "sheetSimple": 252934.93150684933,
+   "sheetCompound": 289613.01369863015,
    "sheetPaidPct": 0,
-   "sheetDebtCompound": 299118.4499315482
+   "sheetDebtSimple": 252934.93150684933,
+   "sheetDebtCompound": 289613.01369863015
   },
   {
    "id": "PR-062",
@@ -4084,9 +4394,11 @@
    "sheetReturns": 0,
    "sheetBalance": 2500000,
    "sheetDays": 120,
-   "sheetCompound": 211999.22918233083,
+   "sheetSimple": 179126.7123287671,
+   "sheetCompound": 205325.3424657534,
    "sheetPaidPct": 0,
-   "sheetDebtCompound": 211999.22918233083
+   "sheetDebtSimple": 179126.7123287671,
+   "sheetDebtCompound": 205325.3424657534
   },
   {
    "id": "CA-061",
@@ -4110,9 +4422,11 @@
    "sheetReturns": 10000000,
    "sheetBalance": 0,
    "sheetDays": 120,
-   "sheetCompound": 405400.4590384563,
+   "sheetSimple": 381369.8630136986,
+   "sheetCompound": 381369.8630136987,
    "sheetPaidPct": 0,
-   "sheetDebtCompound": 405400.4590384563
+   "sheetDebtSimple": 381369.8630136986,
+   "sheetDebtCompound": 381369.8630136987
   },
   {
    "id": "NK-027",
@@ -4136,9 +4450,11 @@
    "sheetReturns": 0,
    "sheetBalance": 14900000,
    "sheetDays": 21,
-   "sheetCompound": 340384.04815630236,
+   "sheetSimple": 183392.46575342465,
+   "sheetCompound": 339536.30136986304,
    "sheetPaidPct": 0,
-   "sheetDebtCompound": 340384.04815630236
+   "sheetDebtSimple": 183392.46575342465,
+   "sheetDebtCompound": 339536.30136986304
   },
   {
    "id": "CA-062",
@@ -4162,9 +4478,11 @@
    "sheetReturns": 0,
    "sheetBalance": 10000000,
    "sheetDays": 18,
-   "sheetCompound": 247044.1711500504,
+   "sheetSimple": 123287.67123287672,
+   "sheetCompound": 246575.34246575343,
    "sheetPaidPct": 0,
-   "sheetDebtCompound": 247044.1711500504
+   "sheetDebtSimple": 123287.67123287672,
+   "sheetDebtCompound": 246575.34246575343
   }
  ],
  "movements": [
@@ -5472,6 +5790,6 @@
   }
  ],
  "_source": "snapshot",
- "_loadedAt": "2026-07-19T08:51:46.323Z",
+ "_loadedAt": "2026-07-19T10:12:36.785Z",
  "_warnings": []
 }

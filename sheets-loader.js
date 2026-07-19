@@ -251,6 +251,10 @@
   //
   // Формульные колонки R–Y читаются как есть — они уже учитывают возвраты,
   // сегменты ЦБ и капитализацию. Движок пересчитывает их только для «что если».
+  //
+  // Проценты берутся разные в зависимости от принадлежности:
+  //   инвестиционные            → сложные (V, X) на текущую дату
+  //   оборотные и «старое говно» → простые (U, Y) на дату отчёта
   SL.parseTranches = function (table) {
     var pt = SL.parseTable(table);
     var h = pt.headers;
@@ -277,8 +281,10 @@
     var cReturns     = SL.findCol(h, ['σ возвратов', 'сумма возвратов']);
     var cBalance     = SL.findCol(h, ['остаток тела']);
     var cDays        = SL.findCol(h, ['дней от транша']);
+    var cSimple      = SL.findCol(h, ['начислено %']);
     var cCompound    = SL.findCol(h, ['итого сложные проценты', 'сложные проценты']);
     var cPaidPct     = SL.findCol(h, ['σ выплат %', 'сумма выплат %']);
+    var cDebtSimple  = SL.findCol(h, ['задолженность % (транш)']);
     var cDebtCompound= SL.findCol(h, ['задолженность % (сложные)']);
 
     var result = [];
@@ -326,8 +332,10 @@
         sheetReturns:      cReturns      >= 0 ? SL.parseNum(SL.get(row, cReturns))      : null,
         sheetBalance:      cBalance      >= 0 ? SL.parseNum(SL.get(row, cBalance))      : null,
         sheetDays:         cDays         >= 0 ? SL.parseNum(SL.get(row, cDays))         : null,
+        sheetSimple:       cSimple       >= 0 ? SL.parseNum(SL.get(row, cSimple))       : null,
         sheetCompound:     cCompound     >= 0 ? SL.parseNum(SL.get(row, cCompound))     : null,
         sheetPaidPct:      cPaidPct      >= 0 ? SL.parseNum(SL.get(row, cPaidPct))      : null,
+        sheetDebtSimple:   cDebtSimple   >= 0 ? SL.parseNum(SL.get(row, cDebtSimple))   : null,
         sheetDebtCompound: cDebtCompound >= 0 ? SL.parseNum(SL.get(row, cDebtCompound)) : null,
       });
     }

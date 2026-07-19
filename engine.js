@@ -1,14 +1,17 @@
-// Расчётный движок: сложные %, остатки, агрегаты.
+// Расчётный движок: проценты, остатки, агрегаты.
 // Все даты — ISO yyyy-mm-dd. Все ставки — доли (0.065 = 6.5%).
 //
-// Основная метрика — СЛОЖНЫЕ проценты (колонка V реестра, «Итого сложные
-// проценты»), они же лежат в основе нового Телевизора. Считаются на текущую
-// дату (TODAY() в таблице), а не на дату отчёта — так сделано в самой таблице.
-// Ставка берётся из колонки L «Ставка по корп договору»:
-//   · инвестиционный  → «Процент по корп договору» (Справочники!B18)
-//   · оборотный фикс  → ставка в договоре
-//   · оборотный плав  → ключ ЦБ по сегментам + надбавка
-// Всё, что не «инвестиционный» (в т.ч. «старое говно» и пустое), — оборотное.
+// Способ начисления зависит от принадлежности транша:
+//
+//   ИНВЕСТИЦИОННЫЕ — сложные проценты (колонка V реестра) по ставке корп
+//   договора (Справочники!B18) с капитализацией (B19). Считаются на текущую
+//   дату: в таблице там TODAY(), а не дата отчёта.
+//
+//   ОБОРОТНЫЕ и «СТАРОЕ ГОВНО» — простые проценты, факт/365 (колонка U) на
+//   дату отчёта. Фикс — по ставке договора, плав — по сегментам ключа ЦБ
+//   плюс надбавка.
+//
+// Оборотным считается всё, что не «инвестиционный», включая пустое поле.
 
 (function(){
   const E = {};
@@ -110,33 +113,70 @@
     return Math.max(0, total);
   };
 
+  // Простые проценты факт/365 на дату `asOf` — повтор колонки U реестра.
+  // Начисляем на всё тело, затем вычитаем начисленное на возвращённые части
+  // за период от их возврата. Ставка — договорная (не корповая).
+  E.simpleAccrued = function(tranche, movements, asOf, segs){
+    const sum = tranche.sum || 0;
+    if (!tranche.date || !sum) return 0;
+    const returns = movements.filter(m =>
+      m.tranche === tranche.id && m.type === 'Возврат тела' && m.date && m.date < asOf);
+
+    if (tranche.rateType === 'плав'){
+      const add = tranche.addRate || 0;
+      // Доля «рубль·год» за период [from, asOf] по сегментам ключа ЦБ.
+      const factor = (from) => segs.reduce((acc, seg) => {
+        const a = E.maxDate(seg.start, from);
+        const b = E.minDate(E.addDays(seg.end, 1), asOf);
+        const days = E.daysBetween(a, b);
+        return days > 0 ? acc + (seg.rate + add) * days / 365 : acc;
+      }, 0);
+      let total = sum * factor(tranche.date);
+      for (const m of returns) total -= m.sum * factor(m.date);
+      return Math.max(0, total);
+    }
+
+    const r = tranche.contractRate != null ? tranche.contractRate : (tranche.rate || 0);
+    let total = sum * r * Math.max(0, E.daysBetween(tranche.date, asOf)) / 365;
+    for (const m of returns) total -= m.sum * r * E.daysBetween(m.date, asOf) / 365;
+    return Math.max(0, total);
+  };
+
   // Полный расчёт по траншу с учётом возвратов (тела) и выплат %.
   // Формульные колонки берём прямо из таблицы; пересчитываем локально только
   // если их нет или по траншу добавлено движение «на лету» (флаг _local).
-  E.computeTranche = function(tranche, movements, asOf, cbSegments, params){
+  E.computeTranche = function(tranche, movements, dates, cbSegments, params){
     const own      = movements.filter(m => m.tranche === tranche.id);
     const hasLocal = own.some(m => m._local);
-    const useSheet = !hasLocal && tranche.sheetCompound != null;
+    const invest   = E.isInvest(tranche.kind);
+
+    // Инвестиционные — сложные на текущую дату, оборотные — простые на отчётную.
+    const asOf     = invest ? dates.compound : dates.report;
+    const sheetVal = invest ? tranche.sheetCompound     : tranche.sheetSimple;
+    const sheetDebt= invest ? tranche.sheetDebtCompound : tranche.sheetDebtSimple;
+    const useSheet = !hasLocal && sheetVal != null;
 
     const returns = own.filter(m => m.type === 'Возврат тела').reduce((s,m)=>s + m.sum, 0);
     const paidPct = own.filter(m => m.type === 'Выплата %').reduce((s,m)=>s + m.sum, 0);
     const balance = (tranche.sum || 0) - returns;
 
-    const compound = useSheet
-      ? tranche.sheetCompound
-      : E.compoundAccrued(tranche, own, asOf, cbSegments, params);
+    const accrued = useSheet ? sheetVal
+      : invest ? E.compoundAccrued(tranche, own, asOf, cbSegments, params)
+               : E.simpleAccrued(tranche, own, asOf, cbSegments);
 
-    // Долг по % может быть отрицательным при переплате — как в колонке X.
-    const debtPct = useSheet && tranche.sheetDebtCompound != null
-      ? tranche.sheetDebtCompound
-      : compound - paidPct;
+    // Сложный долг (X) может уходить в минус при переплате, простой (Y) — нет.
+    const debtPct = useSheet && sheetDebt != null ? sheetDebt
+      : invest ? accrued - paidPct
+               : Math.max(0, accrued - paidPct);
 
     return {
       ...tranche,
       returns, paidPct, balance,
       daysFrom: E.daysBetween(tranche.date, asOf),
-      accrued: compound,
+      accrued,
       debtPct,
+      accrualMode: invest ? 'сложные' : 'простые',
+      accrualDate: asOf,
       _fromSheet: useSheet,
     };
   };
@@ -144,10 +184,13 @@
   // Полный расчёт всего реестра.
   E.computeAll = function(dataset){
     const segs = E.normalizeCBRates(dataset.cbrates);
-    // Сложные % в таблице считаются на TODAY(), а не на дату отчёта.
-    const asOf = dataset.compoundDate || new Date().toISOString().slice(0,10);
+    const dates = {
+      // Сложные % в таблице считаются на TODAY(), простые — на дату отчёта.
+      compound: dataset.compoundDate || new Date().toISOString().slice(0,10),
+      report:   dataset.reportDate,
+    };
     const params = { corpRate: dataset.corpRate, capPeriod: dataset.capPeriod };
-    return dataset.tranches.map(t => E.computeTranche(t, dataset.movements, asOf, segs, params));
+    return dataset.tranches.map(t => E.computeTranche(t, dataset.movements, dates, segs, params));
   };
 
   const EMPTY = () => ({

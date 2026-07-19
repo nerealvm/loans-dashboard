@@ -122,7 +122,7 @@ function ScreenRegistry({ dataset, computed, selectedProj, setSelectedProj, proj
     <div className="content">
       <div className="page-eyebrow">Раздел · Реестр</div>
       <h1 className="page-title">Реестр траншей</h1>
-      <div className="page-sub">Все займы по дате выдачи. Каждая строка — отдельный транш с остатком тела, сложными % и долгом по %. Инвестиционные считаются по ставке корп договора, оборотные — по договорной или ключу ЦБ + надбавка.</div>
+      <div className="page-sub">Все займы по дате выдачи. Каждая строка — отдельный транш с остатком тела, начисленными % и долгом по %. Инвестиционные — сложные проценты по ставке корп договора, оборотные и старые — простые по договорной ставке или ключу ЦБ + надбавка.</div>
 
       <FilterBar projects={dataset.projects} selected={selectedProj} setSelected={setSelectedProj} projAgg={projAgg} />
 
@@ -150,7 +150,7 @@ function ScreenRegistry({ dataset, computed, selectedProj, setSelectedProj, proj
               <th>ID</th><th>Дата</th><th>Контрагент</th><th>Проект</th><th>Тип</th>
               <th className="num">Тело</th><th className="num">Возвращено</th><th className="num">Остаток</th>
               <th>Ставка</th>
-              <th className="num">Сложные %</th><th className="num">Долг % (сложн.)</th><th>Дней</th>
+              <th className="num">Начислено %</th><th className="num">Долг %</th><th>Дней</th>
             </tr></thead>
             <tbody>
               {grouped
@@ -363,8 +363,8 @@ function ScreenGroups({ dataset, computed }){
         <KPI label="Фактическая доля" value={fmt.pct(factual, 1)}
              sub={`Δ ${factual >= expected ? '+' : ''}${fmt.pct(factual - expected, 2)}`}
              bar={factual} />
-        <KPI label="Долг по % (сложные)" value={fmt.money(totals.debtPct, {compact:true})}
-             sub={`начислено ${fmt.money(totals.accrued,{compact:true})} · выплачено ${fmt.money(totals.paidPct,{compact:true})}`} />
+        <KPI label="Долг по %" value={fmt.money(totals.debtPct, {compact:true})}
+             sub={`сложные по инвест ${fmt.money(totals.investDebtPct,{compact:true})} · простые по оборотным ${fmt.money(totals.workDebtPct,{compact:true})}`} />
         <KPI label="Инвест / оборотные"
              value={fmt.money(totals.investBalance, {compact:true})}
              sub={`оборотных и прочих ${fmt.money(totals.workBalance, {compact:true})}`}
@@ -381,7 +381,7 @@ function ScreenGroups({ dataset, computed }){
             <thead><tr>
               <th>ID</th><th>Дата</th><th>Контрагент</th><th>Проект</th><th>Тип</th>
               <th className="num">Тело</th><th className="num">Остаток</th><th>Ставка</th>
-              <th className="num">Долг % (сложн.)</th>
+              <th className="num">Долг %</th>
             </tr></thead>
             <tbody>
               {own.map(t => (
