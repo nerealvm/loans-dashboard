@@ -5,7 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
   <title>Korma · Investor Loans Console</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
-  <link rel="stylesheet" href="styles.css"/>
+  <!-- GitHub Pages отдаёт статику с max-age=600, поэтому после деплоя браузер
+       ещё десять минут крутит старую версию. Параметр ?v= это лечит: бампайте
+       его в том же коммите, где меняется код. -->
+  <link rel="stylesheet" href="styles.css?v=2"/>
 </head>
 <body>
   <div id="root"></div>
@@ -15,18 +18,18 @@
   <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
 
   <!-- Calculation engine (pure JS, no JSX) -->
-  <script src="engine.js"></script>
+  <script src="engine.js?v=2"></script>
 
   <!-- Google Sheets loader (pure JS, no JSX) -->
-  <script src="sheets-loader.js"></script>
+  <script src="sheets-loader.js?v=2"></script>
 
   <!-- React components (JSX via Babel) -->
-  <script type="text/babel" src="utils.jsx"></script>
-  <script type="text/babel" src="tweaks-panel.jsx"></script>
-  <script type="text/babel" src="shell.jsx"></script>
-  <script type="text/babel" src="screens-dashboard.jsx"></script>
-  <script type="text/babel" src="screens-other.jsx"></script>
-  <script type="text/babel" src="drawers.jsx"></script>
-  <script type="text/babel" src="app.jsx"></script>
+  <script type="text/babel" src="utils.jsx?v=2"></script>
+  <script type="text/babel" src="tweaks-panel.jsx?v=2"></script>
+  <script type="text/babel" src="shell.jsx?v=2"></script>
+  <script type="text/babel" src="screens-dashboard.jsx?v=2"></script>
+  <script type="text/babel" src="screens-other.jsx?v=2"></script>
+  <script type="text/babel" src="drawers.jsx?v=2"></script>
+  <script type="text/babel" src="app.jsx?v=2"></script>
 </body>
 </html>
