@@ -90,10 +90,44 @@ function GroupQuick({ groups, dataset, onNavigate }){
   );
 }
 
-function ScreenDashboard({ dataset, computed, projAgg, groupAgg, selectedProj, setSelectedProj, onNavigate }){
-  const filt = useMemoD(()=>computed.filter(t=>selectedProj.includes(t.project)), [computed, selectedProj]);
-  const agg = E.aggregate(computed, selectedProj);
-  const limitUsed = agg.balance / dataset.invLimit;
+function GroupFilterBar({ groups, selected, setSelected }){
+  return (
+    <div className="filter-bar">
+      <span className="filter-label">Группы</span>
+      {groups.map(g => {
+        const on = selected.includes(g);
+        return (
+          <button key={g} className={'chip' + (on?' on':'')}
+            onClick={() => setSelected(on ? selected.filter(x=>x!==g) : [...selected, g])}>
+            <span className="chip-dot" style={{background: fmt.groupColor(g)}}></span>
+            <span>{g}</span>
+          </button>
+        );
+      })}
+      <div className="filter-actions">
+        <span className="mini" onClick={()=>setSelected([...groups])}>все</span>
+        <span className="mini" onClick={()=>setSelected([])}>сброс</span>
+      </div>
+    </div>
+  );
+}
+
+function ScreenDashboard({ dataset, computed, selectedProj, setSelectedProj, onNavigate }){
+  const [selectedGroups, setSelectedGroups] = useStateD(dataset.groups);
+  // Фильтр по группам — как в новом Телевизоре (веса G8:G10).
+  const inGroups = useMemoD(
+    ()=>computed.filter(t=>selectedGroups.includes(t.group)),
+    [computed, selectedGroups]);
+
+  const agg      = E.aggregate(inGroups, selectedProj);
+  const projAgg  = useMemoD(()=>E.aggregateByProject(inGroups), [inGroups]);
+  const groupSub = useMemoD(
+    ()=>E.aggregateByGroup(inGroups, selectedProj),
+    [inGroups, selectedProj]);
+
+  // Инвестиционный лимит: превышение уходит в оборотные (Телевизор, B34:B37).
+  const limitUsed = dataset.invLimit ? agg.investBalance / dataset.invLimit : 0;
+  const overLimit = Math.max(0, agg.investBalance - (dataset.invLimit || 0));
 
   // Recent movements
   const recent = [...dataset.movements].filter(Boolean).sort((a,b)=>(b.date||'').localeCompare(a.date||'')).slice(0,6);
@@ -102,7 +136,10 @@ function ScreenDashboard({ dataset, computed, projAgg, groupAgg, selectedProj, s
     <div className="content">
       <div className="page-eyebrow">Главная панель · Телевизор</div>
       <h1 className="page-title">Сводка по займам</h1>
-      <div className="page-sub">Что должны акционеры компании, что компания должна акционерам, в разрезе проектов и групп. Расчёт на отчётную дату {fmt.date(dataset.reportDate)}.</div>
+      <div className="page-sub">
+        Что должны акционеры компании, что компания должна акционерам, в разрезе проектов и групп.
+        Тело — на отчётную дату {fmt.date(dataset.reportDate)}, сложные проценты — на {fmt.date(dataset.compoundDate || dataset.reportDate)}.
+      </div>
 
       <FilterBar
         projects={dataset.projects}
@@ -110,17 +147,43 @@ function ScreenDashboard({ dataset, computed, projAgg, groupAgg, selectedProj, s
         setSelected={setSelectedProj}
         projAgg={projAgg} />
 
+      <GroupFilterBar groups={dataset.groups} selected={selectedGroups} setSelected={setSelectedGroups} />
+
       <div className="kpi-grid">
-        <KPI label="Всего выдано тела"
-             value={fmt.money(agg.issued, {compact:true})}
-             sub={`${agg.count} траншей в фильтре`} />
-        <KPI label="Возвращено тела"
-             value={fmt.money(agg.returned, {compact:true})}
-             sub={`${fmt.pct(agg.issued ? agg.returned/agg.issued : 0)} от выданного`}
-             bar={agg.issued ? agg.returned/agg.issued : 0} />
-        <KPI label="Тело в работе"
+        <KPI label="Остаток тела займов"
              value={fmt.money(agg.balance, {compact:true})}
+             sub={`${agg.count} траншей · выдано ${fmt.money(agg.issued, {compact:true})}, возвращено ${fmt.money(agg.returned, {compact:true})}`}
              accent />
+        <KPI label="Всего % (сложные)"
+             value={fmt.money(agg.debtPct, {compact:true})}
+             sub={`начислено ${fmt.money(agg.accrued, {compact:true})} · выплачено ${fmt.money(agg.paidPct, {compact:true})}`} />
+        <KPI label="Всего тело + %"
+             value={fmt.money(agg.balance + agg.debtPct, {compact:true})} />
+      </div>
+
+      <div style={{marginTop: 28}}>
+        <div className="page-eyebrow" style={{marginBottom: 4}}>Инвестиционные и оборотные</div>
+        <div className="kpi-grid">
+          <KPI label="Тело инвестиционных займов"
+               value={fmt.money(agg.investBalance, {compact:true})}
+               sub={`сложные % ${fmt.money(agg.investDebtPct, {compact:true})} · итого ${fmt.money(agg.investBalance + agg.investDebtPct, {compact:true})}`}
+               bar={agg.balance ? agg.investBalance / agg.balance : 0} />
+          <KPI label="Тело оборотных и прочих"
+               value={fmt.money(agg.workBalance, {compact:true})}
+               sub={`сложные % ${fmt.money(agg.workDebtPct, {compact:true})} · итого ${fmt.money(agg.workBalance + agg.workDebtPct, {compact:true})}`}
+               bar={agg.balance ? agg.workBalance / agg.balance : 0} />
+          <KPI label="Инвестиционный лимит"
+               value={fmt.money(dataset.invLimit, {compact:true})}
+               sub={overLimit > 0
+                 ? `превышение ${fmt.money(overLimit, {compact:true})} — уходит в оборотные`
+                 : `использовано ${fmt.pct(limitUsed, 0)} · запас ${fmt.money((dataset.invLimit||0) - agg.investBalance, {compact:true})}`}
+               bar={limitUsed} />
+        </div>
+        <div className="note" style={{marginTop:12}}>
+          <span className="nlabel">как считаем</span>
+          Инвестиционные — по ставке корп договора {fmt.pct(dataset.corpRate, 0)} с капитализацией «{dataset.capPeriod}».
+          Оборотными считается всё остальное, включая старые займы: фикс — по ставке договора, плав — по ключу ЦБ + надбавка.
+        </div>
       </div>
 
       <div style={{marginTop: 28}}>
@@ -134,7 +197,7 @@ function ScreenDashboard({ dataset, computed, projAgg, groupAgg, selectedProj, s
 
       <div style={{marginTop: 28}}>
         <div className="page-eyebrow" style={{marginBottom: 4}}>По группам акционеров</div>
-        <GroupQuick groups={groupAgg} dataset={dataset} onNavigate={onNavigate} />
+        <GroupQuick groups={groupSub} dataset={dataset} onNavigate={onNavigate} />
       </div>
 
       <div className="panel">

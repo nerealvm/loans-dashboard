@@ -17,9 +17,11 @@ function TrancheRow({ t, onSelect }){
       <td className="num muted">{fmt.money(t.returns)}</td>
       <td className="num strong" style={{color: fully ? 'var(--fg-3)' : 'var(--fg-0)'}}>{fmt.money(t.balance)}</td>
       <td>
-        {t.rateType === 'плав'
-          ? <span className="tag rate-flo">ЦБ +{fmt.pct(t.addRate||0,1)}</span>
-          : <span className="tag rate-fix">{fmt.pct(t.rate||0,1)}</span>}
+        {E.isInvest(t.kind)
+          ? <span className="tag kind-inv">{fmt.pct(t.corpRate ?? 0, 1)} корп</span>
+          : t.rateType === 'плав'
+            ? <span className="tag rate-flo">ЦБ +{fmt.pct(t.addRate||0,1)}</span>
+            : <span className="tag rate-fix">{fmt.pct(t.rate||0,1)}</span>}
       </td>
       <td className="num">{fmt.money(t.accrued, {compact:true})}</td>
       <td className="num" style={{color: t.debtPct > 0 ? 'var(--warn)' : 'var(--fg-3)'}}>{fmt.money(t.debtPct, {compact:true})}</td>
@@ -40,6 +42,7 @@ function Chevron({ open }){
 
 function ScreenRegistry({ dataset, computed, selectedProj, setSelectedProj, projAgg, onSelect, groupFilter, setGroupFilter }){
   const [search, setSearch] = useStateS('');
+  const [kindFilter, setKindFilter] = useStateS('all'); // all | invest | work
   const [collapsedGroups, setCollapsedGroups] = useStateS(new Set());
   const [collapsedCarriers, setCollapsedCarriers] = useStateS(new Set());
 
@@ -54,6 +57,9 @@ function ScreenRegistry({ dataset, computed, selectedProj, setSelectedProj, proj
     return computed.filter(t => {
       if (!selectedProj.includes(t.project)) return false;
       if (groupFilter !== 'all' && t.group !== groupFilter) return false;
+      // Оборотное = всё, что не «инвестиционный» (включая «старое говно»).
+      if (kindFilter === 'invest' && !E.isInvest(t.kind)) return false;
+      if (kindFilter === 'work'   &&  E.isInvest(t.kind)) return false;
       if (search){
         const s = search.toLowerCase();
         if (!(t.id.toLowerCase().includes(s) ||
@@ -63,7 +69,7 @@ function ScreenRegistry({ dataset, computed, selectedProj, setSelectedProj, proj
       }
       return true;
     });
-  }, [computed, selectedProj, groupFilter, search]);
+  }, [computed, selectedProj, groupFilter, kindFilter, search]);
 
   const totals = useMemoS(()=> ({
     issued: filt.reduce((s,t)=>s+(t.sum||0),0),
@@ -116,7 +122,7 @@ function ScreenRegistry({ dataset, computed, selectedProj, setSelectedProj, proj
     <div className="content">
       <div className="page-eyebrow">Раздел · Реестр</div>
       <h1 className="page-title">Реестр траншей</h1>
-      <div className="page-sub">Все займы по дате выдачи. Каждая строка — отдельный транш с остатком тела, накопленными % и долгом по %.</div>
+      <div className="page-sub">Все займы по дате выдачи. Каждая строка — отдельный транш с остатком тела, сложными % и долгом по %. Инвестиционные считаются по ставке корп договора, оборотные — по договорной или ключу ЦБ + надбавка.</div>
 
       <FilterBar projects={dataset.projects} selected={selectedProj} setSelected={setSelectedProj} projAgg={projAgg} />
 
@@ -126,8 +132,13 @@ function ScreenRegistry({ dataset, computed, selectedProj, setSelectedProj, proj
           <div className="panel-sub">{filt.length} из {computed.length}</div>
           <div className="panel-actions">
             <div className="seg-toggle">
-              {['all','Пресняков','N&K','Чил-Акопов'].map(g => (
+              {['all'].concat(dataset.groups).map(g => (
                 <button key={g} className={groupFilter===g?'on':''} onClick={()=>setGroupFilter(g)}>{g==='all'?'все группы':g}</button>
+              ))}
+            </div>
+            <div className="seg-toggle">
+              {[['all','все'],['invest','инвест'],['work','оборотные']].map(([v,label]) => (
+                <button key={v} className={kindFilter===v?'on':''} onClick={()=>setKindFilter(v)}>{label}</button>
               ))}
             </div>
             <input className="search-input" placeholder="ID, контрагент, тип…" value={search} onChange={e=>setSearch(e.target.value)} />
@@ -139,7 +150,7 @@ function ScreenRegistry({ dataset, computed, selectedProj, setSelectedProj, proj
               <th>ID</th><th>Дата</th><th>Контрагент</th><th>Проект</th><th>Тип</th>
               <th className="num">Тело</th><th className="num">Возвращено</th><th className="num">Остаток</th>
               <th>Ставка</th>
-              <th className="num">Начислено %</th><th className="num">Долг %</th><th>Дней</th>
+              <th className="num">Сложные %</th><th className="num">Долг % (сложн.)</th><th>Дней</th>
             </tr></thead>
             <tbody>
               {grouped
@@ -321,14 +332,8 @@ function ScreenGroups({ dataset, computed }){
   for (const g of dataset.groups) tabsAgg[g] = computed.filter(t=>t.group===g);
   const own = tabsAgg[active] || [];
 
-  const totals = {
-    issued: own.reduce((s,t)=>s+(t.sum||0),0),
-    returns: own.reduce((s,t)=>s+(t.returns||0),0),
-    balance: own.reduce((s,t)=>s+(t.balance||0),0),
-    accrued: own.reduce((s,t)=>s+(t.accrued||0),0),
-    paidPct: own.reduce((s,t)=>s+(t.paidPct||0),0),
-    debtPct: own.reduce((s,t)=>s+(t.debtPct||0),0),
-  };
+  const totals = E.aggregate(own, dataset.projects);
+  totals.returns = totals.returned;
 
   const expected = dataset.shares[active];
   const totalAll = computed.reduce((s,t)=>s+(t.balance||0),0);
@@ -358,8 +363,12 @@ function ScreenGroups({ dataset, computed }){
         <KPI label="Фактическая доля" value={fmt.pct(factual, 1)}
              sub={`Δ ${factual >= expected ? '+' : ''}${fmt.pct(factual - expected, 2)}`}
              bar={factual} />
-        <KPI label="Долг по %" value={fmt.money(totals.debtPct, {compact:true})}
-             sub={`накоплено ${fmt.money(totals.accrued,{compact:true})} · выплачено ${fmt.money(totals.paidPct,{compact:true})}`} />
+        <KPI label="Долг по % (сложные)" value={fmt.money(totals.debtPct, {compact:true})}
+             sub={`начислено ${fmt.money(totals.accrued,{compact:true})} · выплачено ${fmt.money(totals.paidPct,{compact:true})}`} />
+        <KPI label="Инвест / оборотные"
+             value={fmt.money(totals.investBalance, {compact:true})}
+             sub={`оборотных и прочих ${fmt.money(totals.workBalance, {compact:true})}`}
+             bar={totals.balance ? totals.investBalance / totals.balance : 0} />
       </div>
 
       <div className="panel">
@@ -372,7 +381,7 @@ function ScreenGroups({ dataset, computed }){
             <thead><tr>
               <th>ID</th><th>Дата</th><th>Контрагент</th><th>Проект</th><th>Тип</th>
               <th className="num">Тело</th><th className="num">Остаток</th><th>Ставка</th>
-              <th className="num">Долг %</th>
+              <th className="num">Долг % (сложн.)</th>
             </tr></thead>
             <tbody>
               {own.map(t => (
@@ -384,7 +393,11 @@ function ScreenGroups({ dataset, computed }){
                   <td><span className={'tag ' + fmt.kindClass(t.kind)}>{t.kind||'—'}</span></td>
                   <td className="num strong">{fmt.money(t.sum)}</td>
                   <td className="num">{fmt.money(t.balance)}</td>
-                  <td>{t.rateType==='плав' ? <span className="tag rate-flo">ЦБ +{fmt.pct(t.addRate||0,1)}</span> : <span className="tag rate-fix">{fmt.pct(t.rate||0,1)}</span>}</td>
+                  <td>{E.isInvest(t.kind)
+                    ? <span className="tag kind-inv">{fmt.pct(t.corpRate ?? 0, 1)} корп</span>
+                    : t.rateType==='плав'
+                      ? <span className="tag rate-flo">ЦБ +{fmt.pct(t.addRate||0,1)}</span>
+                      : <span className="tag rate-fix">{fmt.pct(t.rate||0,1)}</span>}</td>
                   <td className="num" style={{color: t.debtPct>0?'var(--warn)':'var(--fg-3)'}}>{fmt.money(t.debtPct,{compact:true})}</td>
                 </tr>
               ))}
@@ -399,12 +412,10 @@ function ScreenGroups({ dataset, computed }){
 /* =================== ПАРИТЕТ =================== */
 
 const AA_PROJECT = 'Ассортимент Агро';
-const SHARES_AA  = { 'Пресняков': 0.335, 'N&K': 0.33, 'Чил-Акопов': 0.335 };
 
-function ParityTable({ dataset, computedSubset, shares }){
+function ParityTable({ dataset, computedSubset, shares, isAA }){
   const groupAgg   = E.aggregateByGroup(computedSubset, dataset.projects);
   const totalBal   = Object.values(groupAgg).reduce((s,g)=>s+g.balance,0);
-  const isAA       = shares === SHARES_AA;
 
   return (
     <>
@@ -496,20 +507,20 @@ function ScreenParity({ dataset, computed }){
 
       {tab === 'main'
         ? <ParityTable dataset={dataset} computedSubset={computedMain} shares={dataset.shares} />
-        : <ParityTable dataset={dataset} computedSubset={computedAA}   shares={SHARES_AA} />
+        : <ParityTable dataset={dataset} computedSubset={computedAA}   shares={dataset.sharesAA || {}} isAA />
       }
 
-      {tab === 'main' ? (
-        <div className="note" style={{marginTop:18}}>
-          <span className="nlabel">прим.</span>
-          Паритет считается по трём группам БЕЗ проекта «Ассортимент Агро» (АА). Плановые доли: Пресняков 40%, N&K 35,7%, Чил-Акопов 24,3%. Доля Чил-Акопова определена через остаток.
-        </div>
-      ) : (
-        <div className="note" style={{marginTop:18}}>
-          <span className="nlabel">прим.</span>
-          Паритет только по проекту АА. N&K = Горшков Константин Олегович (16,5%) + Кузьмин Никита Владимирович (16,5%). Плановые доли: Пресняков 33,5%, N&K 33%, Чил-Акопов 33,5%.
-        </div>
-      )}
+      <div className="note" style={{marginTop:18}}>
+        <span className="nlabel">прим.</span>
+        {tab === 'main'
+          ? 'Паритет считается по трём группам БЕЗ проекта «Ассортимент Агро» (АА). '
+          : 'Паритет только по проекту АА. N&K = Горшков Константин Олегович + Кузьмин Никита Владимирович. '}
+        Плановые доли из листа «Справочники»: {dataset.groups.map((g, i) => (
+          <React.Fragment key={g}>
+            {i ? ', ' : ''}{g} {fmt.pct((tab === 'main' ? dataset.shares : (dataset.sharesAA || {}))[g], 1)}
+          </React.Fragment>
+        ))}.
+      </div>
     </div>
   );
 }

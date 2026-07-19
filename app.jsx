@@ -10,7 +10,8 @@ const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
   "spreadsheetId": "1qnL1DLlIXaY577HHa4V7SqrNEfRbhKjCuWrae_sWRmk",
   "sheetReestр": "Реестр траншей",
   "sheetJournal": "Журнал движений",
-  "sheetCBRates": "Ставки ЦБ"
+  "sheetCBRates": "Ставки ЦБ",
+  "sheetParams": "Справочники"
 }/*EDITMODE-END*/;
 
 // ─── Data source status indicator ─────────────────────────────────────────────
@@ -53,18 +54,21 @@ function SheetsSettingsDrawer({ tw, setTw, onClose, onRefresh }) {
   const [re, setRe] = React.useState(tw.sheetReestр || 'Реестр траншей');
   const [jn, setJn] = React.useState(tw.sheetJournal || 'Журнал движений');
   const [cb, setCb] = React.useState(tw.sheetCBRates || 'Ставки ЦБ');
+  const [pr, setPr] = React.useState(tw.sheetParams || 'Справочники');
 
   function handleSave() {
     setTw('spreadsheetId', id.trim());
     setTw('sheetReestр', re.trim());
     setTw('sheetJournal', jn.trim());
     setTw('sheetCBRates', cb.trim());
+    setTw('sheetParams', pr.trim());
     if (window.SL) {
       SL.setConfig({
         spreadsheetId: id.trim(),
         sheetReestр: re.trim(),
         sheetJournal: jn.trim(),
         sheetCBRates: cb.trim(),
+        sheetParams: pr.trim(),
       });
       SL.clearCache();
     }
@@ -111,6 +115,7 @@ function SheetsSettingsDrawer({ tw, setTw, onClose, onRefresh }) {
             ['Реестр траншей', re, setRe],
             ['Журнал движений', jn, setJn],
             ['Ставки ЦБ', cb, setCb],
+            ['Справочники', pr, setPr],
           ].map(([label, val, setter]) => (
             <div className="field" key={label} style={{marginTop:0}}>
               <label>{label}</label>
@@ -183,7 +188,7 @@ function AppRoot() {
     } catch (e) {
       console.error('[Snapshot] Load failed:', e);
     }
-  }, [tw.sheetsEnabled, tw.spreadsheetId, tw.sheetReestр, tw.sheetJournal, tw.sheetCBRates]);
+  }, [tw.sheetsEnabled, tw.spreadsheetId, tw.sheetReestр, tw.sheetJournal, tw.sheetCBRates, tw.sheetParams]);
 
   useEffectA(() => { loadData(false); }, []);
 
@@ -203,7 +208,6 @@ function AppRoot() {
   }, [dataset]);
 
   const projAgg  = useMemoA(() => dataset ? E.aggregateByProject(computed) : {}, [dataset, computed]);
-  const groupAgg = useMemoA(() => dataset ? E.aggregateByGroup(computed, selectedProj) : {}, [computed, selectedProj]);
 
   if (!dataset) {
     return (
@@ -265,7 +269,7 @@ function AppRoot() {
           onRefresh={() => loadData(true)}
           onSettings={() => setSettingsOpen(true)}
         />
-        {active === 'dash' && <ScreenDashboard dataset={dataset} computed={computed} projAgg={projAgg} groupAgg={groupAgg} selectedProj={selectedProj} setSelectedProj={setSelectedProj} onNavigate={navigate} />}
+        {active === 'dash' && <ScreenDashboard dataset={dataset} computed={computed} selectedProj={selectedProj} setSelectedProj={setSelectedProj} onNavigate={navigate} />}
         {active === 'reg'  && <ScreenRegistry  dataset={dataset} computed={computed} projAgg={projAgg} selectedProj={selectedProj} setSelectedProj={setSelectedProj} onSelect={setDetail} groupFilter={regGroupFilter} setGroupFilter={setRegGroupFilter} />}
         {active === 'log'  && <ScreenJournal   dataset={dataset} onAdd={() => openAdd()} />}
         {active === 'grp'  && <ScreenGroups    dataset={dataset} computed={computed} />}

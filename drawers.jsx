@@ -30,6 +30,9 @@ function AddMovementDrawer({ dataset, computed, onClose, onSave, prefilledTranch
     onSave({
       id, type, tranche, date, sum: sumNum, comment,
       carrier: trancheObj?.carrier, project: trancheObj?.project,
+      // Движение добавлено локально — движок пересчитает транш сам,
+      // вместо того чтобы брать готовые значения формул из таблицы.
+      _local: true,
     });
     onClose();
   }
@@ -125,9 +128,11 @@ function TrancheDetail({ tranche, movements, onClose, onAddMovement }){
         <div style={{display:'flex', gap:8, marginTop:10}}>
           <span className={'tag ' + fmt.projectClass(tranche.project)}>{fmt.projectShort(tranche.project)}</span>
           <span className={'tag ' + fmt.kindClass(tranche.kind)}>{tranche.kind || '—'}</span>
-          {tranche.rateType==='плав'
-            ? <span className="tag rate-flo">ЦБ +{fmt.pct(tranche.addRate||0,1)}</span>
-            : <span className="tag rate-fix">{fmt.pct(tranche.rate||0,1)}</span>}
+          {E.isInvest(tranche.kind)
+            ? <span className="tag kind-inv">корп {fmt.pct(tranche.corpRate ?? 0, 1)}</span>
+            : tranche.rateType==='плав'
+              ? <span className="tag rate-flo">ЦБ +{fmt.pct(tranche.addRate||0,1)}</span>
+              : <span className="tag rate-fix">{fmt.pct(tranche.rate||0,1)}</span>}
         </div>
       </div>
       <div className="meta-grid">
@@ -139,10 +144,10 @@ function TrancheDetail({ tranche, movements, onClose, onAddMovement }){
         <div><div className="k">Возвращено</div><div className="v">{fmt.money(tranche.returns)}</div></div>
         <div><div className="k">Остаток</div><div className="v" style={{color:'var(--accent-strong)'}}>{fmt.money(tranche.balance)}</div></div>
         <div><div className="k">Срок (план)</div><div className="v">{tranche.term ? tranche.term + ' дн' : '—'}</div></div>
-        <div><div className="k">Накоплено %</div><div className="v">{fmt.money(tranche.accrued)}</div></div>
+        <div><div className="k">Сложные %</div><div className="v">{fmt.money(tranche.accrued)}</div></div>
         <div><div className="k">Выплачено %</div><div className="v">{fmt.money(tranche.paidPct)}</div></div>
-        <div><div className="k">Долг по %</div><div className="v" style={{color: tranche.debtPct>0?'var(--warn)':'var(--fg-0)'}}>{fmt.money(tranche.debtPct)}</div></div>
-        <div><div className="k">Документ</div><div className="v" style={{color:'var(--fg-2)'}}>{tranche.doc || '—'}</div></div>
+        <div><div className="k">Долг по % (сложн.)</div><div className="v" style={{color: tranche.debtPct>0?'var(--warn)':'var(--fg-0)'}}>{fmt.money(tranche.debtPct)}</div></div>
+        <div><div className="k">Принадлежность</div><div className="v">{tranche.kind || '—'}</div></div>
       </div>
 
       <div style={{padding: '0 22px 22px'}}>
