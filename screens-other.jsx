@@ -326,8 +326,14 @@ function ScreenJournal({ dataset, onAdd }){
 
 /* =================== ГРУППЫ =================== */
 
-function ScreenGroups({ dataset, computed }){
-  const [active, setActive] = useStateS(dataset.groups[0]);
+function ScreenGroups({ dataset, computed, initialGroup }){
+  const [active, setActive] = useStateS(
+    dataset.groups.includes(initialGroup) ? initialGroup : dataset.groups[0]);
+  const [flow, setFlow] = useStateS('all'); // all | out | body | pct
+  React.useEffect(() => {
+    if (dataset.groups.includes(initialGroup)) setActive(initialGroup);
+  }, [initialGroup]);
+
   const tabsAgg = {};
   for (const g of dataset.groups) tabsAgg[g] = computed.filter(t=>t.group===g);
   const own = tabsAgg[active] || [];
@@ -339,6 +345,33 @@ function ScreenGroups({ dataset, computed }){
   const totalAll = computed.reduce((s,t)=>s+(t.balance||0),0);
   const factual = totalAll ? totals.balance / totalAll : 0;
   const contributed = dataset.contributions[active];
+
+  // Единая лента движений группы: выдачи траншей (деньги внутрь) и всё, что
+  // вернулось назад — тело и проценты. Договор и проект берём из транша.
+  const ledger = useMemoS(() => {
+    const byId = new Map(own.map(t => [t.id, t]));
+    const out = own.map(t => ({
+      key: 'T:' + t.id, date: t.date, dir: 'out', kind: 'Выдача транша',
+      tranche: t.id, contractNo: t.contractNo, project: t.project,
+      carrier: t.carrier, sum: t.sum, comment: t.comment,
+    }));
+    const back = dataset.movements
+      .filter(m => byId.has(m.tranche))
+      .map(m => {
+        const t = byId.get(m.tranche);
+        return {
+          key: 'M:' + m.id, date: m.date,
+          dir: m.type === 'Возврат тела' ? 'body' : 'pct', kind: m.type,
+          tranche: m.tranche, contractNo: t.contractNo, project: t.project,
+          carrier: t.carrier, sum: m.sum, comment: m.comment,
+        };
+      });
+    return [...out, ...back].sort((a,b) => (b.date||'').localeCompare(a.date||''));
+  }, [own, dataset.movements]);
+
+  const flowRows  = ledger.filter(r => flow === 'all' || r.dir === flow);
+  const flowTotal = (dir) => ledger.filter(r => r.dir === dir).reduce((s,r)=>s+(r.sum||0), 0);
+  const issued = flowTotal('out'), backBody = flowTotal('body'), backPct = flowTotal('pct');
 
   return (
     <div className="content">
@@ -369,6 +402,56 @@ function ScreenGroups({ dataset, computed }){
              value={fmt.money(totals.investBalance, {compact:true})}
              sub={`оборотных и прочих ${fmt.money(totals.workBalance, {compact:true})}`}
              bar={totals.balance ? totals.investBalance / totals.balance : 0} />
+      </div>
+
+      <div className="panel">
+        <div className="panel-head">
+          <div className="panel-title">Движения группы «{active}»</div>
+          <div className="panel-sub">
+            выдано {fmt.money(issued, {compact:true})} · вернулось телом {fmt.money(backBody, {compact:true})} · процентами {fmt.money(backPct, {compact:true})}
+          </div>
+          <div className="panel-actions">
+            <div className="seg-toggle">
+              {[['all','всё'],['out','выдачи'],['body','возврат тела'],['pct','выплаты %']].map(([v,label]) => (
+                <button key={v} className={flow===v?'on':''} onClick={()=>setFlow(v)}>{label}</button>
+              ))}
+            </div>
+          </div>
+        </div>
+        <div className="t-wrap">
+          <table className="t">
+            <thead><tr>
+              <th>Дата</th><th>Что</th><th>Транш</th><th>Договор</th><th>Проект</th>
+              <th className="num">Сумма</th><th>Комментарий</th>
+            </tr></thead>
+            <tbody>
+              {flowRows.map(r => (
+                <tr key={r.key}>
+                  <td className="muted">{fmt.dateShort(r.date)}</td>
+                  <td>
+                    <span className={'tag ' + (r.dir==='out' ? 'move-out' : r.dir==='body' ? 'move-back' : 'move-pct')}>
+                      {r.kind}
+                    </span>
+                  </td>
+                  <td className="id-cell">{r.tranche}</td>
+                  <td className="muted">{r.contractNo || '—'}</td>
+                  <td><span className={'tag ' + fmt.projectClass(r.project)}>{fmt.projectShort(r.project)}</span></td>
+                  <td className="num strong" style={{color: r.dir==='out' ? 'var(--fg-0)' : 'var(--pos)'}}>
+                    {r.dir==='out' ? '' : '−'}{fmt.money(r.sum)}
+                  </td>
+                  <td className="muted" style={{maxWidth:240, whiteSpace:'normal'}}>{r.comment || '—'}</td>
+                </tr>
+              ))}
+            </tbody>
+            <tfoot><tr>
+              <td colSpan={5} className="muted">
+                {flowRows.length} записей{flow==='all' ? '' : ' в фильтре'}
+              </td>
+              <td className="num">{fmt.money(flowRows.reduce((s,r)=>s+(r.sum||0),0))}</td>
+              <td></td>
+            </tr></tfoot>
+          </table>
+        </div>
       </div>
 
       <div className="panel">

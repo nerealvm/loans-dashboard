@@ -112,6 +112,66 @@ function GroupFilterBar({ groups, selected, setSelected }){
   );
 }
 
+// Инвестиционные займы в разрезе групп: тело, накопленные сложные проценты
+// и сколько это от тела. Оборотные сюда не попадают — у них простые %.
+function InvestByGroup({ dataset, groupAgg, onNavigate }){
+  const rows = dataset.groups.map(g => {
+    const a = groupAgg[g] || {};
+    const body = a.investBalance || 0;
+    const pct  = a.investDebtPct || 0;
+    return { g, body, pct, ratio: body ? pct / body : 0, total: body + pct };
+  });
+  const sum = (k) => rows.reduce((s,r)=>s + r[k], 0);
+  const totalBody = sum('body'), totalPct = sum('pct');
+
+  return (
+    <div className="panel">
+      <div className="panel-head">
+        <div className="panel-title">Инвестиционные займы по группам</div>
+        <div className="panel-sub">
+          сложные {fmt.pct(dataset.corpRate, 0)} · капитализация «{dataset.capPeriod}» · на {fmt.date(dataset.compoundDate || dataset.reportDate)}
+        </div>
+      </div>
+      <div className="t-wrap">
+        <table className="t">
+          <thead><tr>
+            <th>Группа</th>
+            <th className="num">Тело инвест</th>
+            <th className="num">Накоплено сложными</th>
+            <th className="num">% от тела</th>
+            <th className="num">Итого тело + %</th>
+          </tr></thead>
+          <tbody>
+            {rows.map(r => (
+              <tr key={r.g}
+                  onClick={onNavigate ? () => onNavigate('grp', {group: r.g}) : undefined}
+                  style={onNavigate ? {cursor:'pointer'} : undefined}>
+                <td>
+                  <span className="tag" style={{background:'transparent', color:fmt.groupColor(r.g), borderColor:fmt.groupColor(r.g)+'55'}}>
+                    {fmt.groupInitials(r.g)}
+                  </span>{' '}
+                  <span className="strong">{r.g}</span>
+                </td>
+                <td className="num strong">{fmt.money(r.body)}</td>
+                <td className="num">{fmt.money(r.pct)}</td>
+                <td className="num muted">{fmt.pct(r.ratio, 1)}</td>
+                <td className="num strong">{fmt.money(r.total)}</td>
+              </tr>
+            ))}
+          </tbody>
+          <tfoot><tr>
+            <td className="muted">ИТОГО</td>
+            <td className="num">{fmt.money(totalBody)}</td>
+            <td className="num">{fmt.money(totalPct)}</td>
+            <td className="num muted">{fmt.pct(totalBody ? totalPct/totalBody : 0, 1)}</td>
+            <td className="num">{fmt.money(totalBody + totalPct)}</td>
+          </tr></tfoot>
+        </table>
+      </div>
+    </div>
+  );
+}
+
 function ScreenDashboard({ dataset, computed, selectedProj, setSelectedProj, onNavigate }){
   const [selectedGroups, setSelectedGroups] = useStateD(dataset.groups);
   // Фильтр по группам — как в новом Телевизоре (веса G8:G10).
@@ -200,6 +260,8 @@ function ScreenDashboard({ dataset, computed, selectedProj, setSelectedProj, onN
         <div className="page-eyebrow" style={{marginBottom: 4}}>По группам акционеров</div>
         <GroupQuick groups={groupSub} dataset={dataset} onNavigate={onNavigate} />
       </div>
+
+      <InvestByGroup dataset={dataset} groupAgg={groupSub} onNavigate={onNavigate} />
 
       <div className="panel">
         <div className="panel-head">

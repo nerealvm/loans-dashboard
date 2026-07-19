@@ -622,12 +622,14 @@ input, select, textarea { font: inherit; color: inherit; }
 .tag.status-draft { background: var(--bg-3); color: var(--fg-2); }
 .tag.status-err { background: var(--err-bg); color: var(--err); border-color: rgba(217,112,112,0.30); }
 
+.tag.move-out { background: rgba(48, 71, 214, 0.07); color: #3047d6; border-color: rgba(48, 71, 214, 0.25); }
 .tag.move-back { background: rgba(184, 51, 42, 0.07); color: #b8332a; border-color: rgba(184, 51, 42, 0.25); }
 .tag.move-pct { background: rgba(31, 122, 74, 0.07); color: #1f7a4a; border-color: rgba(31, 122, 74, 0.25); }
 
 .tag.rate-fix { background: var(--bg-3); color: var(--fg-2); }
 .tag.rate-flo { background: rgba(48, 71, 214, 0.08); color: #1f33b8; border-color: rgba(48, 71, 214, 0.30); }
 
+[data-theme="dark"] .tag.move-out { background: rgba(139,157,240,0.10); color: #8b9df0; border-color: rgba(139,157,240,0.25); }
 [data-theme="dark"] .tag.move-back { background: rgba(217,112,112,0.10); color: #d97070; border-color: rgba(217,112,112,0.25); }
 [data-theme="dark"] .tag.move-pct { background: rgba(143,207,163,0.10); color: #8fcfa3; border-color: rgba(143,207,163,0.25); }
 [data-theme="dark"] .tag.rate-flo { background: rgba(125,160,255,0.10); color: #9bb1ff; border-color: rgba(125,160,255,0.30); }

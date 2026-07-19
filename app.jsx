@@ -272,7 +272,7 @@ function AppRoot() {
         {active === 'dash' && <ScreenDashboard dataset={dataset} computed={computed} selectedProj={selectedProj} setSelectedProj={setSelectedProj} onNavigate={navigate} />}
         {active === 'reg'  && <ScreenRegistry  dataset={dataset} computed={computed} projAgg={projAgg} selectedProj={selectedProj} setSelectedProj={setSelectedProj} onSelect={setDetail} groupFilter={regGroupFilter} setGroupFilter={setRegGroupFilter} />}
         {active === 'log'  && <ScreenJournal   dataset={dataset} onAdd={() => openAdd()} />}
-        {active === 'grp'  && <ScreenGroups    dataset={dataset} computed={computed} />}
+        {active === 'grp'  && <ScreenGroups    dataset={dataset} computed={computed} initialGroup={regGroupFilter} />}
         {active === 'par'  && <ScreenParity    dataset={dataset} computed={computed} />}
         {active === 'cb'   && <ScreenCB        dataset={dataset} />}
       </div>
